@@ -42,38 +42,33 @@ public abstract class Document extends Section{
 	/**
 	 * Adds an Author to the Document's authors.
 	 *
-	 * @param author The new author to add.
+	 * @param Author the new author to add.
 	 */
-	public void addAuthor(String author){
+	public void addAuthor(Author author){
 		_authors.add(author);
 	}
 
 	/**
 	 * Returns the list of Authors of this Document.
 	 *
-	 * @return List list of the Authors of this document.
+	 * @return List<Author> list of the Authors of this document.
 	 */
-	public String getAuthors(){
+	public List<Author> getAuthors(){
 		return _authors;
 	}
 
 	/**
 	 * Saves (serializes) the Document in the file with name _filename.
 	 */
-	public void saveDocument(){
+	public void saveDocument() throws IOException{
+	
+		FileOutputStream fileOut = new FileOutputStream(_filename);
+		ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-		try{
-			FileOutputStream fileOut = new FileOutputStream(_filename);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		out.writeObject(this);	
+		out.close();
+		fileOut.close();
 
-			out.writeObject(this);	
-			out.close();
-			fileOut.close();
-
-		} catch (IOException e){
-			System.err.println("Erro ao guardar documento.");
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -81,28 +76,34 @@ public abstract class Document extends Section{
 	 *
 	 * @param string the file name where the Document is saved (serialized).
 	 */
-	public Document loadDocument(String filename){
+	public Document loadDocument(String filename) throws ClassNotFoundException, IOException{
 
-		Document doc = null;
-		try{
-			FileInputStream fileIn = new FileInputStream(filename);
-			ObjectInputStream in = new ObjectInputStream(fileIn);
+		FileInputStream fileIn = new FileInputStream(filename);
+		ObjectInputStream in = new ObjectInputStream(fileIn);
 
-			doc = (Document) in.readObject();
-			in.close();
-			fileIn.close();
-
-		} catch (IOException e){
-			System.err.println("Erro I/O ao fazer load do documento.");
-			e.printStackTrace();
-			return;
-		} catch (ClassNotFoundException e){
-			System.err.println("Classe Document nao encontrada.");
-			e.printStackTrace();
-			return;
-		}
+		Document doc = (Document) in.readObject();
+		in.close();
+		fileIn.close();
 
 		return doc;
+	}
+
+	/**
+	 * Set/change the name of the file where to save and load this Document.
+	 *
+	 * @param Author The new author to add.
+	 */
+	public void setFileName(String filename){
+		_filename = filename;
+	}
+
+	/**
+	 * Returns the name of the file where this Document is saved.
+	 *
+	 * @return String the name of the file where this Document is saved.
+	 */
+	public String getFileName(){
+		return _filename;
 	}
 }
 
