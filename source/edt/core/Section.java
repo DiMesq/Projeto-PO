@@ -27,10 +27,20 @@ class Section extends TextElement {
 	private List<Section> _subSections;
 
 	/**
+	 * Constructor
+	 */
+	public Section(){
+		super();
+		_title = "";
+		_paragraphs = new ArrayList<Paragraph>();
+		_subSections = new ArrayList<Section>();
+	}
+	
+	/**
 	 * Returns the Headline of this Section in the following format:
 	 * 	[Section id] {Section Title}
 	 *
-	 * @return The Headline of this Section. [Section id] {Section Title}
+	 * @return string the Headline of this Section. [Section id] {Section Title}
 	 */
 	public String getHeadline(){
 		String id = getKey(),
@@ -54,7 +64,7 @@ class Section extends TextElement {
 	/**
 	 * Returns the title of this Section
 	 *
-	 * @param The title of this Section
+	 * @return string the title of this Section
 	 */
 	public String getTitle(){
 		return _title;
