@@ -6,19 +6,19 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
-/* FIXME: import core classes here */
+import edt.core.Document;
 
 /**
  * Command for creating a new document in the editor.
  */
-public class NewDocument extends Command</* FIXME: core class */> {
+public class NewDocument extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public NewDocument(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public NewDocument(Document ent) {
         super(MenuEntry.NEW, ent);
     }
 
@@ -28,6 +28,17 @@ public class NewDocument extends Command</* FIXME: core class */> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        
+        // hide the options of creating a new document and of opening an existing one
+        this.invisible();
+        menu().entry(1).invisible();
+
+        // make the commands specific to a particular document visible    
+        for (int i = 2, int max = menu().size(); i < max; i++)
+            menu().entry(i).visible();
+
+        Display display = new Display();
+        display.add("Novo documento criado.");
+        display.display();
     }
 }

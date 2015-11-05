@@ -19,7 +19,7 @@ public class SaveDocument extends Command</* FIXME: core class */> {
      * 
      * @param ent the target entity.
      */
-    public SaveDocument(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public SaveDocument(Document ent) {
         super(MenuEntry.SAVE, ent);
     }
 
@@ -29,6 +29,19 @@ public class SaveDocument extends Command</* FIXME: core class */> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-        /* FIXME: implement command */
+        
+        // If the document has no filename, ask for it
+        if (entity().getFileName == ""){
+            Form form = new Form();
+            InputString in = new InputString(form, "Nome do ficheiro onde guardar o documento: ");
+            form.parse();
+
+            entity().setFileName(in.value());
+        }
+        try{ 
+            entity().saveDocument();
+        } catch (IOException){ //TODO: ver a explicacao que dei no comando OpenDocument no catch desta mesma excepcao
+            throw new InvalidOperation("Erro de I/O ao tentar guardar Document.");
+        }
     }
 }

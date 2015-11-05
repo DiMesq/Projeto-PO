@@ -12,7 +12,7 @@ import pt.utl.ist.po.ui.Menu;
 
 public class MainMenu extends Menu {
 
-    public MainMenu(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public MainMenu(Document doc) {
         super(MenuEntry.TITLE,
               new Command<?>[] { new NewDocument(/* FIXME: receiver(s) */),
                       new OpenDocument(/* FIXME: receiver(s) */),
