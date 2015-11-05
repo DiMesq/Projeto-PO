@@ -27,7 +27,7 @@ public abstract class Document extends Section{
 	/**
 	 * The list of Authors of the Document.
 	 */
-	private List<Author> _authors;
+	private List<Author> _authors; //will use it as an ArrayList so we know it is serializable
 
 
 	/**
