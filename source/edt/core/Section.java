@@ -58,7 +58,7 @@ class Section extends TextElement {
 	 * @param title The new title to be set
 	 */
 	public void setTitle(String title){
-		_title = title
+		_title = title;
 	}
 
 	/**

@@ -17,7 +17,7 @@ import java.io.ObjectOutputStream;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class Document extends Section implements Serializable{
+public abstract class Document extends Section{
 
 	/**
 	 * The file name where the document is stored.
@@ -35,7 +35,7 @@ public abstract class Document extends Section implements Serializable{
 	 */
 	public Document(){
 		super();
-		_filename = ""
+		_filename = "";
 		_authors = new ArrayList<Author>();
 	}	
 
@@ -57,5 +57,52 @@ public abstract class Document extends Section implements Serializable{
 		return _authors;
 	}
 
-	
+	/**
+	 * Saves (serializes) the Document in the file with name _filename.
+	 */
+	public void saveDocument(){
+
+		try{
+			FileOutputStream fileOut = new FileOutputStream(_filename);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+			out.writeObject(this);	
+			out.close();
+			fileOut.close();
+
+		} catch (IOException e){
+			System.err.println("Erro ao guardar documento.");
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Loads (deserializes) the Document from the file with name filename.
+	 *
+	 * @param string the file name where the Document is saved (serialized).
+	 */
+	public Document loadDocument(String filename){
+
+		Document doc = null;
+		try{
+			FileInputStream fileIn = new FileInputStream(filename);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+
+			doc = (Document) in.readObject();
+			in.close();
+			fileIn.close();
+
+		} catch (IOException e){
+			System.err.println("Erro I/O ao fazer load do documento.");
+			e.printStackTrace();
+			return;
+		} catch (ClassNotFoundException e){
+			System.err.println("Classe Document nao encontrada.");
+			e.printStackTrace();
+			return;
+		}
+
+		return doc;
+	}
+}
 

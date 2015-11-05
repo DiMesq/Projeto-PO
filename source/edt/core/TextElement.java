@@ -9,7 +9,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement {
+public abstract class TextElement implements Serializable{
 	
 	/**
 	 * The key of the TextElement
