@@ -10,6 +10,12 @@ public class Editor {
         Document doc = new Document();
 
         MainMenu menu = MainMenu(doc);
+
+        // make the commands specific to a particular document invisible
+        for (int i = 2, int last = menu.size(); i < last; i++){
+        	menu.entry(i).invisible();
+        }
+
         menu.open();
         
         IO.close();
