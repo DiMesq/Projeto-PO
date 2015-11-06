@@ -10,7 +10,7 @@ package edt.core;
  * @version 1.0
 */
 
-public class Author {
+public class Author implements java.io.Serializable{
 	
 	/**
 	 * The name of the Author

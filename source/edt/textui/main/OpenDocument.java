@@ -44,7 +44,11 @@ public class OpenDocument extends Command<Document> {
             Document doc = entity().loadDocument(in.value());
 
             // TODO: precisamos de mudar a entity de todos os comandos deste menu para este doc, mas nao estou a ver como
-            
+            MainMenu menu = new MainMenu(doc);
+            menu.entry(0).invisible();
+            menu.entry(1).invisible();
+            menu.open();
+
             
 
         } catch (IOException i){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save 
@@ -56,11 +60,9 @@ public class OpenDocument extends Command<Document> {
 
         // TODO: isto aparece bastantes vezes - secalhar fazia sentido abstrair numa classe
         // make the commands specific to a particular document visible
-        for (int i = 2, max = menu().size(); i < max; i++)
-            menu().entry(i).visible();
+        
 
         // hide the options of creating a new document and of opening an existing one
-        menu().entry(0).invisible();
-        this.invisible();
+        
     }
 }

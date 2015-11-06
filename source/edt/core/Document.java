@@ -61,10 +61,9 @@ public class Document extends Section{
 	 * Saves (serializes) the Document in the file with name _filename.
 	 */
 	public void saveDocument() throws IOException{
-	
+		
 		FileOutputStream fileOut = new FileOutputStream(_filename);
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
 		out.writeObject(this);	
 		out.close();
 		fileOut.close();
@@ -94,7 +93,9 @@ public class Document extends Section{
 	 * @param Author The new author to add.
 	 */
 	public void setFileName(String filename){
+
 		_filename = filename;
+		System.out.println("ISTO FOI O FICHEIRO: " + _filename);
 	}
 
 	/**
