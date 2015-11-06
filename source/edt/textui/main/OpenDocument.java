@@ -14,7 +14,7 @@ import edt.core.Document;
 /**
  * Command for opening an existing document in the editor.
  */
-public class OpenDocument extends Command</* FIXME: core class */> {
+public class OpenDocument extends Command<Document> {
 
     /**
      * Constructor.
@@ -41,16 +41,16 @@ public class OpenDocument extends Command</* FIXME: core class */> {
             // uma solucao diferente que nao estou a ver 
             entity() = entity().loadDocument(in.value());
 
-        } catch (IOException){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save 
+        } catch (IOException i){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save 
             //tambem lanca uma exception a unica que vejo fazer sentido é esta. A outra opcao era apanhar esta excepcao IOException logo no metodo load e save do Document
-            throw new InvalidOperation("Erro de I/O ao tentar fazer load do Document.")
-        } catch (ClassNotFoundException){
-            throw new InvalidOperation("Classe Document não foi encontrada.")
+            throw new InvalidOperation("Erro de I/O ao tentar fazer load do Document.");
+        } catch (ClassNotFoundException c){
+            throw new InvalidOperation("Classe Document não foi encontrada.");
         }
 
         // TODO: isto aparece bastantes vezes - secalhar fazia sentido abstrair numa classe
         // make the commands specific to a particular document visible
-        for (int i = 2, int max = menu().size(); i < max; i++)
+        for (int i = 2, max = menu().size(); i < max; i++)
             menu().entry().visible();
 
         // hide the options of creating a new document and of opening an existing one

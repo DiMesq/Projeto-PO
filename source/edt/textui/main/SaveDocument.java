@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Command for saving the current document in the editor.
  */
-public class SaveDocument extends Command</* FIXME: core class */> {
+public class SaveDocument extends Command<Document> {
 
     /**
      * Constructor.
@@ -40,7 +40,7 @@ public class SaveDocument extends Command</* FIXME: core class */> {
         }
         try{ 
             entity().saveDocument();
-        } catch (IOException){ //TODO: ver a explicacao que dei no comando OpenDocument no catch desta mesma excepcao
+        } catch (IOException i){ //TODO: ver a explicacao que dei no comando OpenDocument no catch desta mesma excepcao
             throw new InvalidOperation("Erro de I/O ao tentar guardar Document.");
         }
     }

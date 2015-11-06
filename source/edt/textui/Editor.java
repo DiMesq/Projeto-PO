@@ -12,7 +12,7 @@ public class Editor {
         MainMenu menu = MainMenu(doc);
 
         // make the commands specific to a particular document invisible
-        for (int i = 2, int last = menu.size(); i < last; i++){
+        for (int i = 2, last = menu.size(); i < last; i++){
         	menu.entry(i).invisible();
         }
 

@@ -34,7 +34,7 @@ public class NewDocument extends Command<Document> {
         menu().entry(1).invisible();
 
         // make the commands specific to a particular document visible    
-        for (int i = 2, int max = menu().size(); i < max; i++)
+        for (int i = 2, max = menu().size(); i < max; i++)
             menu().entry(i).visible();
 
         Display display = new Display();
