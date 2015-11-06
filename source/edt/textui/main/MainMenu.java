@@ -1,5 +1,7 @@
 package edt.textui.main;
 
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
@@ -12,16 +14,17 @@ import pt.utl.ist.po.ui.Menu;
 
 public class MainMenu extends Menu {
 
-    public MainMenu(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public MainMenu(Document doc) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new NewDocument(/* FIXME: receiver(s) */),
-                      new OpenDocument(/* FIXME: receiver(s) */),
-                      new SaveDocument(/* FIXME: receiver(s) */),
-                      new ShowMetadata(/* FIXME: receiver(s) */),
-                      new AddAuthor(/* FIXME: receiver(s) */),
-                      new ListTopSections(/* FIXME: receiver(s) */),
-                      new ShowTextElement(/* FIXME: receiver(s) */),
-                      new EditSection(/* FIXME: receiver(s) */),
+              new Command<?>[] { 
+                      new NewDocument(doc),
+                      new OpenDocument(doc),
+                      new SaveDocument(doc),
+                      new ShowMetadata(doc),
+                      new AddAuthor(doc),
+                      new ListTopSections(doc),
+                      new ShowTextElement(doc),
+                      new EditSection(doc),
                       });
     }
 }

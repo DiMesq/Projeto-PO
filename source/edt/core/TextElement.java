@@ -9,13 +9,16 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement {
+public abstract class TextElement implements java.io.Serializable{
 	
 	/**
 	 * The key of the TextElement
 	 */
 	private String _key;	
 
+	/**
+	 * Constructor
+	 */
 	public TextElement(){
 		_key = null;
 	}
@@ -23,7 +26,7 @@ public abstract class TextElement {
 	/**
 	 * Returns the key of this TextElement
 	 *
-	 * @return The key of this TextElement (null if it is not indexed)
+	 * @return string the key of this TextElement (null if it is not indexed)
 	 */
 	public String getKey(){
 		return _key;
@@ -41,23 +44,16 @@ public abstract class TextElement {
 	/**
 	 * Returns true if this TextElement is indexed
 	 *
-	 * @return true if this TextElement is indexed
+	 * @return boolean true if this TextElement is indexed
 	 */
 	protected boolean isIndexed(){
 		return _key == null;
 	}
 
 	/**
-	 * Returns the Content of this TextElement
-	 *
-	 * @return The Content of this TextElement
-	 */
-	public abstract String getContent();
-
-	/**
 	 * Returns the size of this TextElement
 	 *
-	 * @return The size of this TextElement
+	 * @return int the size of this TextElement
 	 */
 	public abstract int getSize();
 
