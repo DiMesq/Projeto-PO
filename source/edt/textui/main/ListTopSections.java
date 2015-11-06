@@ -2,6 +2,8 @@ package edt.textui.main;
 
 import java.util.SortedSet;
 
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;

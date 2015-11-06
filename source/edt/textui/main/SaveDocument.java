@@ -1,13 +1,13 @@
 package edt.textui.main;
 
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 import java.io.IOException;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for saving the current document in the editor.
@@ -31,7 +31,7 @@ public class SaveDocument extends Command<Document> {
     public final void execute() throws InvalidOperation {
         
         // If the document has no filename, ask for it
-        if (entity().getFileName == ""){
+        if (entity().getFileName() == ""){
             Form form = new Form();
             InputString in = new InputString(form, "Nome do ficheiro onde guardar o documento: ");
             form.parse();

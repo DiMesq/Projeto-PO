@@ -1,5 +1,8 @@
 package edt.textui.main;
 
+
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 

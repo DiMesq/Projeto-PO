@@ -1,5 +1,8 @@
 package edt.core;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * This class implements a Section of a {@link Document}.
  * <p>A Section has a title represented as a String
@@ -9,7 +12,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-class Section extends TextElement {
+public class Section extends TextElement {
 
 	/**
 	 * The title of the Section
@@ -81,5 +84,15 @@ class Section extends TextElement {
 			size += p.getSize();
 
 		return size;
+	}
+
+	/**
+	 * Returns the Content of this TextElement
+	 *
+	 * @return string the Content of this TextElement
+	 */
+	public String getContent(){
+		// TODO: FIX NESTA MERDA TODA CARALHO!!!!
+		return "arco iris.";
 	}
 }

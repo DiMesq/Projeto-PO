@@ -9,7 +9,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement implements Serializable{
+public abstract class TextElement implements java.io.Serializable{
 	
 	/**
 	 * The key of the TextElement
@@ -49,13 +49,6 @@ public abstract class TextElement implements Serializable{
 	protected boolean isIndexed(){
 		return _key == null;
 	}
-
-	/**
-	 * Returns the Content of this TextElement
-	 *
-	 * @return string the Content of this TextElement
-	 */
-	public abstract String getContent();
 
 	/**
 	 * Returns the size of this TextElement

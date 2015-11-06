@@ -1,5 +1,7 @@
 package edt.textui.main;
 
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
@@ -14,7 +16,8 @@ public class MainMenu extends Menu {
 
     public MainMenu(Document doc) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new NewDocument(doc),
+              new Command<?>[] { 
+                      new NewDocument(doc),
                       new OpenDocument(doc),
                       new SaveDocument(doc),
                       new ShowMetadata(doc),

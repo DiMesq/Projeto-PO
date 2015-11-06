@@ -1,12 +1,12 @@
 package edt.textui.main;
 
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
-
-import edt.core.Document;
 
 /**
  * Command for creating a new document in the editor.

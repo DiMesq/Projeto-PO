@@ -17,7 +17,7 @@ import java.io.ObjectOutputStream;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class Document extends Section{
+public class Document extends Section{
 
 	/**
 	 * The file name where the document is stored.
