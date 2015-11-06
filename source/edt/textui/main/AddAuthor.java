@@ -1,5 +1,8 @@
 package edt.textui.main;
 
+import edt.core.Document;
+import edt.core.Author;
+
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -11,14 +14,14 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Command for adding an author to the current document in the editor.
  */
-public class AddAuthor extends Command</* FIXME: core class */> {
+public class AddAuthor extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public AddAuthor(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public AddAuthor(Document ent) {
         super(MenuEntry.ADD_AUTHOR, ent);
     }
 
@@ -28,6 +31,15 @@ public class AddAuthor extends Command</* FIXME: core class */> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Message m = new Message();
+
+        Form form = new Form();
+        InputString inName = new InputString(form, m.requestAuthorName());
+        InputString  inMail = new InputString(form, m.requestEmail());
+        form.parse();
+
+        Author author = new Author(inName.value(), inMail.value());
+        entity().addAuthor(author);
+
     }
 }

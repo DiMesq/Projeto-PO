@@ -1,5 +1,8 @@
 package edt.core;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * This class implements a Section of a {@link Document}.
  * <p>A Section has a title represented as a String
@@ -9,7 +12,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-class Section extends TextElement {
+public class Section extends TextElement {
 
 	/**
 	 * The title of the Section
@@ -27,10 +30,20 @@ class Section extends TextElement {
 	private List<Section> _subSections;
 
 	/**
+	 * Constructor
+	 */
+	public Section(){
+		super();
+		_title = "";
+		_paragraphs = new ArrayList<Paragraph>();
+		_subSections = new ArrayList<Section>();
+	}
+	
+	/**
 	 * Returns the Headline of this Section in the following format:
 	 * 	[Section id] {Section Title}
 	 *
-	 * @return The Headline of this Section. [Section id] {Section Title}
+	 * @return string the Headline of this Section. [Section id] {Section Title}
 	 */
 	public String getHeadline(){
 		String id = getKey(),
@@ -48,13 +61,13 @@ class Section extends TextElement {
 	 * @param title The new title to be set
 	 */
 	public void setTitle(String title){
-		_title = title
+		_title = title;
 	}
 
 	/**
 	 * Returns the title of this Section
 	 *
-	 * @param The title of this Section
+	 * @return string the title of this Section
 	 */
 	public String getTitle(){
 		return _title;
@@ -71,5 +84,15 @@ class Section extends TextElement {
 			size += p.getSize();
 
 		return size;
+	}
+
+	/**
+	 * Returns the Content of this TextElement
+	 *
+	 * @return string the Content of this TextElement
+	 */
+	public String getContent(){
+		// TODO: FIX NESTA MERDA TODA CARALHO!!!!
+		return "arco iris.";
 	}
 }

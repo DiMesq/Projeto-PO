@@ -16,6 +16,14 @@ public class Paragraph extends TextElement {
 	private String _text;
 
 	/**
+	 * Constructor
+	 */
+	public Paragraph(){
+		super();
+		_text = "";
+	}
+	
+	/**
 	 * Sets/changes the content of this Paragraph
 	 *
 	 * @param text The new content to be set
