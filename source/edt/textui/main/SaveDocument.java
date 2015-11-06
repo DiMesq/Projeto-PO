@@ -30,10 +30,12 @@ public class SaveDocument extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
         
+        Message m = new Message();
+
         // If the document has no filename, ask for it
         if (entity().getFileName() == ""){
             Form form = new Form();
-            InputString in = new InputString(form, "Nome do ficheiro onde guardar o documento: ");
+            InputString in = new InputString(form, m.saveAs());
             form.parse();
 
             entity().setFileName(in.value());
@@ -41,7 +43,7 @@ public class SaveDocument extends Command<Document> {
         try{ 
             entity().saveDocument();
         } catch (IOException i){ //TODO: ver a explicacao que dei no comando OpenDocument no catch desta mesma excepcao
-            throw new InvalidOperation("Erro de I/O ao tentar guardar Document.");
+            throw new InvalidOperation(m.fileNotFound(entity().getFileName()));
         }
     }
 }

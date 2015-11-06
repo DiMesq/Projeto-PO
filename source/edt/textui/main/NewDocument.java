@@ -37,8 +37,5 @@ public class NewDocument extends Command<Document> {
         for (int i = 2, max = menu().size(); i < max; i++)
             menu().entry(i).visible();
 
-        Display display = new Display();
-        display.add("Novo documento criado.");
-        display.display();
     }
 }

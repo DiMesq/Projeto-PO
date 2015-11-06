@@ -33,9 +33,11 @@ public class OpenDocument extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
+        Message m = new Message();
+
         // ask for the filename where the document is 
         Form form = new Form();
-        InputString in = new InputString(form, "Nome do ficheiro onde se encontra o documento: ");
+        InputString in = new InputString(form, m.openFile());
         form.parse();
 
         try{
@@ -47,9 +49,9 @@ public class OpenDocument extends Command<Document> {
 
         } catch (IOException i){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save 
             //tambem lanca uma exception a unica que vejo fazer sentido é esta. A outra opcao era apanhar esta excepcao IOException logo no metodo load e save do Document
-            throw new InvalidOperation("Erro de I/O ao tentar fazer load do Document.");
+            throw new InvalidOperation(m.fileNotFound(in.value()));
         } catch (ClassNotFoundException c){
-            throw new InvalidOperation("Classe Document não foi encontrada.");
+            throw new InvalidOperation(m.fileNotFound(in.value()));
         }
 
         // TODO: isto aparece bastantes vezes - secalhar fazia sentido abstrair numa classe
