@@ -10,14 +10,14 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Command for showing the text element with a given identifier of the current document in the editor.
  */
-public class ShowTextElement extends Command</* FIXME: core class */> {
+public class ShowTextElement extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public ShowTextElement(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public ShowTextElement(Document ent) {
         super(MenuEntry.SHOW_TEXT_ELEMENT, ent);
     }
 

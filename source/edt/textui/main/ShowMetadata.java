@@ -8,14 +8,14 @@ import pt.utl.ist.po.ui.Display;
 /**
  * Command for showing the metadata of the current document in the editor.
  */
-public class ShowMetadata extends Command</* FIXME: core class */> {
+public class ShowMetadata extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public ShowMetadata(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public ShowMetadata(Document ent) {
         super(MenuEntry.SHOW_METADATA, ent);
     }
 

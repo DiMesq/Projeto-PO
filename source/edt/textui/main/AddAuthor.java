@@ -11,14 +11,14 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Command for adding an author to the current document in the editor.
  */
-public class AddAuthor extends Command</* FIXME: core class */> {
+public class AddAuthor extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public AddAuthor(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public AddAuthor(Document ent) {
         super(MenuEntry.ADD_AUTHOR, ent);
     }
 
