@@ -10,14 +10,14 @@ import edt.textui.section.EditMenu;
 /**
  * Command for editing the current document in the editor.
  */
-public class EditSection extends Command</* FIXME: core class */> {
+public class EditSection extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public EditSection(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public EditSection(Document ent) {
         super(MenuEntry.OPEN_DOCUMENT_EDITOR, ent);
     }
 
@@ -27,7 +27,10 @@ public class EditSection extends Command</* FIXME: core class */> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        EditMenu menu = new EditMenu(entity());
+        menu.open();
+        
     }
 }
 
