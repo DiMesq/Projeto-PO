@@ -8,14 +8,14 @@ import pt.utl.ist.po.ui.Display;
 /**
  * Command for listing all subsections of the current section.
  */
-public class ListSections extends Command</* FIXME: core class */> {
+public class ListSections extends Command<Section> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public ListSections(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public ListSections(Section ent) {
         super(MenuEntry.LIST_SECTIONS, ent);
     }
 

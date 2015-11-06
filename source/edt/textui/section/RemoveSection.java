@@ -10,14 +10,14 @@ import pt.utl.ist.po.ui.InputInteger;
 /**
  * Command for removing a subsection of the current section.
  */
-public class RemoveSection extends Command</* FIXME: core class */> {
+public class RemoveSection extends Command<Section> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public RemoveSection(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public RemoveSection(Section ent) {
         super(MenuEntry.REMOVE_SECTION, ent);
     }
 

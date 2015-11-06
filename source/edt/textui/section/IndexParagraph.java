@@ -11,14 +11,14 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Command for indexing a paragraph (nomear um parágrafo 2.2.9) of the current section.
  */
-public class IndexParagraph extends Command</* FIXME: core class */> {
+public class IndexParagraph extends Command<Section> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public IndexParagraph(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public IndexParagraph(Section ent) {
         super(MenuEntry.NAME_PARAGRAPH, ent);
     }
 

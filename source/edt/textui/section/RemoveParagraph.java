@@ -10,14 +10,14 @@ import pt.utl.ist.po.ui.InputInteger;
 /**
  * Command for removing a paragraph of the current section.
  */
-public class RemoveParagraph extends Command</* FIXME: core class */> {
+public class RemoveParagraph extends Command<Section> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public RemoveParagraph(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public RemoveParagraph(Section ent) {
         super(MenuEntry.REMOVE_PARAGRAPH, ent);
     }
 
