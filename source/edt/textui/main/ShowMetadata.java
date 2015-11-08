@@ -1,5 +1,8 @@
 package edt.textui.main;
 
+import edt.core.Document;
+import edt.core.Author;
+
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
@@ -8,14 +11,14 @@ import pt.utl.ist.po.ui.Display;
 /**
  * Command for showing the metadata of the current document in the editor.
  */
-public class ShowMetadata extends Command</* FIXME: core class */> {
+public class ShowMetadata extends Command<Document> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public ShowMetadata(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public ShowMetadata(Document ent) {
         super(MenuEntry.SHOW_METADATA, ent);
     }
 
@@ -25,6 +28,14 @@ public class ShowMetadata extends Command</* FIXME: core class */> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        //TODO: implementei so para testes. precisa de ser mudado
+        // da exception se nao se tiver adicionado autor primeiro
+        Message m = new Message();
+        Display display = new Display();
+
+        Author a = entity().getAuthors().get(0);
+
+        display.add(m.author(a.getName(), a.getEmail()));
+        display.display();
     }
 }
