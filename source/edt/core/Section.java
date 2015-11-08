@@ -34,16 +34,33 @@ public class Section extends TextElement {
 	 */
 	private Document _document;
 
+
 	/**
-	 * Constructor
+	 * The default Constructor. Associates document as the Document of the Section
 	 *
 	 * @param document The document to which this Section belongs
 	 */
 	public Section(Document document){
-		super();
 		_title = "";
 		_paragraphs = new ArrayList<Paragraph>();
 		_subSections = new ArrayList<Section>();
+		_document = document;
+	}
+
+	/**
+	 * Constructor (does not associate a Document to the Section)
+	 * REVIEW: protected de forma a que só possa ser usado no Document??
+	*/
+	protected Section(){
+		this(null);
+	}
+
+	/**
+	 * Sets the Document to which this Section belongs
+	 * @param document The Document to which this Sections belongs
+	 * REVIEW: protected de forma a que só possa ser usado no Document??
+	 */
+	protected void setDocument(Document document){
 		_document = document;
 	}
 
@@ -129,6 +146,7 @@ public class Section extends TextElement {
 	 */
 	public String getSubsectionIndex(){
 		// FIXME
+		return "";
 	}
 
 	/**
@@ -150,7 +168,7 @@ public class Section extends TextElement {
 	}
 
 	/**
-	 * Removes the Subsection at the specified position in this Sectin.
+	 * Removes the Subsection at the specified position in this Section.
 	 * Shifts any subsequent Subsections to the left (subtracts one from their indices).
 	 * Returns the Subsection that was removed from the Section.
 	 *
@@ -187,7 +205,7 @@ public class Section extends TextElement {
 	 }
 
 	 /**
-		* Removes the Paragraph at the specified position in this Sectin.
+		* Removes the Paragraph at the specified position in this Section.
 		* Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
 		* Returns the Paragraph that was removed from the Section.
 		*
