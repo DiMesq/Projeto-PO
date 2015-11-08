@@ -27,4 +27,4 @@ documentation:
 .PHONY: clean
 
 clean:
-	rm -rf ${OUTDIR}
+	rm -rf ${OUTDIR} ${DOCDIR}
