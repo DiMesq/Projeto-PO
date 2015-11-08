@@ -1,5 +1,6 @@
 OUTDIR=class/
 SRCDIR=source/
+DOCDIR=doc/
 MAIN_FILE_NAME=edt/textui/Editor
 
 all: directories compile
@@ -17,6 +18,11 @@ directories: ${OUTDIR}
 
 ${OUTDIR}:
 	mkdir $@
+
+documentation:
+	mkdir -p doc/
+	javadoc -d ${DOCDIR} -cp ${OUTDIR} -sourcepath ${SRCDIR} `find ${SRCDIR}edt -name "*.java"`
+
 
 .PHONY: clean
 
