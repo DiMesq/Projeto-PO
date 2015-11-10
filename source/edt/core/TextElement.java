@@ -1,20 +1,20 @@
 package edt.core;
 
 /**
- * This abstract class implements a TextElement of a {@link Document}.
+ * This abstract class implements a TextElement.
  * <p>A TextElement has an id and some content that can be represented as Strings
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
  * @version 1.0
 */
 public abstract class TextElement implements java.io.Serializable{
-	
+
 	/**
 	 * The key of the TextElement
 	 */
-	private String _key;	
+	private String _key;
 
 	/**
 	 * Constructor
