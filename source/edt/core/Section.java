@@ -30,15 +30,40 @@ public class Section extends TextElement {
 	private List<Section> _subSections;
 
 	/**
-	 * Constructor
+	 * The Document to which the Section belongs
 	 */
-	public Section(){
-		super();
+	private Document _document;
+
+
+	/**
+	 * The default Constructor. Associates document as the Document of the Section
+	 *
+	 * @param document The document to which this Section belongs
+	 */
+	public Section(Document document){
 		_title = "";
 		_paragraphs = new ArrayList<Paragraph>();
 		_subSections = new ArrayList<Section>();
+		_document = document;
 	}
-	
+
+	/**
+	 * Constructor (does not associate a Document to the Section)
+	 * REVIEW: protected de forma a que só possa ser usado no Document??
+	*/
+	protected Section(){
+		this(null);
+	}
+
+	/**
+	 * Sets the Document to which this Section belongs
+	 * @param document The Document to which this Sections belongs
+	 * REVIEW: protected de forma a que só possa ser usado no Document??
+	 */
+	protected void setDocument(Document document){
+		_document = document;
+	}
+
 	/**
 	 * Returns the Headline of this Section in the following format:
 	 * 	[Section id] {Section Title}
@@ -92,7 +117,121 @@ public class Section extends TextElement {
 	 * @return string the Content of this TextElement
 	 */
 	public String getContent(){
-		// TODO: FIX NESTA MERDA TODA CARALHO!!!!
+		// FIXME: NESTA MERDA TODA CARALHO!!!!
 		return "arco iris.";
 	}
+
+	/**
+	 * Retuns a List with the sub-Section of this Section
+	 *
+	 * @return A List with the sub-Section of this Section
+	 */
+	public List<Section> getSubsections(){
+		return _subSections;
+	}
+
+	/**
+	 * Retuns the Subsection at the specified position in this Section
+	 *
+	 * @param index Index of the Subsection to return
+	 * @return The Subsection at the specified position in this Section
+	 * @throws IndexOutOfBoundsException - if the index is out of range
+	 */
+	public Section getSection(int index){
+		return _subSections.get(index);
+	}
+
+	/**
+ 	 * FIXME: I HAVE NO IDEA WHAT THIS IS
+	 */
+	public String getSubsectionIndex(){
+		// FIXME
+		return "";
+	}
+
+	/**
+	 * Inserts the specified Subsection at the specified position in this Section.
+	 * Shifts the Subsection currently at that position (if any) and any subsequent
+	 * ones to the right (adds one to their indices).
+	 * If the Index is invalid insert the Subsection at the end of all Subsections.
+	 *
+	 * @param index Index at which the specifie SubSection is to be inserted
+	 * @param subsection - The SubSection to be inserted
+	 */
+	public void addSection(int index, Section subsection){
+		try{
+			_subSections.add(index, subsection);
+		}
+		catch (IndexOutOfBoundsException e) {
+			_subSections.add(subsection);
+		}
+	}
+
+	/**
+	 * Removes the Subsection at the specified position in this Section.
+	 * Shifts any subsequent Subsections to the left (subtracts one from their indices).
+	 * Returns the Subsection that was removed from the Section.
+	 *
+	 * @param index - The index of the Subsection to be removed
+	 * @return The Subsection at the specified position.
+	 * @throws IndexOutOfBoundsException - if the index is out of range.
+	 */
+	public Section removeSection(int index){
+		Section section = _subSections.remove(index);
+		try{
+			_document.removeFromIndex(section);
+		}
+		finally{
+			return section;
+		}
+	}
+
+	/**
+	 * Inserts the specified Paragraph at the specified position in this Section.
+	 * Shifts the Paragraph currently at that position (if any) and any subsequent
+	 * ones to the right (adds one to their indices).
+	 * If the Index is invalid insert the Paragraph at the end of all Paragraphs.
+	 *
+	 * @param index Index at which the specifie Paragraph is to be inserted
+	 * @param paragraph - The Paragraph to be inserted
+	 */
+	 public void addParagraph(int index, Paragraph paragraph){
+		 try{
+			 _paragraphs.add(index, paragraph);
+		 }
+		 catch (IndexOutOfBoundsException e) {
+			 _paragraphs.add(paragraph);
+		 }
+	 }
+
+	 /**
+		* Removes the Paragraph at the specified position in this Section.
+		* Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
+		* Returns the Paragraph that was removed from the Section.
+		*
+		* @param index - The index of the Paragraph to be removed
+		* @return The Paragraph at the specified position.
+		* @throws IndexOutOfBoundsException - if the index is out of range.
+		*/
+	 public Paragraph removeParagraph(int index){
+			 Paragraph paragraph = _paragraphs.remove(index);
+			 try{
+				 _document.removeFromIndex(paragraph);
+			 }
+			 finally{
+				 return paragraph;
+			 }
+	 }
+
+	 /**
+		* Retuns the Paragraph at the specified position in this Section
+		*
+		* @param index Index of the Paragraph to return
+		* @return The Paragraph at the specified position in this Section
+		* @throws IndexOutOfBoundsException - if the index is out of range
+		*/
+	 public Paragraph getParagraph(int index){
+		 return _paragraphs.get(index);
+	 }
+
 }

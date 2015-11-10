@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 /**
  * This abstract class implements a Document.
  * <p>A Document has a filename where it is stored and a list of it's Authors
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
@@ -34,15 +34,15 @@ public class Document extends Section{
 	 * Constructor.
 	 */
 	public Document(){
-		super();
 		_filename = "";
 		_authors = new ArrayList<Author>();
-	}	
+		this.setDocument(this);
+	}
 
 	/**
 	 * Adds an Author to the Document's authors.
 	 *
-	 * @param Author the new author to add.
+	 * @param author the new author to add.
 	 */
 	public void addAuthor(Author author){
 		_authors.add(author);
@@ -57,23 +57,41 @@ public class Document extends Section{
 		return _authors;
 	}
 
+	// TODO: implement this
+	public TextElement getTextElement(String id){return null;}
+
+	//TODO: implement this
+	public void indexElement(String id, TextElement element){}
+
+	//TODO: implement this
+	public void removeFromIndex(TextElement element){}
+
+	/**
+	 * Returns the Headline of this Document in the following format:
+	 * {Document title}
+	 *
+	 * @return string the Headline of this Document. {Document title}
+	 */
+	public String getHeadline(){
+		return "{" + getTitle() + "}";
+	}
+
 	/**
 	 * Saves (serializes) the Document in the file with name _filename.
 	 */
 	public void saveDocument() throws IOException{
-		
+
 		FileOutputStream fileOut = new FileOutputStream(_filename);
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-		out.writeObject(this);	
+		out.writeObject(this);
 		out.close();
 		fileOut.close();
-
 	}
 
 	/**
 	 * Loads (deserializes) the Document from the file with name filename.
 	 *
-	 * @param string the file name where the Document is saved (serialized).
+	 * @param filename the file name where the Document is saved (serialized).
 	 */
 	public Document loadDocument(String filename) throws ClassNotFoundException, IOException{
 
@@ -90,7 +108,7 @@ public class Document extends Section{
 	/**
 	 * Set/change the name of the file where to save and load this Document.
 	 *
-	 * @param Author The new author to add.
+	 * @param filename The new file name to set.
 	 */
 	public void setFileName(String filename){
 
@@ -106,5 +124,5 @@ public class Document extends Section{
 	public String getFileName(){
 		return _filename;
 	}
-}
 
+}
