@@ -77,7 +77,7 @@ public class Section extends TextElement {
 			id = "";
 		if(title == null)
 			title = "";
-		return "[" + id + "] {" + title + "}";
+		return String.format("[%s] {%s}", id, title);
 	}
 
 	/**
