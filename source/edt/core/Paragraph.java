@@ -1,8 +1,8 @@
 package edt.core;
 
 /**
- * This class implements a Paragraph of a {@link Section}.
- * <p>A Paragraph has some content represented as a String
+ * This class implements a Paragraph.
+ * <p>A Paragraph has some content represented as a String.
  * 
  * @author Daniel Reigada
  * @author Diogo Mesquita
