@@ -22,7 +22,7 @@ public class Document extends Section{
 	/**
 	 * The file name where the document is stored.
 	 */
-	private String _filename;
+	private transient String _filename;
 
 	/**
 	 * The list of Authors of the Document.
