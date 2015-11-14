@@ -17,7 +17,7 @@ public class SaveDocument extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public SaveDocument(DocManager ent) {
@@ -30,21 +30,22 @@ public class SaveDocument extends Command<DocManager> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-        
+
         Message m = new Message();
+        Document doc = entity().getDocument();
 
         // If the document has no filename, ask for it
-        if (entity().getFileName() == ""){
+        if (doc.getFileName() == ""){
             Form form = new Form();
             InputString in = new InputString(form, m.saveAs());
             form.parse();
 
-            entity().setFileName(in.value());
+            entity().getDocument().setFileName(in.value());
         }
-        try{ 
-            entity().saveDocument();
+        try{
+            entity().getDocument().saveDocument();
         } catch (IOException i){ //TODO: ver a explicacao que dei no comando OpenDocument no catch desta mesma excepcao
-            throw new InvalidOperation(m.fileNotFound(entity().getFileName()));
+            throw new InvalidOperation(m.fileNotFound(doc.getFileName()));
         }
     }
 }

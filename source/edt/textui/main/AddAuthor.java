@@ -18,7 +18,7 @@ public class AddAuthor extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public AddAuthor(DocManager ent) {
@@ -39,7 +39,7 @@ public class AddAuthor extends Command<DocManager> {
         form.parse();
 
         Author author = new Author(inName.value(), inMail.value());
-        entity().addAuthor(author);
+        entity().getDocument().addAuthor(author);
 
     }
 }

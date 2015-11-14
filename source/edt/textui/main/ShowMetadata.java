@@ -16,7 +16,7 @@ public class ShowMetadata extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ShowMetadata(DocManager ent) {
@@ -34,7 +34,7 @@ public class ShowMetadata extends Command<DocManager> {
         Message m = new Message();
         Display display = new Display();
 
-        Author a = entity().getAuthors().get(0);
+        Author a = entity().getDocument().getAuthors().get(0);
 
         display.add(m.author(a.getName(), a.getEmail()));
         display.display();

@@ -15,7 +15,7 @@ public class EditSection extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public EditSection(DocManager ent) {
@@ -29,9 +29,8 @@ public class EditSection extends Command<DocManager> {
     @SuppressWarnings("nls")
     public final void execute() {
 
-        EditMenu menu = new EditMenu(entity());
+        EditMenu menu = new EditMenu(entity().getDocument());
         menu.open();
-        
+
     }
 }
-
