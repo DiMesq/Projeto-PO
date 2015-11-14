@@ -37,19 +37,30 @@ public class Section extends TextElement {
 
 	/**
 	 * The default Constructor. Associates document as the Document of the Section
+	 * and sets its title.
 	 *
 	 * @param document The document to which this Section belongs
+	 * @param String the title for the section 
 	 */
-	public Section(Document document){
-		_title = "";
+	public Section(Document document, String title){
+		_title = title;
 		_paragraphs = new ArrayList<Paragraph>();
 		_subSections = new ArrayList<Section>();
 		_document = document;
 	}
 
 	/**
+	 * Constructor. Associates document as the Document of the Section
+	 *
+	 * @param document The document to which this Section belongs
+	 */
+	public Section(Document document){
+		this(document, "");
+	}
+
+	/**
 	 * Constructor (does not associate a Document to the Section)
-	 * REVIEW: protected de forma a que só possa ser usado no Document??
+	 * TODO: protected de forma a que só possa ser usado no Document??
 	*/
 	protected Section(){
 		this(null);
@@ -58,10 +69,19 @@ public class Section extends TextElement {
 	/**
 	 * Sets the Document to which this Section belongs
 	 * @param document The Document to which this Sections belongs
-	 * REVIEW: protected de forma a que só possa ser usado no Document??
+	 * TODO: protected de forma a que só possa ser usado no Document??
 	 */
 	protected void setDocument(Document document){
 		_document = document;
+	}
+
+	/**
+	 * Gets the Document to which this Section belongs
+	 * @return document The Document to which this Sections belongs
+	 * TODO: protected??
+	 */
+	public Document getDocument(){
+		return _document;
 	}
 
 	/**
@@ -77,7 +97,7 @@ public class Section extends TextElement {
 			id = "";
 		if(title == null)
 			title = "";
-		return String.format("[%s] {%s}", id, title);
+		return String.format("[%s] {%s}\n", id, title);
 	}
 
 	/**
@@ -109,16 +129,6 @@ public class Section extends TextElement {
 			size += p.getSize();
 
 		return size;
-	}
-
-	/**
-	 * Returns the Content of this TextElement
-	 *
-	 * @return string the Content of this TextElement
-	 */
-	public String getContent(){
-		// FIXME: NESTA MERDA TODA CARALHO!!!!
-		return "arco iris.";
 	}
 
 	/**
