@@ -25,9 +25,9 @@ public class Document extends Section{
 	private transient String _filename;
 
 	/**
-	 * The list of Authors of the Document.
+	 * The set of Authors of the Document.
 	 */
-	private List<Author> _authors; //will use it as an ArrayList so we know it is serializable
+	private Set<Author> _authors; //will use it as an TreeSet so we know it is serializable
 
 
 	/**
@@ -35,7 +35,7 @@ public class Document extends Section{
 	 */
 	public Document(){
 		_filename = "";
-		_authors = new ArrayList<Author>();
+		_authors = new TreeSet<Author>();
 		this.setDocument(this);
 	}
 
@@ -49,12 +49,12 @@ public class Document extends Section{
 	}
 
 	/**
-	 * Returns the list of Authors of this Document.
-	 *
-	 * @return List<Author> list of the Authors of this document.
+	 * Returns an array containing all of the Authors in this Document.
+	 * @return An array containing all of the Authors in this Document.
 	 */
-	public List<Author> getAuthors(){
-		return _authors;
+	public Author[] getAuthors(){
+		Author[] array = new Author[0];	// create an auxiliary array
+		return _authors.toArray(array);
 	}
 
 	// TODO: implement this
