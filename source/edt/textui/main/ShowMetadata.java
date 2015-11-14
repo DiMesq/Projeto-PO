@@ -29,14 +29,16 @@ public class ShowMetadata extends Command<DocManager> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
+
         //TODO: implementei so para testes. precisa de ser mudado
-        // da exception se nao se tiver adicionado autor primeiro
+
         Message m = new Message();
         Display display = new Display();
 
-        Author a = entity().getDocument().getAuthors().get(0);
 
-        display.add(m.author(a.getName(), a.getEmail()));
+        for(Author a : entity().getDocument().getAuthors())
+          display.addNewLine(m.author(a.getName(), a.getEmail()));
+
         display.display();
     }
 }
