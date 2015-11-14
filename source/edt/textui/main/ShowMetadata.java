@@ -32,12 +32,11 @@ public class ShowMetadata extends Command<DocManager> {
 
         //TODO: implementei so para testes. precisa de ser mudado
 
-        Message m = new Message();
         Display display = new Display();
 
 
         for(Author a : entity().getDocument().getAuthors())
-          display.addNewLine(m.author(a.getName(), a.getEmail()));
+          display.addNewLine(Message.author(a.getName(), a.getEmail()));
 
         display.display();
     }
