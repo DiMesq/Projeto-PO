@@ -115,9 +115,7 @@ public class Document extends Section{
 	 * @param filename The new file name to set.
 	 */
 	public void setFileName(String filename){
-
 		_filename = filename;
-		System.out.println("ISTO FOI O FICHEIRO: " + _filename);
 	}
 
 	/**
