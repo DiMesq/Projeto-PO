@@ -36,7 +36,7 @@ public class SaveDocument extends Command<DocManager> {
         // If the document has no filename, ask for it
         if (doc.getFileName() == ""){
             Form form = new Form();
-            InputString in = new InputString(form, Message.saveAs());
+            InputString in = new InputString(form, Message.newSaveAs());
             form.parse();
 
             entity().getDocument().setFileName(in.value());
