@@ -73,7 +73,7 @@ public class Document extends Section{
 	 * @return string the Headline of this Document. {Document title}
 	 */
 	public String getHeadline(){
-		return String.format("{%s}", getTitle());
+		return String.format("{%s}\n", getTitle());
 	}
 
 	/**

@@ -23,7 +23,7 @@ public class Message {
     /**
      * @param localId
      * @return status message for new section.
-     */
+     */ 
     public static String newActiveSection(int localId) {
         return "Nova secção activa: '" + localId + "'.";
     }
