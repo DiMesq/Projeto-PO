@@ -29,6 +29,9 @@ public class Paragraph extends TextElement {
 	 * @param text The new content to be set
 	 */
 	public void setText(String text){
+		// add new line character in the end if its not there
+		if (!text.endsWith("\n")) text += "\n"; 
+
 		_text = text;
 	}
 
@@ -48,5 +51,13 @@ public class Paragraph extends TextElement {
 	 */
 	public int getSize(){
 		return _text.length();
+	}
+
+	//tests
+	public static void main(String[] args){
+		Paragraph p = new Paragraph();
+
+		p.setText("Ola eu sou o Diogo.");
+		System.out.print(p.getContent());
 	}
 }
