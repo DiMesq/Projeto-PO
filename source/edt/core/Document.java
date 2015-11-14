@@ -92,8 +92,9 @@ public class Document extends Section{
 	 * Loads (deserializes) the Document from the file with name filename.
 	 *
 	 * @param filename the file name where the Document is saved (serialized).
+	 * @return the Document that is saved in the file
 	 */
-	public Document loadDocument(String filename) throws ClassNotFoundException, IOException{
+	public static Document loadDocument(String filename) throws ClassNotFoundException, IOException{
 
 		FileInputStream fileIn = new FileInputStream(filename);
 		ObjectInputStream in = new ObjectInputStream(fileIn);
