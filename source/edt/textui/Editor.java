@@ -1,6 +1,7 @@
 package edt.textui;
 
 import edt.core.Document;
+import edt.core.DocManager;
 
 import edt.textui.main.MainMenu;
 
@@ -12,14 +13,9 @@ public class Editor {
 
     public static void main(String[] args) {
         
-        Document doc = new Document();
+        DocManager manager = new DocManager(new Document());
 
-        MainMenu menu = new MainMenu(doc);
-
-        // make the commands specific to a particular document invisible
-        for (int i = 2, last = menu.size(); i < last; i++){
-        	menu.entry(i).invisible();
-        }
+        MainMenu menu = new MainMenu(manager);
 
         menu.open();
         

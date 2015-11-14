@@ -17,8 +17,7 @@ public class EditMenu extends Menu {
      * Builds an EditMenu object. It has all available options for editing
      * a section.
      *
-     * @param doc
-     * @param section
+     * @param section 
      **/
     public EditMenu(Section section) {
         super(MenuEntry.TITLE,

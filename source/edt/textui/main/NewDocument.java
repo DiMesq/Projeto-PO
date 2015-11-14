@@ -1,5 +1,6 @@
 package edt.textui.main;
 
+import edt.core.DocManager;
 import edt.core.Document;
 
 import pt.utl.ist.po.ui.Menu;
@@ -11,14 +12,14 @@ import pt.utl.ist.po.ui.InputInteger;
 /**
  * Command for creating a new document in the editor.
  */
-public class NewDocument extends Command<Document> {
+public class NewDocument extends Command<DocManager> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public NewDocument(Document ent) {
+    public NewDocument(DocManager ent) {
         super(MenuEntry.NEW, ent);
     }
 
@@ -28,14 +29,8 @@ public class NewDocument extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        
-        // hide the options of creating a new document and of opening an existing one
-        this.invisible();
-        menu().entry(1).invisible();
 
-        // make the commands specific to a particular document visible    
-        for (int i = 2, max = menu().size(); i < max; i++)
-            menu().entry(i).visible();
+        entity().setDocument(new Document());
 
     }
 }

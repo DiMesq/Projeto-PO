@@ -1,6 +1,6 @@
 package edt.textui.main;
 
-import edt.core.Document;
+import edt.core.DocManager;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
@@ -14,17 +14,17 @@ import pt.utl.ist.po.ui.Menu;
 
 public class MainMenu extends Menu {
 
-    public MainMenu(Document doc) {
+    public MainMenu(DocManager manager) {
         super(MenuEntry.TITLE,
               new Command<?>[] { 
-                      new NewDocument(doc),
-                      new OpenDocument(doc),
-                      new SaveDocument(doc),
-                      new ShowMetadata(doc),
-                      new AddAuthor(doc),
-                      new ListTopSections(doc),
-                      new ShowTextElement(doc),
-                      new EditSection(doc),
+                      new NewDocument(manager),
+                      new OpenDocument(manager),
+                      new SaveDocument(manager),
+                      new ShowMetadata(manager),
+                      new AddAuthor(manager),
+                      new ListTopSections(manager),
+                      new ShowTextElement(manager),
+                      new EditSection(manager),
                       });
     }
 }
