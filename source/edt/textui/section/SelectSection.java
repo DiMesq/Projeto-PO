@@ -35,17 +35,17 @@ public class SelectSection extends Command<Section> {
         InputInteger in = new InputInteger(form, Message.requestSectionId());
         form.parse();
 
+        Display display = new Display();
+
         try{
             Section section = entity().getSection(in.value());
             EditMenu menu = new EditMenu(section);
 
-            Message.newActiveSection(in.value());
+            display.add(Message.newActiveSection(in.value())).display();
             menu.open();
 
         } catch (IndexOutOfBoundsException i){
-            Message.noSuchSection(in.value());
-        }
-        
-        
+            display.add(Message.noSuchSection(in.value())).display();
+        } 
     }
 }
