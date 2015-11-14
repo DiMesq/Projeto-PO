@@ -1,6 +1,7 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import pt.utl.ist.po.ui.Display;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -25,6 +26,11 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Display display = new Display();
+
+        //show the current section subsection's titles
+        display.add(entity().getContent(false));
+
+        display.display();
     }
 }
