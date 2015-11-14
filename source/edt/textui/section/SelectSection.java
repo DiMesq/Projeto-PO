@@ -30,6 +30,22 @@ public class SelectSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        Form form = new Form();
+        InputInteger in = new InputInteger(form, Message.requestSectionId());
+        form.parse();
+
+        try{
+            Section section = entity().getSection(in.value());
+            EditMenu menu = new EditMenu(section);
+
+            Message.newActiveSection(in.value());
+            menu.open();
+
+        } catch (IndexOutOfBoundsException i){
+            Message.noSuchSection(in.value());
+        }
+        
+        
     }
 }
