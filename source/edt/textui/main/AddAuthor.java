@@ -33,12 +33,11 @@ public class AddAuthor extends Command<DocManager> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        Message m = new Message();
 
         // get the name and email of the author and create it
         Form form = new Form();
-        InputString inName = new InputString(form, m.requestAuthorName());
-        InputString  inMail = new InputString(form, m.requestEmail());
+        InputString inName = new InputString(form, Message.requestAuthorName());
+        InputString  inMail = new InputString(form, Message.requestEmail());
         form.parse();
 
         Author author = new Author(inName.value(), inMail.value());
@@ -49,7 +48,7 @@ public class AddAuthor extends Command<DocManager> {
         // if the author already existed warn the user
         if(Arrays.asList(doc.getAuthors()).contains(author)){
           Display display = new Display();
-          display.add(m.duplicateAuthor(inName.value()));
+          display.add(Message.duplicateAuthor(inName.value()));
           display.display();
         }
         else
