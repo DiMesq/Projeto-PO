@@ -1,5 +1,7 @@
 package edt.textui.main;
 
+import java.util.Arrays;
+
 import edt.core.Document;
 import edt.core.DocManager;
 import edt.core.Author;
@@ -38,8 +40,16 @@ public class AddAuthor extends Command<DocManager> {
         InputString  inMail = new InputString(form, m.requestEmail());
         form.parse();
 
+        Document doc = entity().getDocument();
+
         Author author = new Author(inName.value(), inMail.value());
-        entity().getDocument().addAuthor(author);
+        if(Arrays.asList(doc.getAuthors()).contains(author)){
+          Display display = new Display();
+          display.add(m.duplicateAuthor(inName.value()));
+          display.display();
+        }
+        else
+          doc.addAuthor(author);
 
     }
 }

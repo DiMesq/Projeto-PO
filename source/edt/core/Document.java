@@ -53,7 +53,7 @@ public class Document extends Section{
 	 * @return An array containing all of the Authors in this Document.
 	 */
 	public Author[] getAuthors(){
-		Author[] array = new Author[0];
+		Author[] array = new Author[0];	// create an auxiliary array
 		return _authors.toArray(array);
 	}
 
