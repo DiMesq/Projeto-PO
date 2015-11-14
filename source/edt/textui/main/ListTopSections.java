@@ -2,6 +2,7 @@ package edt.textui.main;
 
 import java.util.SortedSet;
 
+import edt.core.Section;
 import edt.core.Document;
 import edt.core.DocManager;
 
@@ -17,7 +18,7 @@ public class ListTopSections extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ListTopSections(DocManager ent) {
@@ -30,6 +31,15 @@ public class ListTopSections extends Command<DocManager> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+      Display display = new Display();
+      Document doc = entity().getDocument();
+
+      // add the Document Headline
+      display.addNewLine(doc.getHeadline());
+      // add the top subsections' Headlines
+      for(Section sec : doc.getSubsections())
+        display.addNewLine(sec.getHeadline());
+
+      display.display();
     }
 }
