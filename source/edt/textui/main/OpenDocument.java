@@ -43,11 +43,7 @@ public class OpenDocument extends Command<DocManager> {
 
         try{
             Document doc = entity().getDocument().loadDocument(in.value());
-
-            // TODO: meter novo doc no manager
-
-
-
+            entity().setDocument(doc);
         } catch (IOException i){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save
             //tambem lanca uma exception a unica que vejo fazer sentido é esta. A outra opcao era apanhar esta excepcao IOException logo no metodo load e save do Document
             throw new InvalidOperation(m.fileNotFound(in.value()));
