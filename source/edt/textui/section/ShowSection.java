@@ -1,6 +1,7 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import pt.utl.ist.po.ui.Display;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -25,6 +26,11 @@ public class ShowSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Display display = new Display();
+
+        //show all content from the current section and all its subsections
+        display.add(entity().getContent(true)); 
+
+        display.display();
      }
 }
