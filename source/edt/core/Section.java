@@ -160,6 +160,38 @@ public class Section extends TextElement {
 	}
 
 	/**
+	 * Returns the Content of this TextElement
+	 *
+	 * @param boolean mode specifies if the content to retrieve includes the 
+	 * paragraphs. If it is false, it only returns the list of titles of all
+	 * subsections of the current section. If it is true, it also adds the 
+	 * content of the paragraphs of each section in the subsequent lines 
+	 * after it's title (in this mode the current section is included) 
+	 *
+	 * @return string the Content of this TextElement
+	 */
+	public String getContent(boolean mode){
+
+		String content = getContentHelper(mode);
+
+		if (!mode) content = content.substring(this.getHeadline().length());
+		
+		return content;
+	}
+
+	private String getContentHelper(boolean mode){
+
+		String content = this.getHeadline();
+
+		if (mode) for (Paragraph p: _paragraphs) content += p.getContent();
+		
+
+		for (Section s: _subSections) content += s.getContentHelper(mode);
+
+		return content;
+	}
+
+	/**
 	 * Inserts the specified Subsection at the specified position in this Section.
 	 * Shifts the Subsection currently at that position (if any) and any subsequent
 	 * ones to the right (adds one to their indices).
