@@ -33,10 +33,20 @@ public class ShowMetadata extends Command<DocManager> {
         //TODO: implementei so para testes. precisa de ser mudado
 
         Display display = new Display();
+        Document doc = entity().getDocument();
 
-
-        for(Author a : entity().getDocument().getAuthors())
+        // add the title of the document
+        display.addNewLine(Message.documentTitle(doc.getTitle()));
+        // add the authors of the document
+        for(Author a : doc.getAuthors())
           display.addNewLine(Message.author(a.getName(), a.getEmail()));
+        // add the number of top Sections
+        display.addNewLine(Message.documentSections(doc.getSubsections().size()));
+        // add the size of the document
+        display.addNewLine(Message.documentBytes(doc.getSize()));
+        // add the number of unique identifiers
+        display.addNewLine(Message.documentIdentifiers(0)); //FIXME : MUDAR ISTO
+
 
         display.display();
     }
