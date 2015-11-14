@@ -66,6 +66,9 @@ public class Document extends Section{
 	//TODO: implement this
 	public void removeFromIndex(TextElement element){}
 
+	// TODO: implement this
+	public int getNumberOfIndex(){return 0;}
+
 	/**
 	 * Returns the Headline of this Document in the following format:
 	 * {Document title}

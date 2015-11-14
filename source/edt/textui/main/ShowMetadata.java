@@ -45,7 +45,7 @@ public class ShowMetadata extends Command<DocManager> {
         // add the size of the document
         display.addNewLine(Message.documentBytes(doc.getSize()));
         // add the number of unique identifiers
-        display.addNewLine(Message.documentIdentifiers(0)); //FIXME : MUDAR ISTO
+        display.addNewLine(Message.documentIdentifiers(doc.getNumberOfIndex()));
 
 
         display.display();
