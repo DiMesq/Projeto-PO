@@ -14,4 +14,7 @@ public final class ErrorCode {
 
     /** Error closing file. */
     public static final String FILE_CLOSE_ERROR = "FILE_CLOSE_EXCEPTION";
+
+    /** Document not found */
+    public static final String SECTION_NOT_FOUND = "SECTION_NOT_FOUND_EXCEPTION";    
 }

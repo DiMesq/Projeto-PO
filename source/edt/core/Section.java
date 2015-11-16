@@ -138,7 +138,7 @@ public class Section extends TextElement {
 			return _subSections.get(index);
 
 		} catch (IndexOutOfBoundsException e){
-			throw new TextElementNotFoundException(e.getMessage(), "SECTION_NOT_FOUND");
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
 		}
 	}
 

@@ -6,13 +6,13 @@ import pt.utl.ist.po.ui.Display;
 
 public class ProcessError{
 
-	public static void processError(TextElementException exception, String name){
+	public static void processError(TextElementException exception, int name){
 
 		Display display = new Display();
 
 		switch (exception.getErrorCode()){
-			case DOCUMENT_NOT_FOUND:
-				display.addNewLine(Message.fileNotFound(name));
+			case SECTION_NOT_FOUND:
+				display.addNewLine(Message.noSuchSection(name));
 				break;
 
 			case DOCUMENT_SERIALIZE_ERROR:

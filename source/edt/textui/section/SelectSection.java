@@ -46,7 +46,7 @@ public class SelectSection extends Command<Section> {
             menu.open();
 
         } catch (TextElementNotFoundException e){
-            display.add(Message.noSuchSection(in.value())).display();
+            ProcessError.processError(e, in.value());
         } 
     }
 }
