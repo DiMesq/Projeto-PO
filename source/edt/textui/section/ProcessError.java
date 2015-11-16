@@ -1,6 +1,7 @@
-package edt.textui.main;
+package edt.textui.section;
 
 import edt.textui.exception.TextElementException;
+import edt.textui.exception.ErrorCode;
 
 import pt.utl.ist.po.ui.Display;
 
@@ -11,20 +12,20 @@ public class ProcessError{
 		Display display = new Display();
 
 		switch (exception.getErrorCode()){
-			case SECTION_NOT_FOUND:
+			case ErrorCode.SECTION_NOT_FOUND:
 				display.addNewLine(Message.noSuchSection(name));
 				break;
 
-			case DOCUMENT_SERIALIZE_ERROR:
-				display.addNewLine(Message.fileNotFound(name));
+			case ErrorCode.DOCUMENT_SERIALIZE_ERROR:
+				display.addNewLine(Message.noSuchSection(name));
 				break;
 
-			case DOCUMENT_DESERIALIZE_ERROR:
-				display.addNewLine(Message.fileNotFound(name));
+			case ErrorCode.DOCUMENT_DESERIALIZE_ERROR:
+				display.addNewLine(Message.noSuchSection(name));
 				break;
 
-			case FILE_CLOSE_ERROR:
-				display.addNewLine(Message.fileNotFound(name));
+			case ErrorCode.FILE_CLOSE_ERROR:
+				display.addNewLine(Message.noSuchSection(name));
 				break;
 
 			default:

@@ -2,6 +2,8 @@ package edt.core;
 
 import java.util.TreeSet;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,7 +37,7 @@ public class Document extends Section{
 	/**
 	 * The map of the id key and the respective text element value
 	 */
-	private Map<String, String> map;
+	private Map<String, TextElement> _map;
 
 	/**
 	 * Constructor.
@@ -43,6 +45,7 @@ public class Document extends Section{
 	public Document(){
 		_filename = "";
 		_authors = new TreeSet<Author>();
+		_map = new HashMap<String, TextElement>();
 		this.setDocument(this);
 	}
 
@@ -77,9 +80,14 @@ public class Document extends Section{
 	 * Associates the given TextElement to an ID
 	 * @param  id The id for the TextElement
 	 * @param  element The TextElement to associate the given ID
-	 * NOT IMPLEMENTED
 	 */
-	public void indexElement(String id, TextElement element){}
+	public void indexElement(String id, TextElement element) {
+		
+		TextElement retrievedElement = _map.put(id, element);
+
+		if (retrievedElement != null) retrievedElement.setKey("");
+		
+	}	
 
 	/**
 	 * Removes the association of a TextElement to its ID

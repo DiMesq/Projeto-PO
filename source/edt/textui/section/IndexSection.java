@@ -2,6 +2,8 @@ package edt.textui.section;
 
 import edt.core.Section;
 
+import edt.textui.exception.TextElementException;
+
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
@@ -31,18 +33,27 @@ public class IndexSection extends Command<Section> {
 
         Display display = new Display();
 
+        // get the subsection and the id 
         Form form = new Form();
         InputInteger localIn = new InputInteger(form, Message.requestSectionId());
         InputString idIn = new InputString(form, Message.requestUniqueId());
         form.parse();
 
-        try {
-            entity().getSection(localIn.value());
+        Section section = null;
+        try {  //try getting the subsection specified
+            section = entity().getSection(localIn.value());
 
         } catch (TextElementException e) {
-            ProcessError.processError(e.getMessage(), localIn.value());
+            ProcessError.processError(e, localIn.value());
         }
         
-        entity().setKey(idIn.value());
+        // if the section already has a key, warn the user of the replacement
+        if (section.getKey() != "") display.addNewLine(Message.sectionNameChanged());
+
+        // set the new key
+        section.setKey(idIn.value());
+        entity().getDocument().indexElement(idIn.value(), section);
+
+        display.display();
     }
 }

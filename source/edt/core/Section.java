@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import edt.textui.exception.TextElementNotFoundException;
+import edt.textui.exception.ErrorCode;
 
 /**
  * This class implements a Section of a {@link Document}.
