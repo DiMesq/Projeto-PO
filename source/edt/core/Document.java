@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import edt.textui.exception.*;
+import edt.textui.exception.TextElementNotFoundException;
+import edt.textui.exception.TextElementIOException;
+
 /**
  * This abstract class implements a Document.
  * <p>A Document has a filename where it is stored and a list of it's Authors
@@ -104,19 +106,27 @@ public class Document extends Section{
 		Document doc = null;
 
 		try{
+			// desserialize the object
 			FileInputStream fileIn = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			doc = (Document) in.readObject();
-
-			in.close();
-			fileIn.close();
-			return doc;
 			
 		} catch (ClassNotFoundException c){
 			throw new TextElementNotFoundException(c.getMessage(), "DOCUMENT_NOT_FOUND_EXCEPTION");
-		} catch (IOException i){
-			throw i;
 
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), "DOCUMENT_OPEN_EXCEPTION");
+
+		} finally{
+			try{
+				// close the open resources
+				in.close();
+				fileIn.close();
+				return doc;
+			
+			} catch (IOException i){
+				throw new TextElementIOException(i.getMessage(), "DOCUMENT_CLOSE_EXCEPTION");
+			}
 		}
 		
 	}

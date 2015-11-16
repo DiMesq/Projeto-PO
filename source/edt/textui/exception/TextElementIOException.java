@@ -2,19 +2,19 @@ package edt.textui.exception;
 
 /**
  * This class implements an exception that extends form an {@link TextElementException}.
- * <p>It occurs when the text element that is requested was not found.
+ * <p>It occurs when there is some problem with the IO of a text element.
  *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class TextElementNotFoundException extends TextElementException{
+public class TextElementIOException extends TextElementException{
 
 	/**
 	 * Constructor.
 	 */
-	public TextElementNotFoundException(String message, String errorCode){
+	public TextElementIOException(String message, String errorCode){
 		super(message, errorCode);
 	}
 
