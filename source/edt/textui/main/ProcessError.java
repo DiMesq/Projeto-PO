@@ -12,7 +12,17 @@ public class ProcessError{
 
 		switch (exception.getErrorCode()){
 			case "DOCUMENT_NOT_FOUND":
-				display.add(Message.fileNotFound(value));
+				display.addNewLine(Message.fileNotFound(value));
+
+			case "DOCUMENT_OPEN_EXCEPTION":
+				display.addNewLine(Message.fileNotFound(value));
+
+			case "DOCUMENT_CLOSE_EXCEPTION":
+				display.addNewLine(Message.fileNotFound(value));
+
+			default:
+				System.err.println("Unknown exception occurred: " + exception.getMessage());
+				exception.printStackTrace();
 		}
 	}
 }
