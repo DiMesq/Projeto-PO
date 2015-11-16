@@ -43,9 +43,10 @@ public class Document extends Section{
 	 * Adds an Author to the Document's authors.
 	 *
 	 * @param author the new author to add.
+	 * @return true if this Document did not already contain the specified Author
 	 */
-	public void addAuthor(Author author){
-		_authors.add(author);
+	public boolean addAuthor(Author author){
+		return _authors.add(author);
 	}
 
 	/**
