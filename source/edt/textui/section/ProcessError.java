@@ -1,4 +1,4 @@
-package edt.textui.main;
+package edt.textui.section;
 
 import edt.textui.exception.TextElementException;
 
@@ -11,19 +11,19 @@ public class ProcessError{
 		Display display = new Display();
 
 		switch (exception.getErrorCode()){
-			case DOCUMENT_NOT_FOUND:
+			case "DOCUMENT_NOT_FOUND":
 				display.addNewLine(Message.fileNotFound(name));
 				break;
 
-			case DOCUMENT_SERIALIZE_ERROR:
+			case "DOCUMENT_DESERIALIZE_EXCEPTION":
 				display.addNewLine(Message.fileNotFound(name));
 				break;
 
-			case DOCUMENT_DESERIALIZE_ERROR:
+			case "DOCUMENT_SERIALIZE_EXCEPTION":
 				display.addNewLine(Message.fileNotFound(name));
 				break;
 
-			case FILE_CLOSE_ERROR:
+			case "FILE_CLOSE_EXCEPTION":
 				display.addNewLine(Message.fileNotFound(name));
 				break;
 
