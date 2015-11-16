@@ -1,8 +1,10 @@
 package edt.textui.exception;
 
+import pt.utl.ist.po.ui.InvalidOperation;
+
 public abstract class TextElementException extends InvalidOperation{
 
-	private _errorCode;
+	private String _errorCode;
 	
 	/**
 	 * Constructor.

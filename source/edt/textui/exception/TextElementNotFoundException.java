@@ -1,7 +1,5 @@
 package edt.textui.exception;
 
-import pt.utl.ist.po.ui.InvalidOperation;
-
 /**
  * This class implements an exception that extends form an {@link InvalidOperation}.
  * <p>When trying to get an inexistent Section.
