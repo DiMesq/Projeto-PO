@@ -32,6 +32,10 @@ public class Document extends Section{
 	 */
 	private Set<Author> _authors; //will use it as an TreeSet so we know it is serializable
 
+	/**
+	 * The map of the id key and the respective text element value
+	 */
+	private Map<String, String> map;
 
 	/**
 	 * Constructor.

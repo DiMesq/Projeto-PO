@@ -19,7 +19,7 @@ public abstract class TextElement implements java.io.Serializable{
 	/**
 	 * Constructor
 	 */
-	public TextElement(){
+	public TextElement() {
 		_key = "";
 	}
 
@@ -28,7 +28,7 @@ public abstract class TextElement implements java.io.Serializable{
 	 *
 	 * @return string the key of this TextElement (null if it is not indexed)
 	 */
-	public String getKey(){
+	public String getKey() {
 		return _key;
 	}
 
@@ -37,7 +37,7 @@ public abstract class TextElement implements java.io.Serializable{
 	 *
 	 * @param key The new key to be set
 	 */
-	public void setKey(String key){
+	public void setKey(String key) {
 		_key = key;
 	}
 
@@ -46,7 +46,7 @@ public abstract class TextElement implements java.io.Serializable{
 	 *
 	 * @return boolean true if this TextElement is indexed
 	 */
-	protected boolean isIndexed(){
+	protected boolean isIndexed() {
 		return _key == null;
 	}
 

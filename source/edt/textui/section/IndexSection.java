@@ -28,6 +28,21 @@ public class IndexSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        Display display = new Display();
+
+        Form form = new Form();
+        InputInteger localIn = new InputInteger(form, Message.requestSectionId());
+        InputString idIn = new InputString(form, Message.requestUniqueId());
+        form.parse();
+
+        try {
+            entity().getSection(localIn.value());
+
+        } catch (TextElementException e) {
+            ProcessError.processError(e.getMessage(), localIn.value());
+        }
+        
+        entity().setKey(idIn.value());
     }
 }
