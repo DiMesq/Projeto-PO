@@ -36,7 +36,7 @@ tests: all
 
 submit:
 	cd source/; \
-	jar -fc ../Projeto-PO.jar `find . -name "*.java" -o -name "*.jar"`
+	jar cfv ../Projeto-PO.jar edt
 
 .PHONY: clean
 
