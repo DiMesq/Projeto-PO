@@ -14,10 +14,10 @@ public class ProcessError{
 			case "DOCUMENT_NOT_FOUND":
 				display.addNewLine(Message.fileNotFound(value));
 
-			case "DOCUMENT_OPEN_EXCEPTION":
+			case "DOCUMENT_DESERIALIZE_EXCEPTION":
 				display.addNewLine(Message.fileNotFound(value));
 
-			case "DOCUMENT_CLOSE_EXCEPTION":
+			case "DOCUMENT_SERIALIZE_EXCEPTION":
 				display.addNewLine(Message.fileNotFound(value));
 
 			default:

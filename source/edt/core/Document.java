@@ -85,13 +85,28 @@ public class Document extends Section{
 	/**
 	 * Saves (serializes) the Document in the file with name _filename.
 	 */
-	public void saveDocument() throws IOException{
+	public void saveDocument() throws TextElementIOException{
+		FileOutputStream fileOut = null;
+		ObjectOutputStream out = null;
 
-		FileOutputStream fileOut = new FileOutputStream(_filename);
-		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-		out.writeObject(this);
-		out.close();
-		fileOut.close();
+		try{
+			// serialize object
+			fileOut = new FileOutputStream(_filename);
+			out = new ObjectOutputStream(fileOut);
+			out.writeObject(this);
+
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), "DOCUMENT_SERIALIZE_EXCEPTION");
+
+		} finally{
+			try{
+				out.close();
+				fileOut.close();
+
+			} catch (IOException i){
+				throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
+			}
+		}
 	}
 
 	/**
@@ -117,17 +132,17 @@ public class Document extends Section{
 			throw new TextElementNotFoundException(c.getMessage(), "DOCUMENT_NOT_FOUND_EXCEPTION");
 
 		} catch (IOException i){
-			throw new TextElementIOException(i.getMessage(), "DOCUMENT_OPEN_EXCEPTION");
+			throw new TextElementIOException(i.getMessage(), "DOCUMENT_DESERIALIZE_EXCEPTION");
 
 		} finally{
 			try{
 				// close the open resources
-				if (objIn != null) objIn.close();
-				if (fileIn != null) fileIn.close();
+				objIn.close();
+				fileIn.close();
 				return doc;
 			
 			} catch (IOException i){
-				throw new TextElementIOException(i.getMessage(), "DOCUMENT_CLOSE_EXCEPTION");
+				throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
 			}
 		}
 		

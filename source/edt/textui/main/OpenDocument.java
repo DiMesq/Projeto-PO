@@ -1,18 +1,15 @@
 package edt.textui.main;
 
-import java.io.IOException;
-
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
-import pt.utl.ist.po.ui.InvalidOperation;
 
 import edt.core.Document;
 import edt.core.DocManager;
 
-import edt.textui.exception.*;
+import edt.textui.exception.TextElementException;
 
 /**
  * Command for opening an existing document in the editor.
@@ -45,12 +42,8 @@ public class OpenDocument extends Command<DocManager> {
             doc.setFileName(in.value());
             entity().setDocument(doc);
             
-        } catch (TextElementIOException i){ 
+        } catch (TextElementException i){ 
             ProcessError.processError(i, in.value());
-
-        } catch (TextElementNotFoundException t){
-            ProcessError.processError(t, in.value());
         }
-
     }
 }
