@@ -123,9 +123,9 @@ public class Document extends Section {
 	 * @param filename the file name where the Document is saved (serialized).
 	 * @return the Document that is saved in the file
 	 */
-	public static Document loadDocument(String filename) 
+	public Document loadDocument(String filename) 
 		throws TextElementNotFoundException, TextElementIOException {
-		
+
 		Document doc = null;
 		FileInputStream fileIn = null;
 		ObjectInputStream objIn = null;
@@ -135,11 +135,11 @@ public class Document extends Section {
 			fileIn = new FileInputStream(filename);
 			objIn = new ObjectInputStream(fileIn);
 			doc = (Document) objIn.readObject();
-	
+
 		} catch (ClassNotFoundException c) {
 			throw new TextElementNotFoundException(c.getMessage(), ErrorCode.DOCUMENT_NOT_FOUND);
 
-		} catch (IOException i) { 
+		} catch (IOException i) {
 			throw new TextElementIOException(i.getMessage(), ErrorCode.DOCUMENT_DESERIALIZE_ERROR);
 		}
 
@@ -148,7 +148,7 @@ public class Document extends Section {
 			objIn.close();
 			fileIn.close();
 			return doc;
-		
+
 		} catch (IOException i) {
 			throw new TextElementIOException(i.getMessage(), ErrorCode.FILE_CLOSE_ERROR);
 		}
