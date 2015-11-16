@@ -3,6 +3,8 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
+import edt.textui.exception.NoSuchTextElementException;
+
 /**
  * This class implements a Section of a {@link Document}.
  * <p>A Section has a title represented as a String
@@ -147,8 +149,13 @@ public class Section extends TextElement {
 	 * @return The Subsection at the specified position in this Section
 	 * @throws IndexOutOfBoundsException - if the index is out of range
 	 */
-	public Section getSection(int index) throws IndexOutOfBoundsException{
-		return _subSections.get(index);
+	public Section getSection(int index) throws NoSuchTextElementException{
+		try{
+			return _subSections.get(index);
+
+		} catch (IndexOutOfBoundsException e){
+			throw new NoSuchTextElementException(e.getMessage(), "SECTION_NOT_FOUND");
+		}
 	}
 
 	/**
@@ -218,13 +225,15 @@ public class Section extends TextElement {
 	 * @return The Subsection at the specified position.
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
-	public Section removeSection(int index){
-		Section section = _subSections.remove(index);
+	public Section removeSection(int index) throws NoSuchTextElementException{
+		
 		try{
+			Section section = _subSections.remove(index);
 			_document.removeFromIndex(section);
-		}
-		finally{
 			return section;
+
+		} catch (IndexOutOfBoundsException e){
+			throw new NoSuchTextElementException(e.getMessage(), "SECTION_NOT_FOUND");
 		}
 	}
 
