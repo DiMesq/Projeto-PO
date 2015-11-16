@@ -33,7 +33,7 @@ public class OpenDocument extends Command<DocManager> {
      */
     @Override
     @SuppressWarnings("nls")
-    public final void execute() throws InvalidOperation {
+    public final void execute(){
 
         // ask for the filename where the document is
         Form form = new Form();
@@ -44,11 +44,12 @@ public class OpenDocument extends Command<DocManager> {
             Document doc = entity().getDocument().loadDocument(in.value());
             doc.setFileName(in.value());
             entity().setDocument(doc);
-        } catch (IOException i){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save
-            //tambem lanca uma exception a unica que vejo fazer sentido é esta. A outra opcao era apanhar esta excepcao IOException logo no metodo load e save do Document
-            throw new InvalidOperation(Message.fileNotFound(in.value()));
+            
+        } catch (TextElementIOException i){ 
+            ProcessError.processError(i, in.value());
+
         } catch (TextElementNotFoundException t){
-            throw new InvalidOperation(Message.fileNotFound(in.value()));
+            ProcessError.processError(t, in.value());
         }
 
     }
