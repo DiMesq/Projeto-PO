@@ -23,7 +23,10 @@ public class Editor {
           try{
             manager.setDocument(parser.parse(System.getProperty("import")));
           }
-          catch (IOException e) {}
+          catch (IOException e) {
+            System.out.println("Error importing the file in the parser: " + e.getMessage());
+            e.printStackTrace();
+          }
         }
 
         MainMenu menu = new MainMenu(manager);
