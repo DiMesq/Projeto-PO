@@ -46,13 +46,10 @@ public class AddAuthor extends Command<DocManager> {
         Document doc = entity().getDocument();
 
         // if the author already existed warn the user
-        if(Arrays.asList(doc.getAuthors()).contains(author)){
+        if(!doc.addAuthor(author)){
           Display display = new Display();
           display.add(Message.duplicateAuthor(inName.value()));
           display.display();
         }
-        else
-          doc.addAuthor(author);
-
     }
 }

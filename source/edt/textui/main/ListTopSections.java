@@ -31,14 +31,17 @@ public class ListTopSections extends Command<DocManager> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
+
       Display display = new Display();
       Document doc = entity().getDocument();
 
       // add the Document Headline
-      display.addNewLine(doc.getHeadline());
+      String headline = Message.sectionIndexEntry("", doc.getTitle());
+      display.addNewLine(headline.replace("[] ", ""));
+
       // add the top subsections' Headlines
       for(Section sec : doc.getSubsections())
-        display.addNewLine(sec.getHeadline());
+        display.addNewLine(Message.sectionIndexEntry(sec.getKey(), sec.getTitle()));
 
       display.display();
     }
