@@ -30,8 +30,6 @@ public class ShowMetadata extends Command<DocManager> {
     @SuppressWarnings("nls")
     public final void execute() {
 
-        //TODO: implementei so para testes. precisa de ser mudado
-
         Display display = new Display();
         Document doc = entity().getDocument();
 
