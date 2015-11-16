@@ -65,22 +65,6 @@ public class Section extends TextElement {
 	}
 
 	/**
-	 * Returns the Headline of this Section in the following format:
-	 * 	[Section id] {Section Title}
-	 *
-	 * @return string the Headline of this Section. [Section id] {Section Title}
-	 */
-	public String getHeadline(){
-		String id = getKey(),
-			   title = getTitle();
-		if(id == null)
-			id = "";
-		if(title == null)
-			title = "";
-		return String.format("[%s] {%s}", id, title);
-	}
-
-	/**
 	 * Set/Changes the title of this Section
 	 *
 	 * @param title The new title to be set

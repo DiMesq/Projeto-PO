@@ -20,7 +20,7 @@ public abstract class TextElement implements java.io.Serializable{
 	 * Constructor
 	 */
 	public TextElement(){
-		_key = null;
+		_key = "";
 	}
 
 	/**

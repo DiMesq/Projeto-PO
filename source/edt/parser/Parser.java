@@ -15,16 +15,6 @@ public class Parser {
     public Parser() {
     }
 
-    public static void main(String[] args) throws Exception {
-        String fileName = System.getProperty("import");
-
-        Parser parser = new Parser();
-
-        Document doc = parser.parse(fileName);
-
-        System.out.println(doc.getContent());
-    }
-
     public Document parse(String filename) throws IOException{
         BufferedReader reader = null;
 
