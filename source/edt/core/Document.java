@@ -70,16 +70,6 @@ public class Document extends Section{
 	public int getNumberOfIndex(){return 0;}
 
 	/**
-	 * Returns the Headline of this Document in the following format:
-	 * {Document title}
-	 *
-	 * @return string the Headline of this Document. {Document title}
-	 */
-	public String getHeadline(){
-		return String.format("{%s}", getTitle());
-	}
-
-	/**
 	 * Saves (serializes) the Document in the file with name _filename.
 	 */
 	public void saveDocument() throws IOException{
