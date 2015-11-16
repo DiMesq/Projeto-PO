@@ -96,16 +96,6 @@ public class Section extends TextElement {
 	}
 
 	/**
-	 * Returns the Content of this TextElement
-	 *
-	 * @return string the Content of this TextElement
-	 */
-	public String getContent(){
-		// FIXME: NESTA MERDA TODA CARALHO!!!!
-		return "arco iris.";
-	}
-
-	/**
 	 * Retuns a List with the sub-Section of this Section
 	 *
 	 * @return A List with the sub-Section of this Section
