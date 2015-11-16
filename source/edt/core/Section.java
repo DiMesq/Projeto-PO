@@ -49,7 +49,6 @@ public class Section extends TextElement {
 
 	/**
 	 * Constructor (does not associate a Document to the Section)
-	 * REVIEW: protected de forma a que só possa ser usado no Document??
 	*/
 	protected Section(){
 		this(null);
@@ -58,7 +57,6 @@ public class Section extends TextElement {
 	/**
 	 * Sets the Document to which this Section belongs
 	 * @param document The Document to which this Sections belongs
-	 * REVIEW: protected de forma a que só possa ser usado no Document??
 	 */
 	protected void setDocument(Document document){
 		_document = document;
@@ -96,16 +94,6 @@ public class Section extends TextElement {
 	}
 
 	/**
-	 * Returns the Content of this TextElement
-	 *
-	 * @return string the Content of this TextElement
-	 */
-	public String getContent(){
-		// FIXME: NESTA MERDA TODA CARALHO!!!!
-		return "arco iris.";
-	}
-
-	/**
 	 * Retuns a List with the sub-Section of this Section
 	 *
 	 * @return A List with the sub-Section of this Section
@@ -123,14 +111,6 @@ public class Section extends TextElement {
 	 */
 	public Section getSection(int index){
 		return _subSections.get(index);
-	}
-
-	/**
- 	 * FIXME: I HAVE NO IDEA WHAT THIS IS
-	 */
-	public String getSubsectionIndex(){
-		// FIXME
-		return "";
 	}
 
 	/**
