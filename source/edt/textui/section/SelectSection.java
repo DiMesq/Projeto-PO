@@ -7,7 +7,7 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
 import edt.textui.main.EditSection;
-import edt.textui.exception.NoSuchTextElementException;
+import edt.textui.exception.TextElementNotFoundException;
 
 import edt.core.Section;
 
@@ -45,7 +45,7 @@ public class SelectSection extends Command<Section> {
             display.add(Message.newActiveSection(in.value())).display();
             menu.open();
 
-        } catch (NoSuchTextElementException e){
+        } catch (TextElementNotFoundException e){
             display.add(Message.noSuchSection(in.value())).display();
         } 
     }

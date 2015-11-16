@@ -11,13 +11,13 @@ import pt.utl.ist.po.ui.InvalidOperation;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class NoSuchTextElementException extends InvalidOperation{
+public class TextElementNotFoundException extends InvalidOperation{
 
 	String _errorCode;
 	/**
 	 * Constructor.
 	 */
-	public NoSuchTextElementException(String message, String errorCode){
+	public TextElementNotFoundException(String message, String errorCode){
 		super(message);
 		_errorCode = errorCode;
 	}
