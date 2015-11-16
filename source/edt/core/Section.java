@@ -116,14 +116,6 @@ public class Section extends TextElement {
 	}
 
 	/**
- 	 * FIXME: I HAVE NO IDEA WHAT THIS IS
-	 */
-	public String getSubsectionIndex(){
-		// FIXME
-		return "";
-	}
-
-	/**
 	 * Inserts the specified Subsection at the specified position in this Section.
 	 * Shifts the Subsection currently at that position (if any) and any subsequent
 	 * ones to the right (adds one to their indices).
