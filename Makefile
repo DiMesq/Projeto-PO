@@ -9,6 +9,8 @@ CLASSP=${OUTDIR}:${JARS}
 all: directories compile
 
 compile:
+	cp source/po-uilib.jar ${OUTDIR}
+	cp source/edt-support.jar ${OUTDIR}
 	javac -d ${OUTDIR} -cp ${CLASSP} -sourcepath ${SRCDIR} `find ${SRCDIR} -name "*.java"`
 
 run:
