@@ -1,18 +1,15 @@
 package edt.textui.main;
 
-import java.io.IOException;
-
-import edt.core.Document;
-
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
-import pt.utl.ist.po.ui.InvalidOperation;
 
 import edt.core.Document;
 import edt.core.DocManager;
+
+import edt.textui.exception.TextElementException;
 
 /**
  * Command for opening an existing document in the editor.
@@ -33,7 +30,7 @@ public class OpenDocument extends Command<DocManager> {
      */
     @Override
     @SuppressWarnings("nls")
-    public final void execute() throws InvalidOperation {
+    public final void execute(){
 
         // ask for the filename where the document is
         Form form = new Form();
@@ -44,12 +41,9 @@ public class OpenDocument extends Command<DocManager> {
             Document doc = entity().getDocument().loadDocument(in.value());
             doc.setFileName(in.value());
             entity().setDocument(doc);
-        } catch (IOException i){ //TODO: nao sei se faz muito sentido lancar esta exception, mas como o comando save
-            //tambem lanca uma exception a unica que vejo fazer sentido é esta. A outra opcao era apanhar esta excepcao IOException logo no metodo load e save do Document
-            throw new InvalidOperation(Message.fileNotFound(in.value()));
-        } catch (ClassNotFoundException c){
-            throw new InvalidOperation(Message.fileNotFound(in.value()));
+            
+        } catch (TextElementException i){ 
+            ProcessError.processError(i, in.value());
         }
-
     }
 }

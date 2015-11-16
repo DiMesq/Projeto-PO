@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import edt.textui.exception.*;
+
 /**
  * This abstract class implements a Document.
  * <p>A Document has a filename where it is stored and a list of it's Authors
@@ -82,13 +84,27 @@ public class Document extends Section{
 	/**
 	 * Saves (serializes) the Document in the file with name _filename.
 	 */
-	public void saveDocument() throws IOException{
+	public void saveDocument() throws TextElementIOException{
+		FileOutputStream fileOut = null;
+		ObjectOutputStream out = null;
 
-		FileOutputStream fileOut = new FileOutputStream(_filename);
-		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-		out.writeObject(this);
-		out.close();
-		fileOut.close();
+		try{
+			// serialize object
+			fileOut = new FileOutputStream(_filename);
+			out = new ObjectOutputStream(fileOut);
+			out.writeObject(this);
+
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), ErrorCode.DOCUMENT_SERIALIZE_ERROR);
+		}
+
+		try{
+			out.close();
+			fileOut.close();
+
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), ErrorCode.FILE_CLOSE_ERROR);
+		}
 	}
 
 	/**
@@ -97,16 +113,37 @@ public class Document extends Section{
 	 * @param filename the file name where the Document is saved (serialized).
 	 * @return the Document that is saved in the file
 	 */
-	public static Document loadDocument(String filename) throws ClassNotFoundException, IOException{
+	public static Document loadDocument(String filename) throws TextElementNotFoundException, TextElementIOException{
+		
+		Document doc = null;
+		FileInputStream fileIn = null;
+		ObjectInputStream objIn = null;
 
-		FileInputStream fileIn = new FileInputStream(filename);
-		ObjectInputStream in = new ObjectInputStream(fileIn);
+		try{
+			// desserialize the object
+			fileIn = new FileInputStream(filename);
+			objIn = new ObjectInputStream(fileIn);
+			doc = (Document) objIn.readObject();
+	
+		} catch (ClassNotFoundException c){
+			throw new TextElementNotFoundException(c.getMessage(), ErrorCode.DOCUMENT_NOT_FOUND);
 
-		Document doc = (Document) in.readObject();
-		in.close();
-		fileIn.close();
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), ErrorCode.DOCUMENT_DESERIALIZE_ERROR);
 
-		return doc;
+		}
+
+		try{
+			// close the open resources
+			objIn.close();
+			fileIn.close();
+			return doc;
+		
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), ErrorCode.FILE_CLOSE_ERROR);
+		}
+		
+		
 	}
 
 	/**
@@ -128,3 +165,5 @@ public class Document extends Section{
 	}
 
 }
+
+
