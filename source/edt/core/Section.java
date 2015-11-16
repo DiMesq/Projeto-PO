@@ -49,7 +49,6 @@ public class Section extends TextElement {
 
 	/**
 	 * Constructor (does not associate a Document to the Section)
-	 * REVIEW: protected de forma a que só possa ser usado no Document??
 	*/
 	protected Section(){
 		this(null);
@@ -58,7 +57,6 @@ public class Section extends TextElement {
 	/**
 	 * Sets the Document to which this Section belongs
 	 * @param document The Document to which this Sections belongs
-	 * REVIEW: protected de forma a que só possa ser usado no Document??
 	 */
 	protected void setDocument(Document document){
 		_document = document;
