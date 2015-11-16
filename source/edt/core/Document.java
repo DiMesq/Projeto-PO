@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import edt.textui.exception.*;
 /**
  * This abstract class implements a Document.
  * <p>A Document has a filename where it is stored and a list of it's Authors
@@ -97,16 +98,26 @@ public class Document extends Section{
 	 * @param filename the file name where the Document is saved (serialized).
 	 * @return the Document that is saved in the file
 	 */
-	public static Document loadDocument(String filename) throws ClassNotFoundException, IOException{
+	public static Document loadDocument(String filename) throws TextElementNotFoundException, IOException{
 
 		FileInputStream fileIn = new FileInputStream(filename);
 		ObjectInputStream in = new ObjectInputStream(fileIn);
+		Document doc = null;
 
-		Document doc = (Document) in.readObject();
-		in.close();
-		fileIn.close();
+		try{
+			doc = (Document) in.readObject();
+			
+		} catch (ClassNotFoundException c){
+			throw new TextElementNotFoundException(c.getMessage(), "DOCUMENT_NOT_FOUND_EXCEPTION");
+		} catch (IOException i){
+			throw i;
 
-		return doc;
+		} finally{
+			in.close();
+			fileIn.close();
+			return doc;
+		}
+		
 	}
 
 	/**
