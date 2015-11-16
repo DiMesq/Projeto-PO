@@ -28,6 +28,15 @@ documentation:
 	mkdir -p doc/
 	javadoc -d ${DOCDIR} -cp ${OUTDIR} -sourcepath ${SRCDIR} `find ${SRCDIR}edt -name "*.java"`
 
+tests: all
+	cp tests/* -r class/
+	cd class/; \
+	./runtests.sh; \
+	rm -r runtests.sh tests
+
+submit:
+	cd source/; \
+	jar cfv ../Projeto-PO.jar edt
 
 .PHONY: clean
 

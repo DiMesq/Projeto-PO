@@ -62,7 +62,6 @@ public class Section extends TextElement {
 
 	/**
 	 * Constructor (does not associate a Document to the Section)
-	 * TODO: protected de forma a que só possa ser usado no Document??
 	*/
 	protected Section(){
 		this(null);
@@ -71,7 +70,6 @@ public class Section extends TextElement {
 	/**
 	 * Sets the Document to which this Section belongs
 	 * @param document The Document to which this Sections belongs
-	 * TODO: protected de forma a que só possa ser usado no Document??
 	 */
 	protected void setDocument(Document document){
 		_document = document;
@@ -140,14 +138,6 @@ public class Section extends TextElement {
 		} catch (IndexOutOfBoundsException e){
 			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
 		}
-	}
-
-	/**
- 	 * FIXME: I HAVE NO IDEA WHAT THIS IS
-	 */
-	public String getSubsectionIndex(){
-		// FIXME
-		return "";
 	}
 
 	/**

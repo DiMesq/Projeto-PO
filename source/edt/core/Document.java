@@ -65,16 +65,34 @@ public class Document extends Section{
 		return _authors.toArray(array);
 	}
 
-	// TODO: implement this
+	/**
+	 * Returns the TextElement in this document that has a given ID
+	 * @param  id The ID of the TextElement to be returned
+	 * @return    The TextElement in this document that has a given ID
+	 * NOT IMPLEMENTED
+	 */
 	public TextElement getTextElement(String id){return null;}
 
-	//TODO: implement this
+	/**
+	 * Associates the given TextElement to an ID
+	 * @param  id The id for the TextElement
+	 * @param  element The TextElement to associate the given ID
+	 * NOT IMPLEMENTED
+	 */
 	public void indexElement(String id, TextElement element){}
 
-	//TODO: implement this
+	/**
+	 * Removes the association of a TextElement to its ID
+	 * @param element The TextElement to remove the association
+	 * NOT IMPLEMENTED
+	 */
 	public void removeFromIndex(TextElement element){}
 
-	// TODO: implement this
+	/**
+	 * Returns the number of TextElements in this document that have an ID
+	 * @return The number of TextElements in this document that have an ID
+	 * NOT IMPLEMENTED
+	 */
 	public int getNumberOfIndex(){return 0;}
 
 	/**
@@ -110,7 +128,7 @@ public class Document extends Section{
 	 * @return the Document that is saved in the file
 	 */
 	public static Document loadDocument(String filename) throws TextElementNotFoundException, TextElementIOException{
-		
+
 		Document doc = null;
 		FileInputStream fileIn = null;
 		ObjectInputStream objIn = null;
@@ -120,7 +138,7 @@ public class Document extends Section{
 			fileIn = new FileInputStream(filename);
 			objIn = new ObjectInputStream(fileIn);
 			doc = (Document) objIn.readObject();
-	
+
 		} catch (ClassNotFoundException c){
 			throw new TextElementNotFoundException(c.getMessage(), ErrorCode.DOCUMENT_NOT_FOUND);
 
@@ -134,12 +152,12 @@ public class Document extends Section{
 			objIn.close();
 			fileIn.close();
 			return doc;
-		
+
 		} catch (IOException i){
 			throw new TextElementIOException(i.getMessage(), ErrorCode.FILE_CLOSE_ERROR);
 		}
-		
-		
+
+
 	}
 
 	/**
@@ -161,5 +179,3 @@ public class Document extends Section{
 	}
 
 }
-
-
