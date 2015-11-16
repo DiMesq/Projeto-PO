@@ -1,18 +1,21 @@
 OUTDIR=class/
 SRCDIR=source/
+JARS=${SRCDIR}po-uilib.jar:${SRCDIR}edt-support.jar
 DOCDIR=doc/
 MAIN_FILE_NAME=edt/textui/Editor
+
+CLASSP=${OUTDIR}:${JARS}
 
 all: directories compile
 
 compile:
-	javac -d ${OUTDIR} -cp ${OUTDIR} -sourcepath ${SRCDIR} `find ${SRCDIR} -name "*.java"`
+	javac -d ${OUTDIR} -cp ${CLASSP} -sourcepath ${SRCDIR} `find ${SRCDIR} -name "*.java"`
 
 run:
-	java -cp ${OUTDIR} $(MAIN_FILE_NAME)
+	java -cp ${CLASSP} $(MAIN_FILE_NAME)
 
 swing:
-	java -cp ${OUTDIR} -Dui=swing $(MAIN_FILE_NAME)
+	java -cp ${CLASSP} -Dui=swing $(MAIN_FILE_NAME)
 
 directories: ${OUTDIR}
 
