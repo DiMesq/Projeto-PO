@@ -167,38 +167,6 @@ public class Section extends TextElement {
 	}
 
 	/**
-	 * Returns the Content of this TextElement
-	 *
-	 * @param boolean mode specifies if the content to retrieve includes the 
-	 * paragraphs. If it is false, it only returns the list of titles of all
-	 * subsections of the current section. If it is true, it also adds the 
-	 * content of the paragraphs of each section in the subsequent lines 
-	 * after it's title (in this mode the current section is included) 
-	 *
-	 * @return string the Content of this TextElement
-	 */
-	public String getContent(boolean mode){
-
-		String content = getContentHelper(mode);
-
-		if (!mode) content = content.substring(this.getHeadline().length());
-		
-		return content;
-	}
-
-	private String getContentHelper(boolean mode){
-
-		String content = this.getHeadline();
-
-		if (mode) for (Paragraph p: _paragraphs) content += p.getContent();
-		
-
-		for (Section s: _subSections) content += s.getContentHelper(mode);
-
-		return content;
-	}
-
-	/**
 	 * Inserts the specified Subsection at the specified position in this Section.
 	 * Shifts the Subsection currently at that position (if any) and any subsequent
 	 * ones to the right (adds one to their indices).
@@ -247,6 +215,7 @@ public class Section extends TextElement {
 	 * @param paragraph - The Paragraph to be inserted
 	 */
 	 public void addParagraph(int index, Paragraph paragraph){
+
 		 try{
 			 _paragraphs.add(index, paragraph);
 		 }
@@ -255,34 +224,45 @@ public class Section extends TextElement {
 		 }
 	 }
 
-	 /**
-		* Removes the Paragraph at the specified position in this Section.
-		* Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
-		* Returns the Paragraph that was removed from the Section.
-		*
-		* @param index - The index of the Paragraph to be removed
-		* @return The Paragraph at the specified position.
-		* @throws IndexOutOfBoundsException - if the index is out of range.
-		*/
-	 public Paragraph removeParagraph(int index){
-			 Paragraph paragraph = _paragraphs.remove(index);
-			 try{
-				 _document.removeFromIndex(paragraph);
-			 }
-			 finally{
-				 return paragraph;
-			 }
-	 }
+	/**
+	 * Removes the Paragraph at the specified position in this Section.
+	 * Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
+	 * Returns the Paragraph that was removed from the Section.
+	 *
+	 * @param index - The index of the Paragraph to be removed
+	 * @return The Paragraph at the specified position.
+	 * @throws IndexOutOfBoundsException - if the index is out of range.
+	 */
+	public Paragraph removeParagraph(int index) throws IndexOutOfBoundsException {
 
-	 /**
-		* Retuns the Paragraph at the specified position in this Section
-		*
-		* @param index Index of the Paragraph to return
-		* @return The Paragraph at the specified position in this Section
-		* @throws IndexOutOfBoundsException - if the index is out of range
-		*/
-	 public Paragraph getParagraph(int index){
-		 return _paragraphs.get(index);
-	 }
+		Paragraph paragraph = _paragraphs.remove(index);
+		try{
+			_document.removeFromIndex(paragraph);
+		}
+		finally{
+			return paragraph;
+		}
+	}
 
+	/**
+	 * Retuns the Paragraph at the specified position in this Section
+	 *
+	 * @param index Index of the Paragraph to return
+	 * @return The Paragraph at the specified position in this Section
+	 * @throws IndexOutOfBoundsException - if the index is out of range
+	 */
+	public Paragraph getParagraph(int index) throws IndexOutOfBoundsException {
+
+		return _paragraphs.get(index);
+	}
+
+	/**
+	 * Retuns the Paragraph at the specified position in this Section
+	 *
+	 * @return List<Paragraph> this section's paragraphs
+	 */
+	public List<Paragraph> getParagraphs() {
+
+		return _paragraphs;
+	}
 }
