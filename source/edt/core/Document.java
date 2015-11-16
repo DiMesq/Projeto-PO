@@ -98,14 +98,14 @@ public class Document extends Section{
 		} catch (IOException i){
 			throw new TextElementIOException(i.getMessage(), "DOCUMENT_SERIALIZE_EXCEPTION");
 
-		} finally{
-			try{
-				out.close();
-				fileOut.close();
+		}
 
-			} catch (IOException i){
-				throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
-			}
+		try{
+			out.close();
+			fileOut.close();
+
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
 		}
 	}
 
@@ -116,7 +116,6 @@ public class Document extends Section{
 	 * @return the Document that is saved in the file
 	 */
 	public static Document loadDocument(String filename) throws TextElementNotFoundException, TextElementIOException{
-
 		
 		Document doc = null;
 		FileInputStream fileIn = null;
@@ -127,24 +126,25 @@ public class Document extends Section{
 			fileIn = new FileInputStream(filename);
 			objIn = new ObjectInputStream(fileIn);
 			doc = (Document) objIn.readObject();
-			
+	
 		} catch (ClassNotFoundException c){
 			throw new TextElementNotFoundException(c.getMessage(), "DOCUMENT_NOT_FOUND_EXCEPTION");
 
 		} catch (IOException i){
 			throw new TextElementIOException(i.getMessage(), "DOCUMENT_DESERIALIZE_EXCEPTION");
 
-		} finally{
-			try{
-				// close the open resources
-				objIn.close();
-				fileIn.close();
-				return doc;
-			
-			} catch (IOException i){
-				throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
-			}
 		}
+
+		try{
+			// close the open resources
+			objIn.close();
+			fileIn.close();
+			return doc;
+		
+		} catch (IOException i){
+			throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
+		}
+		
 		
 	}
 
