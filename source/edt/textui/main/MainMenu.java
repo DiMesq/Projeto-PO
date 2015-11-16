@@ -5,8 +5,6 @@ import edt.core.DocManager;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
-/* FIXME: import core classes here */
-
 /**
  * Represents the main menu of this application. This is the first menu
  * shown to the users.
@@ -16,7 +14,7 @@ public class MainMenu extends Menu {
 
     public MainMenu(DocManager manager) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { 
+              new Command<?>[] {
                       new NewDocument(manager),
                       new OpenDocument(manager),
                       new SaveDocument(manager),

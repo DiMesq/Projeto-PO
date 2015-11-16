@@ -7,8 +7,6 @@ import edt.core.Author;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
-/* FIXME: import core classes here */
-
 /**
  * Command for showing the metadata of the current document in the editor.
  */
