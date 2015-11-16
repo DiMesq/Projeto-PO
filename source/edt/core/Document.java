@@ -100,22 +100,23 @@ public class Document extends Section{
 	 */
 	public static Document loadDocument(String filename) throws TextElementNotFoundException, IOException{
 
-		FileInputStream fileIn = new FileInputStream(filename);
-		ObjectInputStream in = new ObjectInputStream(fileIn);
+		
 		Document doc = null;
 
 		try{
+			FileInputStream fileIn = new FileInputStream(filename);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
 			doc = (Document) in.readObject();
+
+			in.close();
+			fileIn.close();
+			return doc;
 			
 		} catch (ClassNotFoundException c){
 			throw new TextElementNotFoundException(c.getMessage(), "DOCUMENT_NOT_FOUND_EXCEPTION");
 		} catch (IOException i){
 			throw i;
 
-		} finally{
-			in.close();
-			fileIn.close();
-			return doc;
 		}
 		
 	}
