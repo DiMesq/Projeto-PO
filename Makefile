@@ -34,6 +34,10 @@ tests: all
 	./runtests.sh; \
 	rm -r runtests.sh tests
 
+submit:
+	cd source/; \
+	jar -fc ../Projeto-PO.jar `find . -name "*.java" -o -name "*.jar"`
+
 .PHONY: clean
 
 clean:
