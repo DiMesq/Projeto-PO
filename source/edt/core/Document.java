@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import edt.textui.exception.TextElementNotFoundException;
-import edt.textui.exception.TextElementIOException;
+import edt.textui.exception.*;
 
 /**
  * This abstract class implements a Document.
@@ -96,8 +95,7 @@ public class Document extends Section{
 			out.writeObject(this);
 
 		} catch (IOException i){
-			throw new TextElementIOException(i.getMessage(), "DOCUMENT_SERIALIZE_EXCEPTION");
-
+			throw new TextElementIOException(i.getMessage(), ErrorCode.DOCUMENT_SERIALIZE_ERROR);
 		}
 
 		try{
@@ -105,7 +103,7 @@ public class Document extends Section{
 			fileOut.close();
 
 		} catch (IOException i){
-			throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
+			throw new TextElementIOException(i.getMessage(), ErrorCode.FILE_CLOSE_ERROR);
 		}
 	}
 
@@ -128,10 +126,10 @@ public class Document extends Section{
 			doc = (Document) objIn.readObject();
 	
 		} catch (ClassNotFoundException c){
-			throw new TextElementNotFoundException(c.getMessage(), "DOCUMENT_NOT_FOUND_EXCEPTION");
+			throw new TextElementNotFoundException(c.getMessage(), ErrorCode.DOCUMENT_NOT_FOUND);
 
 		} catch (IOException i){
-			throw new TextElementIOException(i.getMessage(), "DOCUMENT_DESERIALIZE_EXCEPTION");
+			throw new TextElementIOException(i.getMessage(), ErrorCode.DOCUMENT_DESERIALIZE_ERROR);
 
 		}
 
@@ -142,7 +140,7 @@ public class Document extends Section{
 			return doc;
 		
 		} catch (IOException i){
-			throw new TextElementIOException(i.getMessage(), "FILE_CLOSE_EXCEPTION");
+			throw new TextElementIOException(i.getMessage(), ErrorCode.FILE_CLOSE_ERROR);
 		}
 		
 		
@@ -167,3 +165,5 @@ public class Document extends Section{
 	}
 
 }
+
+
