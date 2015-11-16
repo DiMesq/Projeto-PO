@@ -9,12 +9,12 @@ package edt.textui.exception;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class TextElementNotFoundException extends TextElementException{
+public class TextElementNotFoundException extends TextElementException {
 
 	/**
 	 * Constructor.
 	 */
-	public TextElementNotFoundException(String message, String errorCode){
+	public TextElementNotFoundException(String message, String errorCode) {
 		super(message, errorCode);
 	}
 

@@ -9,19 +9,19 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class DocManager{
+public class DocManager {
 
 	private Document _currentDoc;
 
-	public DocManager(Document d){
+	public DocManager(Document d) {
 		_currentDoc = d;
 	}
 
-	public void setDocument(Document d){
+	public void setDocument(Document d) {
 		_currentDoc = d;
 	}
 
-	public Document getDocument(){
+	public Document getDocument() {
 		return _currentDoc;
 	}
 

@@ -15,3 +15,5 @@ public final class ErrorCode {
     /** Error closing file. */
     public static final String FILE_CLOSE_ERROR = "FILE_CLOSE_EXCEPTION";
 }
+
+

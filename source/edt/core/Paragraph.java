@@ -18,7 +18,7 @@ public class Paragraph extends TextElement {
 	/**
 	 * Constructor
 	 */
-	public Paragraph(){
+	public Paragraph() {
 		super();
 		_text = "";
 	}
@@ -28,7 +28,7 @@ public class Paragraph extends TextElement {
 	 *
 	 * @param text The new content to be set
 	 */
-	public void setText(String text){
+	public void setText(String text) {
 		_text = text;
 	}
 
@@ -37,7 +37,7 @@ public class Paragraph extends TextElement {
 	 *
 	 * @return The content of this Paragraph
 	*/
-	public String getContent(){
+	public String getContent() {
 		return _text;
 	}
 
@@ -46,7 +46,7 @@ public class Paragraph extends TextElement {
 	 *
 	 * @return The size of this Paragraph
 	 */
-	public int getSize(){
+	public int getSize() {
 		return _text.length();
 	}
 }
