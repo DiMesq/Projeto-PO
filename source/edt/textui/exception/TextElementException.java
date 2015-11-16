@@ -11,14 +11,14 @@ import pt.utl.ist.po.ui.InvalidOperation;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElementException extends InvalidOperation{
+public abstract class TextElementException extends InvalidOperation {
 
 	private String _errorCode;
 	
 	/**
 	 * Constructor.
 	 */
-	public TextElementException(String message, String errorCode){
+	public TextElementException(String message, String errorCode) {
 		super(message);
 		_errorCode = errorCode;
 	}
@@ -28,7 +28,7 @@ public abstract class TextElementException extends InvalidOperation{
 	 *
 	 *  @return String this exception's error code
 	 */
-	public String getErrorCode(){
+	public String getErrorCode() {
 		return _errorCode;
 	}
 }

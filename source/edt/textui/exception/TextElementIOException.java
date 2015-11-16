@@ -9,12 +9,12 @@ package edt.textui.exception;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class TextElementIOException extends TextElementException{
+public class TextElementIOException extends TextElementException {
 
 	/**
 	 * Constructor.
 	 */
-	public TextElementIOException(String message, String errorCode){
+	public TextElementIOException(String message, String errorCode) {
 		super(message, errorCode);
 	}
 

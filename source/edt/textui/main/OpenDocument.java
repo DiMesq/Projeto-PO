@@ -30,7 +30,7 @@ public class OpenDocument extends Command<DocManager> {
      */
     @Override
     @SuppressWarnings("nls")
-    public final void execute(){
+    public final void execute() {
 
         // ask for the filename where the document is
         Form form = new Form();

@@ -40,7 +40,7 @@ public class Section extends TextElement {
 	 *
 	 * @param document The document to which this Section belongs
 	 */
-	public Section(Document document){
+	public Section(Document document) {
 		_title = "";
 		_paragraphs = new ArrayList<Paragraph>();
 		_subSections = new ArrayList<Section>();
@@ -51,7 +51,7 @@ public class Section extends TextElement {
 	 * Constructor (does not associate a Document to the Section)
 	 * REVIEW: protected de forma a que só possa ser usado no Document??
 	*/
-	protected Section(){
+	protected Section() {
 		this(null);
 	}
 
@@ -60,7 +60,7 @@ public class Section extends TextElement {
 	 * @param document The Document to which this Sections belongs
 	 * REVIEW: protected de forma a que só possa ser usado no Document??
 	 */
-	protected void setDocument(Document document){
+	protected void setDocument(Document document) {
 		_document = document;
 	}
 
@@ -69,7 +69,7 @@ public class Section extends TextElement {
 	 *
 	 * @param title The new title to be set
 	 */
-	public void setTitle(String title){
+	public void setTitle(String title) {
 		_title = title;
 	}
 
@@ -78,7 +78,7 @@ public class Section extends TextElement {
 	 *
 	 * @return string the title of this Section
 	 */
-	public String getTitle(){
+	public String getTitle() {
 		return _title;
 	}
 
@@ -100,7 +100,7 @@ public class Section extends TextElement {
 	 *
 	 * @return string the Content of this TextElement
 	 */
-	public String getContent(){
+	public String getContent()  {
 		// FIXME: NESTA MERDA TODA CARALHO!!!!
 		return "arco iris.";
 	}
@@ -110,7 +110,7 @@ public class Section extends TextElement {
 	 *
 	 * @return A List with the sub-Section of this Section
 	 */
-	public List<Section> getSubsections(){
+	public List<Section> getSubsections() {
 		return _subSections;
 	}
 
@@ -121,14 +121,14 @@ public class Section extends TextElement {
 	 * @return The Subsection at the specified position in this Section
 	 * @throws IndexOutOfBoundsException - if the index is out of range
 	 */
-	public Section getSection(int index){
+	public Section getSection(int index) {
 		return _subSections.get(index);
 	}
 
 	/**
  	 * FIXME: I HAVE NO IDEA WHAT THIS IS
 	 */
-	public String getSubsectionIndex(){
+	public String getSubsectionIndex() {
 		// FIXME
 		return "";
 	}
@@ -142,8 +142,8 @@ public class Section extends TextElement {
 	 * @param index Index at which the specifie SubSection is to be inserted
 	 * @param subsection - The SubSection to be inserted
 	 */
-	public void addSection(int index, Section subsection){
-		try{
+	public void addSection(int index, Section subsection) {
+		try {
 			_subSections.add(index, subsection);
 		}
 		catch (IndexOutOfBoundsException e) {
@@ -162,10 +162,10 @@ public class Section extends TextElement {
 	 */
 	public Section removeSection(int index){
 		Section section = _subSections.remove(index);
-		try{
+		try {
 			_document.removeFromIndex(section);
 		}
-		finally{
+		finally { 
 			return section;
 		}
 	}
@@ -180,7 +180,7 @@ public class Section extends TextElement {
 	 * @param paragraph - The Paragraph to be inserted
 	 */
 	 public void addParagraph(int index, Paragraph paragraph){
-		 try{
+		 try {
 			 _paragraphs.add(index, paragraph);
 		 }
 		 catch (IndexOutOfBoundsException e) {
@@ -197,7 +197,7 @@ public class Section extends TextElement {
 		* @return The Paragraph at the specified position.
 		* @throws IndexOutOfBoundsException - if the index is out of range.
 		*/
-	 public Paragraph removeParagraph(int index){
+	 public Paragraph removeParagraph(int index) {
 			 Paragraph paragraph = _paragraphs.remove(index);
 			 try{
 				 _document.removeFromIndex(paragraph);
@@ -214,7 +214,7 @@ public class Section extends TextElement {
 		* @return The Paragraph at the specified position in this Section
 		* @throws IndexOutOfBoundsException - if the index is out of range
 		*/
-	 public Paragraph getParagraph(int index){
+	 public Paragraph getParagraph(int index) {
 		 return _paragraphs.get(index);
 	 }
 

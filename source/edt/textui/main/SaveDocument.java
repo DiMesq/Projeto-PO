@@ -28,7 +28,7 @@ public class SaveDocument extends Command<DocManager> {
      */
     @Override
     @SuppressWarnings("nls")
-    public final void execute(){
+    public final void execute() {
 
         Document doc = entity().getDocument();
         String filename = doc.getFileName();

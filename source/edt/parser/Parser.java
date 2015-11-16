@@ -15,7 +15,7 @@ public class Parser {
     public Parser() {
     }
 
-    public Document parse(String filename) throws IOException{
+    public Document parse(String filename) throws IOException {
         BufferedReader reader = null;
 
         try {
