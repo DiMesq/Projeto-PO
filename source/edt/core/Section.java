@@ -138,17 +138,9 @@ public class Section extends TextElement {
 	 *
 	 * @param index - The index of the Subsection to be removed
 	 * @return The Subsection at the specified position.
-	 * @throws IndexOutOfBoundsException - if the index is out of range.
+	 * NOT IMPLEMENTED
 	 */
-	public Section removeSection(int index){
-		Section section = _subSections.remove(index);
-		try {
-			_document.removeFromIndex(section);
-		}
-		finally { 
-			return section;
-		}
-	}
+	public Section removeSection(int index){return null;}
 
 	/**
 	 * Inserts the specified Paragraph at the specified position in this Section.
@@ -175,17 +167,9 @@ public class Section extends TextElement {
 		*
 		* @param index - The index of the Paragraph to be removed
 		* @return The Paragraph at the specified position.
-		* @throws IndexOutOfBoundsException - if the index is out of range.
+		* NOT IMPLEMENTED
 		*/
-	 public Paragraph removeParagraph(int index) {
-			 Paragraph paragraph = _paragraphs.remove(index);
-			 try{
-				 _document.removeFromIndex(paragraph);
-			 }
-			 finally{
-				 return paragraph;
-			 }
-	 }
+	 public Paragraph removeParagraph(int index) {return null;}
 
 	 /**
 		* Retuns the Paragraph at the specified position in this Section
