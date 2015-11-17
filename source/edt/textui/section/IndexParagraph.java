@@ -1,6 +1,9 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import edt.core.Paragraph;
+
+import edt.textui.exception.TextElementException;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -39,19 +42,22 @@ public class IndexParagraph extends Command<Section> {
 
         Paragraph paragraph = null;
         try {  //try getting the paragraph specified
+
             paragraph = entity().getParagraph(localIn.value());
+
+            // if the paragraph already has a key, warn the user of the replacement
+            if (paragraph.getKey() != "") display.addNewLine(Message.paragraphNameChanged());
+
+            // set the new key
+            paragraph.setKey(idIn.value());
+            entity().getDocument().indexElement(idIn.value(), paragraph);
+
+            display.display();
 
         } catch (TextElementException e) {
             ProcessError.processError(e, localIn.value());
         }
-        
-        // if the paragraph already has a key, warn the user of the replacement
-        if (paragraph.getKey() != "") display.addNewLine(Message.paragraphNameChanged());
-
-        // set the new key
-        paragraph.setKey(idIn.value());
-        entity().getDocument().indexElement(idIn.value(), paragraph);
-
-        display.display();
     }
 }
+
+
