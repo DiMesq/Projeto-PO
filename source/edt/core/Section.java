@@ -226,9 +226,14 @@ public class Section extends TextElement {
 	 * @return The Paragraph at the specified position in this Section
 	 * @throws IndexOutOfBoundsException - if the index is out of range
 	 */
-	public Paragraph getParagraph(int index) throws IndexOutOfBoundsException {
+	public Paragraph getParagraph(int index) throws TextElementNotFoundException {
 
-		return _paragraphs.get(index);
+		try{
+			return _paragraphs.get(index);
+
+		} catch (IndexOutOfBoundsException e){
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.PARAGRAPH_NOT_FOUND);
+		}
 	}
 
 	/**
