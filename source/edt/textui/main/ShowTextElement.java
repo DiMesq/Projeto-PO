@@ -60,11 +60,22 @@ public class ShowTextElement extends Command<DocManager> {
         InputString in = new InputString(form, Message.requestElementId());
         form.parse();
 
-        Section element = (Section) entity().getDocument().getTextElement(in.value());
+        // TODO: para não ser preciso esta porcaria tambem precisamos do VISITOR: no textElement 
+        // tem entao de estar definido o metodo getContent em abstract
+        try{
+            Section section = (Section) entity().getDocument().getTextElement(in.value());
 
-        if (element == null) display.addNewLine(Message.noSuchTextElement(in.value()))
+            if (section == null) display.addNewLine(Message.noSuchTextElement(in.value()))
                                     .display();
+
+            else display.addNewLine(getSections(section)).display();
+
+        } catch (ClassCastException c){
+            Paragraph paragraph = (Paragraph) entity().getDocument()
+                                                      .getTextElement(in.value());
+
+            display.addNewLine(paragraph.getContent()).display();
+        }
         
-        else display.addNewLine(getSections(element)).display();
     }
 }
