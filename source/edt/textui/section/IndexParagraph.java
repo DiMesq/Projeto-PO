@@ -28,6 +28,30 @@ public class IndexParagraph extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        Display display = new Display();
+
+        // get the paragraph and the id 
+        Form form = new Form();
+        InputInteger localIn = new InputInteger(form, Message.requestParagraphId());
+        InputString idIn = new InputString(form, Message.requestUniqueId());
+        form.parse();
+
+        Paragraph paragraph = null;
+        try {  //try getting the paragraph specified
+            paragraph = entity().getParagraph(localIn.value());
+
+        } catch (TextElementException e) {
+            ProcessError.processError(e, localIn.value());
+        }
+        
+        // if the paragraph already has a key, warn the user of the replacement
+        if (paragraph.getKey() != "") display.addNewLine(Message.paragraphNameChanged());
+
+        // set the new key
+        paragraph.setKey(idIn.value());
+        entity().getDocument().indexElement(idIn.value(), paragraph);
+
+        display.display();
     }
 }
