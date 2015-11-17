@@ -14,13 +14,13 @@ public class Paragraph extends TextElement {
 	 * The Content of the Paragraph
 	 */
 	private String _text;
-
+	
 	/**
 	 * Constructor
 	 */
-	public Paragraph(){
+	public Paragraph(String text){
 		super();
-		_text = "";
+		_text = text;
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class Paragraph extends TextElement {
 
 	//tests
 	public static void main(String[] args){
-		Paragraph p = new Paragraph();
+		Paragraph p = new Paragraph("ola");
 
 		p.setText("Ola eu sou o Diogo.");
 		System.out.print(p.getContent());
