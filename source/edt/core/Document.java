@@ -71,10 +71,11 @@ public class Document extends Section{
 	/**
 	 * Returns the TextElement in this document that has a given ID
 	 * @param  id The ID of the TextElement to be returned
-	 * @return    The TextElement in this document that has a given ID
-	 * NOT IMPLEMENTED
+	 * @return TextElement  The TextElement in this document that has a given ID
 	 */
-	public TextElement getTextElement(String id){return null;}
+	public TextElement getTextElement(String id) {
+		return _map.get(id);
+	}
 
 	/**
 	 * Associates the given TextElement to an ID
@@ -99,7 +100,6 @@ public class Document extends Section{
 	/**
 	 * Returns the number of TextElements in this document that have an ID
 	 * @return The number of TextElements in this document that have an ID
-	 * NOT IMPLEMENTED
 	 */
 	public int getNumberOfIndex(){return 0;}
 
