@@ -16,16 +16,8 @@ public class ProcessError{
 				display.addNewLine(Message.noSuchSection(name));
 				break;
 
-			case ErrorCode.DOCUMENT_SERIALIZE_ERROR:
-				display.addNewLine(Message.noSuchSection(name));
-				break;
-
-			case ErrorCode.DOCUMENT_DESERIALIZE_ERROR:
-				display.addNewLine(Message.noSuchSection(name));
-				break;
-
-			case ErrorCode.FILE_CLOSE_ERROR:
-				display.addNewLine(Message.noSuchSection(name));
+			case ErrorCode.PARAGRAPH_NOT_FOUND:
+				display.addNewLine(Message.noSuchParagraph(name));
 				break;
 
 			default:
