@@ -101,7 +101,9 @@ public class Document extends Section{
 	 * Returns the number of TextElements in this document that have an ID
 	 * @return The number of TextElements in this document that have an ID
 	 */
-	public int getNumberOfIndex(){return 0;}
+	public int getNumberOfIndex() {
+		return _map.size();
+	}
 
 	/**
 	 * Saves (serializes) the Document in the file with name _filename.
