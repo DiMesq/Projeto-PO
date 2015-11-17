@@ -1,5 +1,8 @@
 package edt.core;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * This class implements a Section of a {@link Document}.
  * <p>A Section has a title represented as a String
@@ -9,7 +12,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-class Section extends TextElement {
+public class Section extends TextElement {
 
 	/**
 	 * The title of the Section
@@ -27,19 +30,36 @@ class Section extends TextElement {
 	private List<Section> _subSections;
 
 	/**
-	 * Returns the Headline of this Section in the following format:
-	 * 	[Section id] {Section Title}
-	 *
-	 * @return The Headline of this Section. [Section id] {Section Title}
+	 * The Document to which the Section belongs
 	 */
-	public String getHeadline(){
-		String id = getKey(),
-			   title = getTitle();
-		if(id == null)
-			id = "";
-		if(title == null)
-			title = "";
-		return "[" + id + "] {" + title + "}";
+	private Document _document;
+
+
+	/**
+	 * The default Constructor. Associates document as the Document of the Section
+	 *
+	 * @param document The document to which this Section belongs
+	 */
+	public Section(Document document) {
+		_title = "";
+		_paragraphs = new ArrayList<Paragraph>();
+		_subSections = new ArrayList<Section>();
+		_document = document;
+	}
+
+	/**
+	 * Constructor (does not associate a Document to the Section)
+	*/
+	protected Section() {
+		this(null);
+	}
+
+	/**
+	 * Sets the Document to which this Section belongs
+	 * @param document The Document to which this Sections belongs
+	 */
+	protected void setDocument(Document document) {
+		_document = document;
 	}
 
 	/**
@@ -47,16 +67,16 @@ class Section extends TextElement {
 	 *
 	 * @param title The new title to be set
 	 */
-	public void setTitle(String title){
-		_title = title
+	public void setTitle(String title) {
+		_title = title;
 	}
 
 	/**
 	 * Returns the title of this Section
 	 *
-	 * @param The title of this Section
+	 * @return string the title of this Section
 	 */
-	public String getTitle(){
+	public String getTitle() {
 		return _title;
 	}
 
@@ -72,4 +92,94 @@ class Section extends TextElement {
 
 		return size;
 	}
+
+	/**
+	 * Retuns a List with the sub-Section of this Section
+	 *
+	 * @return A List with the sub-Section of this Section
+	 */
+	public List<Section> getSubsections() {
+		return _subSections;
+	}
+
+	/**
+	 * Retuns the Subsection at the specified position in this Section
+	 *
+	 * @param index Index of the Subsection to return
+	 * @return The Subsection at the specified position in this Section
+	 * @throws IndexOutOfBoundsException - if the index is out of range
+	 */
+	public Section getSection(int index) {
+		return _subSections.get(index);
+	}
+
+	/**
+	 * Inserts the specified Subsection at the specified position in this Section.
+	 * Shifts the Subsection currently at that position (if any) and any subsequent
+	 * ones to the right (adds one to their indices).
+	 * If the Index is invalid insert the Subsection at the end of all Subsections.
+	 *
+	 * @param index Index at which the specifie SubSection is to be inserted
+	 * @param subsection - The SubSection to be inserted
+	 */
+	public void addSection(int index, Section subsection) {
+		try {
+			_subSections.add(index, subsection);
+		}
+		catch (IndexOutOfBoundsException e) {
+			_subSections.add(subsection);
+		}
+	}
+
+	/**
+	 * Removes the Subsection at the specified position in this Section.
+	 * Shifts any subsequent Subsections to the left (subtracts one from their indices).
+	 * Returns the Subsection that was removed from the Section.
+	 *
+	 * @param index - The index of the Subsection to be removed
+	 * @return The Subsection at the specified position.
+	 * NOT IMPLEMENTED
+	 */
+	public Section removeSection(int index){return null;}
+
+	/**
+	 * Inserts the specified Paragraph at the specified position in this Section.
+	 * Shifts the Paragraph currently at that position (if any) and any subsequent
+	 * ones to the right (adds one to their indices).
+	 * If the Index is invalid insert the Paragraph at the end of all Paragraphs.
+	 *
+	 * @param index Index at which the specifie Paragraph is to be inserted
+	 * @param paragraph - The Paragraph to be inserted
+	 */
+	 public void addParagraph(int index, Paragraph paragraph){
+		 try {
+			 _paragraphs.add(index, paragraph);
+		 }
+		 catch (IndexOutOfBoundsException e) {
+			 _paragraphs.add(paragraph);
+		 }
+	 }
+
+	 /**
+		* Removes the Paragraph at the specified position in this Section.
+		* Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
+		* Returns the Paragraph that was removed from the Section.
+		*
+		* @param index - The index of the Paragraph to be removed
+		* @return The Paragraph at the specified position.
+		* NOT IMPLEMENTED
+		*/
+	 public Paragraph removeParagraph(int index) {return null;}
+
+	 /**
+		* Retuns the Paragraph at the specified position in this Section
+		*
+		* @param index Index of the Paragraph to return
+		* @return The Paragraph at the specified position in this Section
+		* @throws IndexOutOfBoundsException - if the index is out of range
+		*/
+	 public Paragraph getParagraph(int index) {
+		 return _paragraphs.get(index);
+	 }
+
 }

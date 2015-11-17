@@ -1,10 +1,12 @@
+#All .class files and the doc and class directories
 *.class
+doc/
+class/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 

@@ -1,11 +1,11 @@
 package edt.textui.section;
 
+import edt.core.Section;
+
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 
 import edt.textui.section.*;
-
-/* FIXME: import core classes here */
 
 /**
  * Represents the edit menu of this application. This menu
@@ -17,22 +17,21 @@ public class EditMenu extends Menu {
      * Builds an EditMenu object. It has all available options for editing
      * a section.
      *
-     * @param doc
-     * @param section
+     * @param section 
      **/
-    public EditMenu(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public EditMenu(Section section) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new ChangeTitle(/* FIXME: receiver(s) */),
-                      new ListSections(/* FIXME: receiver(s) */),
-                      new ShowSection(/* FIXME: receiver(s) */),
-                      new SelectSection(/* FIXME: receiver(s) */),
-                      new InsertSection(/* FIXME: receiver(s) */),
-                      new IndexSection(/* FIXME: receiver(s) */),
-                      new RemoveSection(/* FIXME: receiver(s) */),
-                      new InsertParagraph(/* FIXME: receiver(s) */),
-                      new IndexParagraph(/* FIXME: receiver(s) */),
-                      new ChangeParagraph(/* FIXME: receiver(s) */),
-                      new RemoveParagraph(/* FIXME: receiver(s) */),
+              new Command<?>[] { new ChangeTitle(section),
+                      new ListSections(section),
+                      new ShowSection(section),
+                      new SelectSection(section),
+                      new InsertSection(section),
+                      new IndexSection(section),
+                      new RemoveSection(section),
+                      new InsertParagraph(section),
+                      new IndexParagraph(section),
+                      new ChangeParagraph(section),
+                      new RemoveParagraph(section),
                       });
     }
 }

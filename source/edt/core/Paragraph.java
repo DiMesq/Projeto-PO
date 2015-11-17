@@ -1,8 +1,8 @@
 package edt.core;
 
 /**
- * This class implements a Paragraph of a {@link Section}.
- * <p>A Paragraph has some content represented as a String
+ * This class implements a Paragraph.
+ * <p>A Paragraph has some content represented as a String.
  * 
  * @author Daniel Reigada
  * @author Diogo Mesquita
@@ -16,11 +16,19 @@ public class Paragraph extends TextElement {
 	private String _text;
 
 	/**
+	 * Constructor
+	 */
+	public Paragraph() {
+		super();
+		_text = "";
+	}
+	
+	/**
 	 * Sets/changes the content of this Paragraph
 	 *
 	 * @param text The new content to be set
 	 */
-	public void setText(String text){
+	public void setText(String text) {
 		_text = text;
 	}
 
@@ -29,7 +37,7 @@ public class Paragraph extends TextElement {
 	 *
 	 * @return The content of this Paragraph
 	*/
-	public String getContent(){
+	public String getContent() {
 		return _text;
 	}
 
@@ -38,7 +46,7 @@ public class Paragraph extends TextElement {
 	 *
 	 * @return The size of this Paragraph
 	 */
-	public int getSize(){
+	public int getSize() {
 		return _text.length();
 	}
 }

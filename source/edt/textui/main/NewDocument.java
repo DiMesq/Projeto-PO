@@ -1,24 +1,25 @@
 package edt.textui.main;
 
+import edt.core.DocManager;
+import edt.core.Document;
+
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
-/* FIXME: import core classes here */
-
 /**
  * Command for creating a new document in the editor.
  */
-public class NewDocument extends Command</* FIXME: core class */> {
+public class NewDocument extends Command<DocManager> {
 
     /**
      * Constructor.
      * 
      * @param ent the target entity.
      */
-    public NewDocument(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public NewDocument(DocManager ent) {
         super(MenuEntry.NEW, ent);
     }
 
@@ -28,6 +29,8 @@ public class NewDocument extends Command</* FIXME: core class */> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        entity().setDocument(new Document());
+
     }
 }
