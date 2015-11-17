@@ -22,6 +22,7 @@ public class ShowSection extends Command<Section> {
         super(MenuEntry.SHOW_CONTENT, ent);
     }
 
+    //TODO: mudar isto tudo usando o padrão de desenho VISITOR
     /**
      * Returns all of the current section's content
      * 

@@ -23,6 +23,7 @@ public class ListSections extends Command<Section> {
         super(MenuEntry.LIST_SECTIONS, ent);
     }
 
+    //TODO: mudar isto tudo usando o padrão de desenho VISITOR
     /**
      * Returns the titles from every subsection of the current one
      *
