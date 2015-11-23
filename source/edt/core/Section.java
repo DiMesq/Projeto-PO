@@ -3,6 +3,8 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
+import edt.visitor.Visitor;
+
 import edt.textui.exception.TextElementNotFoundException;
 import edt.textui.exception.ErrorCode;
 
@@ -245,4 +247,17 @@ public class Section extends TextElement {
 
 		return _paragraphs;
 	}
+
+	/**
+	 * The Section Element accept method - implementation
+	 *
+	 * @param Visitor v
+	 * @Override
+	 */
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }
+
+
+

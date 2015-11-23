@@ -1,6 +1,7 @@
 package edt.visitor;
 
-import edt.core.TextElement;
+import edt.core.Paragraph;
+import edt.core.Section;
 
 /**
  * This interface is used to implement the Visitor design pattern.
@@ -13,7 +14,17 @@ import edt.core.TextElement;
 */
 public interface Visitor {
 
-	public void visit(TextElement e);
+	/**
+	 * The visit method for the Paragraph Element.
+	 * @param Paragraph p.
+	 */
+	public void visit(Paragraph p);
+
+	/**
+	 * The visit method for the Section Element.
+	 * @param Section s.
+	 */
+	public void visit(Section s);
 
 }
 

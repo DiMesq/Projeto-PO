@@ -11,6 +11,10 @@ package edt.visitor;
 */
 public interface Element {
 
+	/**
+	 * The accept method for the Element
+	 * @param Visitor the visitor to accept
+	 */
 	public void accept(Visitor v);
 
 }

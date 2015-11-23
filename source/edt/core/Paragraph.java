@@ -1,5 +1,7 @@
 package edt.core;
 
+import edt.visitor.Visitor;
+
 /**
  * This class implements a Paragraph.
  * <p>A Paragraph has some content represented as a String.
@@ -48,7 +50,7 @@ public class Paragraph extends TextElement {
 	 * Returns the size of this Paragraph
 	 *
 	 * @return The size of this Paragraph
-	 * @Override
+	 * @Override	
 	 */
 	public int getSize(){
 		return _text.length();
@@ -61,4 +63,17 @@ public class Paragraph extends TextElement {
 		p.setText("Ola eu sou o Diogo.");
 		System.out.print(p.getContent());
 	}
+
+	/**
+	 * The Paragraph Element accept method - implementation
+	 *
+	 * @param Visitor v
+	 * @Override
+	 */
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }
+
+
+

@@ -25,16 +25,6 @@ public abstract class TextElement implements java.io.Serializable, Element{
 	}
 
 	/**
-	 * Element interface's accept method - implementation
-	 *
-	 * @param Vistor
-	 * @Override
-	 */
-	public void accept(Visitor v){
-		v.visit(this);
-	}
-
-	/**
 	 * Returns the key of this TextElement
 	 *
 	 * @return string the key of this TextElement (null if it is not indexed)
@@ -60,6 +50,14 @@ public abstract class TextElement implements java.io.Serializable, Element{
 	protected boolean isIndexed() {
 		return _key == null;
 	}
+
+	/**
+	 * The Element's accept method 
+	 *
+	 * @param Visitor v
+	 * @Override
+	 */
+	public abstract void accept(Visitor v);
 
 	/**
 	 * Returns the size of this TextElement
