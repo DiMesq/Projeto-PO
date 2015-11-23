@@ -33,23 +33,27 @@ public class ShowTextElement extends Command<DocManager> {
 
         Display display = new Display();
 
+        //get the key from the user
         Form form = new Form();
         InputString in = new InputString(form, Message.requestElementId());
         form.parse();
 
-        try{
+        try{    
             Section section = (Section) entity().getDocument().getTextElement(in.value());
 
+            // There is no TextElement with such key
             if (section == null) display.addNewLine(Message.noSuchTextElement(in.value()))
-                                    .display();
+                                        .display();
 
-            else section.accept( new GetContentVisitor());
+            //The TextElement retrieved is a Section
+            else section.accept( new GetContentVisitor());  
 
-        } catch (ClassCastException c){
+        } catch (ClassCastException c){   // The TextElement retrieved is a Paragraph
             Paragraph paragraph = (Paragraph) entity().getDocument()
                                                       .getTextElement(in.value());
 
-            display.addNewLine(paragraph.getContent()).display();
+            display.addNewLine(paragraph.getContent())
+                   .display();
         }
         
     }

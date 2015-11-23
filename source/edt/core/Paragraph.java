@@ -1,7 +1,5 @@
 package edt.core;
 
-import edt.visitor.Visitor;
-
 /**
  * This class implements a Paragraph.
  * <p>A Paragraph has some content represented as a String.

@@ -1,6 +1,5 @@
 package edt.visitor;
 
-import edt.core.Paragraph;
 import edt.core.Section;
 
 /**

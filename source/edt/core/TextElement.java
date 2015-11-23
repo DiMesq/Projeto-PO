@@ -1,6 +1,5 @@
 package edt.core;
 
-import edt.visitor.*;
 /**
  * This abstract class implements a TextElement.
  * <p>A TextElement has an id and some content that can be represented as Strings
