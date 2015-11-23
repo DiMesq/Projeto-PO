@@ -3,7 +3,7 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
-import edt.visitor.Visitor;
+import edt.visitor.*;
 
 import edt.textui.exception.TextElementNotFoundException;
 import edt.textui.exception.ErrorCode;
@@ -17,7 +17,7 @@ import edt.textui.exception.ErrorCode;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class Section extends TextElement {
+public class Section extends TextElement implements Element {
 
 	/**
 	 * The title of the Section

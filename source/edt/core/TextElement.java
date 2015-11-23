@@ -10,7 +10,7 @@ import edt.visitor.*;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement implements java.io.Serializable, Element{
+public abstract class TextElement implements java.io.Serializable {
 
 	/**
 	 * The key of the TextElement
@@ -50,14 +50,6 @@ public abstract class TextElement implements java.io.Serializable, Element{
 	protected boolean isIndexed() {
 		return _key == null;
 	}
-
-	/**
-	 * The Element's accept method 
-	 *
-	 * @param Visitor v
-	 * @Override
-	 */
-	public abstract void accept(Visitor v);
 
 	/**
 	 * Returns the size of this TextElement

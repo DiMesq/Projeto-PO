@@ -23,21 +23,6 @@ import java.util.List;
 public class GetContentVisitor implements Visitor {
 
 	/**
-	 * The Visitor's visit method implementation for Paragraph Element.
-	 *
-	 * @param Paragraph p - the element to visit
-	 * @Override
-	 */
-	public void visit(Paragraph p) {
-
-		Display display = new Display();
-
-		display.add(p.getContent())
-			   .display();
-
-	}
-
-	/**
 	 * The Visitor's visit method implementation for Section Element.
 	 *
 	 * @param Section s - the element to visit

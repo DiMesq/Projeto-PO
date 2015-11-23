@@ -64,15 +64,6 @@ public class Paragraph extends TextElement {
 		System.out.print(p.getContent());
 	}
 
-	/**
-	 * The Paragraph Element accept method - implementation
-	 *
-	 * @param Visitor v
-	 * @Override
-	 */
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
 }
 
 
