@@ -2,7 +2,7 @@ package edt.textui.section;
 
 import edt.core.Section;
 
-import edt.textui.exception.TextElementException;
+import edt.core.exception.TextElementException;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;

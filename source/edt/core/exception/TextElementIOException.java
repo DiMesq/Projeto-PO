@@ -1,4 +1,4 @@
-package edt.textui.exception;
+package edt.core.exception;
 
 /**
  * This class implements an exception that extends form an {@link TextElementException}.

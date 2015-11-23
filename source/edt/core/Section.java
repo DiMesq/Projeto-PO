@@ -3,8 +3,8 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
-import edt.textui.exception.TextElementNotFoundException;
-import edt.textui.exception.ErrorCode;
+import edt.core.exception.TextElementNotFoundException;
+import edt.core.exception.ErrorCode;
 
 /**
  * This class implements a Section of a {@link Document}.

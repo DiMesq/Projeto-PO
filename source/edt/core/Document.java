@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import edt.textui.exception.*;
+import edt.core.exception.*;
 
 /**
  * This abstract class implements a Document.
