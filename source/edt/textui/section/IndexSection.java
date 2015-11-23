@@ -42,6 +42,7 @@ public class IndexSection extends Command<Section> {
         Section section = null;
         try {  //try getting the subsection specified
             section = entity().getSection(localIn.value());
+            
             // if the section already has a key, warn the user of the replacement
             if (section.getKey() != "") display.addNewLine(Message.sectionNameChanged());
 

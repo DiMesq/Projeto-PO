@@ -168,7 +168,7 @@ public class Section extends TextElement {
 	 * @return The Subsection at the specified position.
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
-	public Section removeSection(int index) throws TextElementNotFoundException{
+	public Section removeSection(int index) throws TextElementNotFoundException {
 		
 		try{
 			Section section = _subSections.remove(index);
@@ -176,7 +176,7 @@ public class Section extends TextElement {
 			return section;
 
 		} catch (IndexOutOfBoundsException e){
-			throw new TextElementNotFoundException(e.getMessage(), "SECTION_NOT_FOUND");
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
 		}
 	}
 
@@ -208,14 +208,15 @@ public class Section extends TextElement {
 	 * @return The Paragraph at the specified position.
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
-	public Paragraph removeParagraph(int index) throws IndexOutOfBoundsException {
-
-		Paragraph paragraph = _paragraphs.remove(index);
+	public Paragraph removeParagraph(int index) throws TextElementNotFoundException {
+		
 		try{
+			Paragraph paragraph = _paragraphs.remove(index);
 			_document.removeFromIndex(paragraph);
-		}
-		finally{
 			return paragraph;
+
+		} catch (IndexOutOfBoundsException e) {
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.PARAGRAPH_NOT_FOUND);
 		}
 	}
 
