@@ -9,7 +9,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement implements java.io.Serializable{
+public abstract class TextElement implements java.io.Serializable, Element{
 
 	/**
 	 * The key of the TextElement
@@ -21,6 +21,16 @@ public abstract class TextElement implements java.io.Serializable{
 	 */
 	public TextElement() {
 		_key = "";
+	}
+
+	/**
+	 * Element interface's accept method - implementation
+	 *
+	 * @param Vistor
+	 * @Override
+	 */
+	public void accept(Vistor v){
+		v.visit(this);
 	}
 
 	/**

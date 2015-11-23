@@ -48,6 +48,7 @@ public class Paragraph extends TextElement {
 	 * Returns the size of this Paragraph
 	 *
 	 * @return The size of this Paragraph
+	 * @Override
 	 */
 	public int getSize(){
 		return _text.length();
