@@ -1,5 +1,7 @@
 package edt.visitor;
 
+import edt.core.TextElement;
+
 /**
  * This interface is used to implement the Visitor design pattern.
  * <p>Visitor is the interface which all element types must implement
@@ -9,7 +11,7 @@ package edt.visitor;
  * @author Sebastião Araújo
  * @version 1.0
 */
-interface Visitor {
+public interface Visitor {
 
 	public void visit(TextElement e);
 

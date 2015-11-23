@@ -9,7 +9,7 @@ package edt.visitor;
  * @author Sebastião Araújo
  * @version 1.0
 */
-interface Element {
+public interface Element {
 
 	public void accept(Visitor v);
 

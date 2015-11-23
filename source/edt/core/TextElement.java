@@ -1,5 +1,6 @@
 package edt.core;
 
+import edt.visitor.*;
 /**
  * This abstract class implements a TextElement.
  * <p>A TextElement has an id and some content that can be represented as Strings
@@ -29,7 +30,7 @@ public abstract class TextElement implements java.io.Serializable, Element{
 	 * @param Vistor
 	 * @Override
 	 */
-	public void accept(Vistor v){
+	public void accept(Visitor v){
 		v.visit(this);
 	}
 
