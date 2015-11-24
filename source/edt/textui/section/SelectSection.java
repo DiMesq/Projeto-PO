@@ -6,8 +6,8 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
-import edt.textui.main.EditSection;
-import edt.textui.exception.TextElementNotFoundException;
+
+import edt.core.exception.TextElementNotFoundException;
 
 import edt.core.Section;
 

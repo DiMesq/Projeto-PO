@@ -1,7 +1,7 @@
 package edt.textui.main;
 
-import edt.textui.exception.TextElementException;
-import edt.textui.exception.ErrorCode;
+import edt.core.exception.TextElementException;
+import edt.core.exception.ErrorCode;
 
 import pt.utl.ist.po.ui.Display;
 

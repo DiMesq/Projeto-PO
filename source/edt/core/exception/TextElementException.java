@@ -1,4 +1,4 @@
-package edt.textui.exception;
+package edt.core.exception;
 
 import pt.utl.ist.po.ui.InvalidOperation;
 
