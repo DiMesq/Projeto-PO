@@ -32,7 +32,6 @@ tests: all
 	cp tests/* -r class/
 	cd class/; \
 	./runtests.sh; \
-	rm -r runtests.sh tests
 
 submit:
 	cd source/; \
