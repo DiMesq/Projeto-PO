@@ -13,10 +13,10 @@ compile:
 	cp source/edt-support.jar ${OUTDIR}
 	javac -d ${OUTDIR} -cp ${CLASSP} -sourcepath ${SRCDIR} `find ${SRCDIR} -name "*.java"`
 
-run:
+run: all
 	java -cp ${CLASSP} $(MAIN_FILE_NAME)
 
-swing:
+swing: all
 	java -cp ${CLASSP} -Dui=swing $(MAIN_FILE_NAME)
 
 directories: ${OUTDIR}
