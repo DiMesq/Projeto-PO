@@ -83,19 +83,20 @@ public class Document extends Section{
 	 * @param  element The TextElement to associate the given ID
 	 */
 	public void indexElement(String id, TextElement element) {
-		
+
 		TextElement retrievedElement = _map.put(id, element);
 
 		if (retrievedElement != null) retrievedElement.setKey("");
-		
-	}	
+
+	}
 
 	/**
 	 * Removes the association of a TextElement to its ID
 	 * @param element The TextElement to remove the association
-	 * NOT IMPLEMENTED
 	 */
-	public void removeFromIndex(TextElement element){}
+	public void removeFromIndex(TextElement element){
+		_map.remove(element.getKey());
+	}
 
 	/**
 	 * Returns the number of TextElements in this document that have an ID

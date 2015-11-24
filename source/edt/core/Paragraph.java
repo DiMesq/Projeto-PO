@@ -3,7 +3,7 @@ package edt.core;
 /**
  * This class implements a Paragraph.
  * <p>A Paragraph has some content represented as a String.
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
@@ -14,7 +14,7 @@ public class Paragraph extends TextElement {
 	 * The Content of the Paragraph
 	 */
 	private String _text;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -22,7 +22,7 @@ public class Paragraph extends TextElement {
 		super();
 		_text = text;
 	}
-	
+
 	/**
 	 * Sets/changes the content of this Paragraph
 	 *
@@ -30,7 +30,7 @@ public class Paragraph extends TextElement {
 	 */
 	public void setText(String text){
 		// add new line character in the end if its not there
-		if (!text.endsWith("\n")) text += "\n"; 
+		if (!text.endsWith("\n")) text += "\n";
 
 		_text = text;
 	}
@@ -51,13 +51,5 @@ public class Paragraph extends TextElement {
 	 */
 	public int getSize(){
 		return _text.length();
-	}
-
-	//tests
-	public static void main(String[] args){
-		Paragraph p = new Paragraph("ola");
-
-		p.setText("Ola eu sou o Diogo.");
-		System.out.print(p.getContent());
 	}
 }
