@@ -37,7 +37,7 @@ public class RemoveParagraph extends Command<Section> {
         entity().removeParagraph(paragraphId.value());
       }
       catch(TextElementNotFoundException e){
-        // do nothing
+        ProcessError.processError(e, paragraphId.value());
       }
     }
 }
