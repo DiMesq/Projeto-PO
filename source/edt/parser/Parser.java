@@ -56,8 +56,10 @@ public class Parser {
         case "SECTION":  // create new section
             _curSection = new Section(_document, content[2]);
             _document.addSection(-1, _curSection);
-            if (content[1].length() > 0)
+            if (content[1].length() > 0){
+                _curSection.setKey(content[1]);
                 _document.indexElement(content[1], _curSection);
+            }
             break;
 
         case "PARAGRAPH":  // create new paragraph
