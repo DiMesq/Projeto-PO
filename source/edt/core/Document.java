@@ -101,6 +101,7 @@ public class Document extends Section{
 	 */
 	public void removeFromIndex(TextElement element){
 		_map.remove(element.getKey());
+		element.unsetKey();
 	}
 
 	/**
