@@ -4,6 +4,7 @@ import edt.core.visitor.Visitor;
 
 import edt.core.Paragraph;
 import edt.core.Section;
+import edt.core.Document;
 
 import edt.textui.section.Message;
 
@@ -32,20 +33,39 @@ public class GetContentVisitor implements Visitor {
 
 		Display display = new Display();
 
-		display.add(getSections(s))
+		display.add(getSections(s, false))
 			   .display();
 	}
 
 	/**
-     * Returns all of the Section section content
+	 * The Visitor's visit method implementation for Document Element.
+	 *
+	 * @param Section s - the element to visit
+	 * @Override
+	 */
+	public void visit(Document d) {
+
+		Display display = new Display();
+
+		display.add(getSections(d, true))
+				 .display();
+	}
+
+	/**
+     * Returns all of the content of a Section
      *
-     * @param Section the section to get all content from
-     *
+     * @param section the section to get all content from
+     * @param isDocument the mode of this method
      * @return String all of the content from every subsection of the current one
      */
-    private String getSections(Section section){
+    private String getSections(Section section, boolean isDocument){
 
-        String content = Message.sectionIndexEntry(section.getKey(),
+			String content;
+
+			if(isDocument)
+				content = "{" + section.getTitle() + "}\n";
+			else
+        content = Message.sectionIndexEntry(section.getKey(),
                                                    section.getTitle()) +
                                                    "\n";
 
@@ -54,7 +74,7 @@ public class GetContentVisitor implements Visitor {
 
         for (Paragraph p: paragraphs) content += p.getContent() + "\n";
 
-        for (Section s: subSections) content += this.getSections(s);
+        for (Section s: subSections) content += this.getSections(s, false);
 
         return content;
     }
