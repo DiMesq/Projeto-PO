@@ -3,6 +3,8 @@ package edt.textui.visitors;
 import edt.core.visitor.Visitor;
 
 import edt.core.Section;
+import edt.core.Paragraph;
+import edt.core.Document;
 
 import edt.textui.section.Message;
 
@@ -24,16 +26,33 @@ public class ListSectionsVisitor implements Visitor {
 	/**
 	 * The Visitor's visit method implementation for Section Element.
 	 *
-	 * @param Section s - the element to visit
-	 * @Override
+	 * @param sec the element to visit
 	 */
-	public void visit(Section s) {
+	@Override
+	public void visit(Section sec) {
 
 		Display display = new Display();
 
-		display.add(getSections(s, true))
+		display.add(getSections(sec, true))
 			   .display();
 	}
+
+	/**
+	 * The Visitor's visit method implementation for Document Element.
+	 *
+	 * @param doc the element to visit
+	 */
+	@Override
+	public void visit(Document doc){
+		visit((Section) doc);
+	}
+
+	/**
+	* The Visitor's visit method implementation for Document Element.
+	 * @param par the element to visit
+	 */
+	@Override
+	public void visit(Paragraph par){}
 
 	/**
      * Returns the titles from every subsection of the current one
