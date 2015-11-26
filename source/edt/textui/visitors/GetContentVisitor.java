@@ -1,6 +1,6 @@
 package edt.textui.visitors;
 
-import edt.visitor.Visitor;
+import edt.core.visitor.Visitor;
 
 import edt.core.Paragraph;
 import edt.core.Section;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * GetContentVisitor implements the Visitor interface.
  * <p>GetContentVisitor performs the getContent operation on sections and paragraphs.
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
@@ -38,15 +38,15 @@ public class GetContentVisitor implements Visitor {
 
 	/**
      * Returns all of the Section section content
-     * 
-     * @param Section the section to get all content from 
+     *
+     * @param Section the section to get all content from
      *
      * @return String all of the content from every subsection of the current one
      */
     private String getSections(Section section){
 
-        String content = Message.sectionIndexEntry(section.getKey(), 
-                                                   section.getTitle()) + 
+        String content = Message.sectionIndexEntry(section.getKey(),
+                                                   section.getTitle()) +
                                                    "\n";
 
         List<Paragraph> paragraphs = section.getParagraphs();
@@ -59,5 +59,3 @@ public class GetContentVisitor implements Visitor {
         return content;
     }
 }
-
-

@@ -1,6 +1,6 @@
 package edt.textui.visitors;
 
-import edt.visitor.Visitor;
+import edt.core.visitor.Visitor;
 
 import edt.core.Section;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * ListSectionsVisitor implements the Visitor interface.
  * <p>ListSectionsVisitor performs the listSections operation on sections.
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
@@ -38,20 +38,20 @@ public class ListSectionsVisitor implements Visitor {
 	/**
      * Returns the titles from every subsection of the current one
      *
-     * @param Section the section to get the subsection's titles from 
+     * @param Section the section to get the subsection's titles from
      * @param boolean firstCall indicates if a call to this function is the
      * first one (true) or a recursive one (false).
      *
-     * @return String all titles from the subsections 
+     * @return String all titles from the subsections
      */
     private String getSections(Section section, boolean firstCall){
 
-        String content = Message.sectionIndexEntry(section.getKey(), 
+        String content = Message.sectionIndexEntry(section.getKey(),
                                                    section.getTitle()) + "\n";
 
         //we don't include the current section's title
-        if (firstCall) content = "";  
-                    
+        if (firstCall) content = "";
+
         List<Section> subSections = section.getSubsections();
 
         for (Section s: subSections) content += this.getSections(s, false);
@@ -59,6 +59,3 @@ public class ListSectionsVisitor implements Visitor {
         return content;
     }
 }
-
-
-

@@ -1,9 +1,9 @@
-package edt.visitor;
+package edt.core.visitor;
 
 /**
  * This interface is used to implement the Visitor design pattern.
  * <p>Element is the interface which all element types must implement
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
@@ -18,5 +18,3 @@ public interface Element {
 	public void accept(Visitor v);
 
 }
-
-

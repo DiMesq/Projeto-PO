@@ -3,7 +3,7 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
-import edt.visitor.*;
+import edt.core.visitor.*;
 
 import edt.core.exception.TextElementNotFoundException;
 import edt.core.exception.ErrorCode;
