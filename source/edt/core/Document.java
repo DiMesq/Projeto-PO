@@ -84,10 +84,15 @@ public class Document extends Section{
 	 */
 	public void indexElement(String id, TextElement element) {
 
+		// remove any older association that the element had
+		if (element.getKey() != "")
+			_map.remove(element.getKey());
+
+		// set the key of the element and adds it
+		element.setKey(id);
 		TextElement retrievedElement = _map.put(id, element);
 
-		if (retrievedElement != null) retrievedElement.setKey("");
-
+		if (retrievedElement != null) retrievedElement.unsetKey();
 	}
 
 	/**
@@ -96,6 +101,7 @@ public class Document extends Section{
 	 */
 	public void removeFromIndex(TextElement element){
 		_map.remove(element.getKey());
+		element.unsetKey();
 	}
 
 	/**

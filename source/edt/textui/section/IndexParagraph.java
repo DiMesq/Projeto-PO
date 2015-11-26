@@ -18,7 +18,7 @@ public class IndexParagraph extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public IndexParagraph(Section ent) {
@@ -34,7 +34,7 @@ public class IndexParagraph extends Command<Section> {
 
         Display display = new Display();
 
-        // get the paragraph and the id 
+        // get the paragraph and the id
         Form form = new Form();
         InputInteger localIn = new InputInteger(form, Message.requestParagraphId());
         InputString idIn = new InputString(form, Message.requestUniqueId());
@@ -46,10 +46,9 @@ public class IndexParagraph extends Command<Section> {
             paragraph = entity().getParagraph(localIn.value());
 
             // if the paragraph already has a key, warn the user of the replacement
-            if (paragraph.getKey() != "") display.addNewLine(Message.paragraphNameChanged());
+            if (paragraph.isIndexed()) display.addNewLine(Message.paragraphNameChanged());
 
             // set the new key
-            paragraph.setKey(idIn.value());
             entity().getDocument().indexElement(idIn.value(), paragraph);
 
             display.display();
@@ -59,5 +58,3 @@ public class IndexParagraph extends Command<Section> {
         }
     }
 }
-
-
