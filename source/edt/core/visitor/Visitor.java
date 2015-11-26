@@ -17,20 +17,20 @@ public interface Visitor {
 
 	/**
 	 * The visit method for the Section Element.
-	 * @param Section the Section to visit.
+	 * @param sec the Section to visit.
 	 */
-	public void visit(Section s);
+	public void visit(Section sec);
 
 	/**
 	 * The visit method for the Paragraph Element.
-	 * @param Paragraph the Paragraph to visit.
+	 * @param par the Paragraph to visit.
 	 */
-	public void visit(Paragraph s);
+	public void visit(Paragraph par);
 
 	/**
 	 * The visit method for the Document Element.
-	 * @param Document the Document to visit.
+	 * @param doc the Document to visit.
 	 */
-	public void visit(Document s);
+	public void visit(Document doc);
 
 }

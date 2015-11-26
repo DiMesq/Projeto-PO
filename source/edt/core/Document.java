@@ -200,7 +200,7 @@ public class Document extends Section{
 	/**
 	 * The Section Element accept method - implementation
 	 *
-	 * @param Visitor v
+	 * @param v the visitor to accept
 	 */
 	@Override
 	public void accept(Visitor v) {

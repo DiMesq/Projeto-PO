@@ -50,8 +50,8 @@ public class Paragraph extends TextElement {
 	 * Returns the size of this Paragraph
 	 *
 	 * @return The size of this Paragraph
-	 * @Override
 	 */
+	@Override
 	public int getSize(){
 		return _text.length();
 	}
@@ -59,7 +59,7 @@ public class Paragraph extends TextElement {
 	/**
 	 * The Section Element accept method - implementation
 	 *
-	 * @param Visitor v
+	 * @param v the visitor to accept
 	 */
 	@Override
 	public void accept(Visitor v) {

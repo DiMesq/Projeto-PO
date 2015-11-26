@@ -13,6 +13,8 @@ public class TextElementNotFoundException extends TextElementException{
 
 	/**
 	 * Constructor.
+	 * @param message the message for the exception
+	 * @param errorCode the error code for the exception
 	 */
 	public TextElementNotFoundException(String message, String errorCode){
 		super(message, errorCode);

@@ -46,7 +46,7 @@ public class Section extends TextElement{
 	 * and sets its title.
 	 *
 	 * @param document The document to which this Section belongs
-	 * @param String the title for the section
+	 * @param title the title for the section
 	 */
 	public Section(Document document, String title){
 		_title = title;
@@ -82,7 +82,6 @@ public class Section extends TextElement{
 	/**
 	 * Gets the Document to which this Section belongs
 	 * @return document The Document to which this Sections belongs
-	 * TODO: protected??
 	 */
 	public Document getDocument(){
 		return _document;
@@ -106,6 +105,11 @@ public class Section extends TextElement{
 		return _title;
 	}
 
+	/**
+	 * Returns the size of this Section
+	 * @return the size of this Section
+	 */
+	@Override
 	public int getSize(){
 		int size = getTitle().length();
 
@@ -133,7 +137,6 @@ public class Section extends TextElement{
 	 *
 	 * @param index Index of the Subsection to return
 	 * @return The Subsection at the specified position in this Section
-	 * @throws IndexOutOfBoundsException - if the index is out of range
 	 */
 	public Section getSection(int index) throws TextElementNotFoundException{
 		try{
@@ -169,7 +172,6 @@ public class Section extends TextElement{
 	 *
 	 * @param index - The index of the Subsection to be removed
 	 * @return The Subsection at the specified position.
-	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
 	public Section removeSection(int index) throws TextElementNotFoundException {
 
@@ -209,7 +211,6 @@ public class Section extends TextElement{
 	 *
 	 * @param index - The index of the Paragraph to be removed
 	 * @return The Paragraph at the specified position.
-	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
 	public Paragraph removeParagraph(int index) throws TextElementNotFoundException {
 
@@ -228,7 +229,6 @@ public class Section extends TextElement{
 	 *
 	 * @param index Index of the Paragraph to return
 	 * @return The Paragraph at the specified position in this Section
-	 * @throws IndexOutOfBoundsException - if the index is out of range
 	 */
 	public Paragraph getParagraph(int index) throws TextElementNotFoundException {
 
@@ -252,7 +252,7 @@ public class Section extends TextElement{
 	/**
 	 * The Section Element accept method - implementation
 	 *
-	 * @param Visitor v
+	 * @param v the visitor to accept
 	 */
 	@Override
 	public void accept(Visitor v) {

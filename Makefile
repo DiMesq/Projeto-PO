@@ -26,7 +26,7 @@ ${OUTDIR}:
 
 documentation:
 	mkdir -p doc/
-	javadoc -d ${DOCDIR} -cp ${OUTDIR} -sourcepath ${SRCDIR} `find ${SRCDIR}edt -name "*.java"`
+	javadoc -d ${DOCDIR} -cp ${CLASSP} -sourcepath ${SRCDIR} `find ${SRCDIR}edt -name "*.java"`
 
 tests: all
 	cp tests/* -r class/
