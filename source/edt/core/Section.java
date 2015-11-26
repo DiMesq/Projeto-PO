@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 import edt.visitor.*;
 
-import edt.textui.exception.TextElementNotFoundException;
-import edt.textui.exception.ErrorCode;
+import edt.core.exception.TextElementNotFoundException;
+import edt.core.exception.ErrorCode;
+
 
 /**
  * This class implements a Section of a {@link Document}.
@@ -45,7 +46,7 @@ public class Section extends TextElement implements Element {
 	 * and sets its title.
 	 *
 	 * @param document The document to which this Section belongs
-	 * @param String the title for the section 
+	 * @param String the title for the section
 	 */
 	public Section(Document document, String title){
 		_title = title;
@@ -170,15 +171,15 @@ public class Section extends TextElement implements Element {
 	 * @return The Subsection at the specified position.
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
-	public Section removeSection(int index) throws TextElementNotFoundException{
-		
+	public Section removeSection(int index) throws TextElementNotFoundException {
+
 		try{
 			Section section = _subSections.remove(index);
 			_document.removeFromIndex(section);
 			return section;
 
 		} catch (IndexOutOfBoundsException e){
-			throw new TextElementNotFoundException(e.getMessage(), "SECTION_NOT_FOUND");
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
 		}
 	}
 
@@ -210,14 +211,15 @@ public class Section extends TextElement implements Element {
 	 * @return The Paragraph at the specified position.
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
-	public Paragraph removeParagraph(int index) throws IndexOutOfBoundsException {
+	public Paragraph removeParagraph(int index) throws TextElementNotFoundException {
 
-		Paragraph paragraph = _paragraphs.remove(index);
 		try{
+			Paragraph paragraph = _paragraphs.remove(index);
 			_document.removeFromIndex(paragraph);
-		}
-		finally{
 			return paragraph;
+
+		} catch (IndexOutOfBoundsException e) {
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.PARAGRAPH_NOT_FOUND);
 		}
 	}
 
@@ -258,6 +260,3 @@ public class Section extends TextElement implements Element {
 		v.visit(this);
 	}
 }
-
-
-

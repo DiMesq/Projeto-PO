@@ -9,7 +9,7 @@ import pt.utl.ist.po.ui.InputString;
 import edt.core.Document;
 import edt.core.DocManager;
 
-import edt.textui.exception.TextElementException;
+import edt.core.exception.TextElementException;
 
 /**
  * Command for opening an existing document in the editor.

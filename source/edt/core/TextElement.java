@@ -20,16 +20,17 @@ public abstract class TextElement implements java.io.Serializable {
 	 * Constructor
 	 */
 	public TextElement() {
-		_key = "";
+		_key = null;
 	}
 
 	/**
 	 * Returns the key of this TextElement
 	 *
-	 * @return string the key of this TextElement (null if it is not indexed)
+	 * @return string the key of this TextElement ("" if it is not indexed)
+	 * TODO: review this method
 	 */
 	public String getKey() {
-		return _key;
+		return isIndexed() ? _key : "";
 	}
 
 	/**
@@ -42,12 +43,19 @@ public abstract class TextElement implements java.io.Serializable {
 	}
 
 	/**
+	 * Unsets the key of this TextElement
+	 */
+	public void unsetKey(){
+		_key = null;
+	}
+
+	/**
 	 * Returns true if this TextElement is indexed
 	 *
 	 * @return boolean true if this TextElement is indexed
 	 */
-	protected boolean isIndexed() {
-		return _key == null;
+	public boolean isIndexed() {
+		return _key != null;
 	}
 
 	/**

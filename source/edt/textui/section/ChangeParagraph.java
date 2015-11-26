@@ -1,6 +1,8 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import edt.core.Paragraph;
+import edt.core.exception.TextElementNotFoundException;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -15,7 +17,7 @@ public class ChangeParagraph extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ChangeParagraph(Section ent) {
@@ -28,6 +30,19 @@ public class ChangeParagraph extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+      Form form = new Form();
+      InputInteger ind = new InputInteger(form, Message.requestParagraphId());
+      InputString text = new InputString(form, Message.requestParagraphContent());
+      form.parse();
+
+      try{
+        Paragraph paragraph = entity().getParagraph(ind.value());
+        paragraph.setText(text.value());
+      }
+      catch(TextElementNotFoundException e){
+        ProcessError.processError(e, ind.value());
+      }
+
    }
 }

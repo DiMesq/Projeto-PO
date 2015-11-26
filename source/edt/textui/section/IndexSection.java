@@ -2,7 +2,7 @@ package edt.textui.section;
 
 import edt.core.Section;
 
-import edt.textui.exception.TextElementException;
+import edt.core.exception.TextElementException;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -17,7 +17,7 @@ public class IndexSection extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public IndexSection(Section ent) {
@@ -33,7 +33,7 @@ public class IndexSection extends Command<Section> {
 
         Display display = new Display();
 
-        // get the subsection and the id 
+        // get the subsection and the id
         Form form = new Form();
         InputInteger localIn = new InputInteger(form, Message.requestSectionId());
         InputString idIn = new InputString(form, Message.requestUniqueId());
@@ -42,15 +42,16 @@ public class IndexSection extends Command<Section> {
         Section section = null;
         try {  //try getting the subsection specified
             section = entity().getSection(localIn.value());
+            
             // if the section already has a key, warn the user of the replacement
-            if (section.getKey() != "") display.addNewLine(Message.sectionNameChanged());
+            if (section.isIndexed()) display.addNewLine(Message.sectionNameChanged());
 
             // set the new key
             section.setKey(idIn.value());
             entity().getDocument().indexElement(idIn.value(), section);
 
             display.display();
-            
+
         } catch (TextElementException e) {
             ProcessError.processError(e, localIn.value());
         }

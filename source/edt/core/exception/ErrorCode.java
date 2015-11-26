@@ -1,4 +1,4 @@
-package edt.textui.exception;
+package edt.core.exception;
 
 /** Error codes for the exceptions handling */
 public final class ErrorCode {

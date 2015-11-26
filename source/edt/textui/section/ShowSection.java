@@ -13,7 +13,7 @@ public class ShowSection extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ShowSection(Section ent) {
@@ -26,8 +26,6 @@ public class ShowSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-
         entity().accept( new GetContentVisitor());
-
      }
 }
