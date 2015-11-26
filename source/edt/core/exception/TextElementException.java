@@ -14,9 +14,12 @@ import pt.utl.ist.po.ui.InvalidOperation;
 public abstract class TextElementException extends InvalidOperation{
 
 	private String _errorCode;
-	
+
 	/**
 	 * Constructor.
+	 *
+	 * @param message the message for the exception
+	 * @param errorCode the error code for the exception
 	 */
 	public TextElementException(String message, String errorCode){
 		super(message);
