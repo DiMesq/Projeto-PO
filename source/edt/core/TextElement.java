@@ -1,5 +1,7 @@
 package edt.core;
 
+import edt.core.visitor.*;
+
 /**
  * This abstract class implements a TextElement.
  * <p>A TextElement has an id and some content that can be represented as Strings
@@ -9,7 +11,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement implements java.io.Serializable{
+public abstract class TextElement implements java.io.Serializable, Element {
 
 	/**
 	 * The key of the TextElement
@@ -20,16 +22,17 @@ public abstract class TextElement implements java.io.Serializable{
 	 * Constructor
 	 */
 	public TextElement() {
-		_key = "";
+		_key = null;
 	}
 
 	/**
 	 * Returns the key of this TextElement
 	 *
-	 * @return string the key of this TextElement (null if it is not indexed)
-	 */ 
+	 * @return string the key of this TextElement ("" if it is not indexed)
+	 * TODO: review this method
+	 */
 	public String getKey() {
-		return _key;
+		return isIndexed() ? _key : "";
 	}
 
 	/**
@@ -42,12 +45,19 @@ public abstract class TextElement implements java.io.Serializable{
 	}
 
 	/**
+	 * Unsets the key of this TextElement
+	 */
+	public void unsetKey(){
+		_key = null;
+	}
+
+	/**
 	 * Returns true if this TextElement is indexed
 	 *
 	 * @return boolean true if this TextElement is indexed
 	 */
-	protected boolean isIndexed() {
-		return _key == null;
+	public boolean isIndexed() {
+		return _key != null;
 	}
 
 	/**

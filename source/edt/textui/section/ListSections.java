@@ -3,7 +3,8 @@ package edt.textui.section;
 import edt.core.Section;
 
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
+
+import edt.textui.visitors.ListSectionsVisitor;
 
 /**
  * Command for listing all subsections of the current section.
@@ -25,6 +26,8 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        entity().accept( new ListSectionsVisitor());
+
     }
 }

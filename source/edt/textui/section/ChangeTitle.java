@@ -26,6 +26,10 @@ public class ChangeTitle extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Form form = new Form();
+        InputString in = new InputString(form, Message.requestSectionTitle());
+        form.parse();
+
+        entity().setTitle(in.value());
     }
 }

@@ -1,9 +1,11 @@
 package edt.core;
 
+import edt.core.visitor.Visitor;
+
 /**
  * This class implements a Paragraph.
  * <p>A Paragraph has some content represented as a String.
- * 
+ *
  * @author Daniel Reigada
  * @author Diogo Mesquita
  * @author Sebastião Araújo
@@ -18,17 +20,20 @@ public class Paragraph extends TextElement {
 	/**
 	 * Constructor
 	 */
-	public Paragraph() {
+	public Paragraph(String text){
 		super();
-		_text = "";
+		_text = text;
 	}
-	
+
 	/**
 	 * Sets/changes the content of this Paragraph
 	 *
 	 * @param text The new content to be set
 	 */
-	public void setText(String text) {
+	public void setText(String text){
+		// add new line character in the end if its not there
+		if (!text.endsWith("\n")) text += "\n";
+
 		_text = text;
 	}
 
@@ -37,7 +42,7 @@ public class Paragraph extends TextElement {
 	 *
 	 * @return The content of this Paragraph
 	*/
-	public String getContent() {
+	public String getContent(){
 		return _text;
 	}
 
@@ -46,7 +51,18 @@ public class Paragraph extends TextElement {
 	 *
 	 * @return The size of this Paragraph
 	 */
-	public int getSize() {
+	@Override
+	public int getSize(){
 		return _text.length();
+	}
+
+	/**
+	 * The Section Element accept method - implementation
+	 *
+	 * @param v the visitor to accept
+	 */
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

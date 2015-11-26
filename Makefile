@@ -13,10 +13,10 @@ compile:
 	cp source/edt-support.jar ${OUTDIR}
 	javac -d ${OUTDIR} -cp ${CLASSP} -sourcepath ${SRCDIR} `find ${SRCDIR} -name "*.java"`
 
-run:
+run: all
 	java -cp ${CLASSP} $(MAIN_FILE_NAME)
 
-swing:
+swing: all
 	java -cp ${CLASSP} -Dui=swing $(MAIN_FILE_NAME)
 
 directories: ${OUTDIR}
@@ -26,13 +26,12 @@ ${OUTDIR}:
 
 documentation:
 	mkdir -p doc/
-	javadoc -d ${DOCDIR} -cp ${OUTDIR} -sourcepath ${SRCDIR} `find ${SRCDIR}edt -name "*.java"`
+	javadoc -d ${DOCDIR} -cp ${CLASSP} -sourcepath ${SRCDIR} `find ${SRCDIR}edt -name "*.java"`
 
 tests: all
 	cp tests/* -r class/
 	cd class/; \
 	./runtests.sh; \
-	rm -r runtests.sh tests
 
 submit:
 	cd source/; \

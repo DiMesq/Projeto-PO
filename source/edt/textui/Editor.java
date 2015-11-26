@@ -20,10 +20,10 @@ public class Editor {
 
         if (System.getProperty("import") != null) {
           Parser parser = new Parser();
-          try {
+          try{
             manager.setDocument(parser.parse(System.getProperty("import")));
-            
-          } catch (IOException e) {
+          }
+          catch (IOException e) {
             System.out.println("Error importing the file in the parser: " + e.getMessage());
             e.printStackTrace();
           }

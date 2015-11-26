@@ -1,13 +1,13 @@
 package edt.textui.main;
 
-import edt.textui.exception.TextElementException;
-import edt.textui.exception.ErrorCode;
+import edt.core.exception.TextElementException;
+import edt.core.exception.ErrorCode;
 
 import pt.utl.ist.po.ui.Display;
 
-public class ProcessError {
+public class ProcessError{
 
-	public static void processError(TextElementException exception, String name) {
+	public static void processError(TextElementException exception, String name){
 
 		Display display = new Display();
 
@@ -37,6 +37,5 @@ public class ProcessError {
 		display.display();
 	}
 }
-
 
 

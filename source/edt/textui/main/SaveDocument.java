@@ -3,7 +3,7 @@ package edt.textui.main;
 import edt.core.Document;
 import edt.core.DocManager;
 
-import edt.textui.exception.TextElementException;
+import edt.core.exception.TextElementException;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
@@ -28,7 +28,7 @@ public class SaveDocument extends Command<DocManager> {
      */
     @Override
     @SuppressWarnings("nls")
-    public final void execute() {
+    public final void execute(){
 
         Document doc = entity().getDocument();
         String filename = doc.getFileName();

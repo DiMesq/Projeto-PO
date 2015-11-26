@@ -27,6 +27,16 @@ public class InsertSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        // ask for the index and the title
+        Form form = new Form();
+        InputInteger index_in = new InputInteger(form, Message.requestSectionId());
+        InputString title_in = new InputString(form, Message.requestSectionTitle());
+        form.parse();
+
+        //add the section
+        entity().addSection(
+            index_in.value(), 
+            new Section(entity().getDocument(), title_in.value())
+        );
     }
 }

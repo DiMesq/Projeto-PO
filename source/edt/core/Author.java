@@ -10,7 +10,7 @@ package edt.core;
  * @version 1.0
 */
 
-public class Author implements java.io.Serializable, Comparable<Author> {
+public class Author implements java.io.Serializable, Comparable<Author>{
 
 	/**
 	 * The name of the Author
@@ -28,7 +28,7 @@ public class Author implements java.io.Serializable, Comparable<Author> {
 	 * @param name The name of the Author
 	 * @param email The email of the Author
 	 */
-	public Author(String name, String email) {
+	public Author(String name, String email){
 		_name = name;
 		_email = email;
 	}
@@ -38,7 +38,7 @@ public class Author implements java.io.Serializable, Comparable<Author> {
 	 *
 	 * @return The name of this Author
 	 */
-	public String getName() {
+	public String getName(){
 		return _name;
 	}
 
@@ -47,7 +47,7 @@ public class Author implements java.io.Serializable, Comparable<Author> {
 	 *
 	 * @return The email of this Author
 	 */
-	public String getEmail() {
+	public String getEmail(){
 		return _email;
 	}
 
@@ -59,12 +59,17 @@ public class Author implements java.io.Serializable, Comparable<Author> {
 	 * ignoring case considerations.
 	 */
 	@Override
-	public int compareTo(Author author) {
+	public int compareTo(Author author){
 		return _name.compareToIgnoreCase(author.getName());
 	}
 
+	/**
+	 * Indicates whether some other object is "equal to" this one.
+	 * @param  obj - the reference object with which to compare.
+	 * @return true if this object is equal to the obj argument; false otherwise.
+	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj){
 		return (obj != null &&
 						obj instanceof Author &&
 						compareTo((Author) obj) == 0);
