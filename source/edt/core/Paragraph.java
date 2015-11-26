@@ -1,5 +1,7 @@
 package edt.core;
 
+import edt.core.visitor.Visitor;
+
 /**
  * This class implements a Paragraph.
  * <p>A Paragraph has some content represented as a String.
@@ -48,8 +50,19 @@ public class Paragraph extends TextElement {
 	 * Returns the size of this Paragraph
 	 *
 	 * @return The size of this Paragraph
+	 * @Override
 	 */
 	public int getSize(){
 		return _text.length();
+	}
+
+	/**
+	 * The Section Element accept method - implementation
+	 *
+	 * @param Visitor v
+	 */
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

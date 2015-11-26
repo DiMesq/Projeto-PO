@@ -3,8 +3,11 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
+import edt.core.visitor.Visitor;
+
 import edt.core.exception.TextElementNotFoundException;
 import edt.core.exception.ErrorCode;
+
 
 /**
  * This class implements a Section of a {@link Document}.
@@ -15,7 +18,7 @@ import edt.core.exception.ErrorCode;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class Section extends TextElement {
+public class Section extends TextElement{
 
 	/**
 	 * The title of the Section
@@ -43,7 +46,7 @@ public class Section extends TextElement {
 	 * and sets its title.
 	 *
 	 * @param document The document to which this Section belongs
-	 * @param String the title for the section 
+	 * @param String the title for the section
 	 */
 	public Section(Document document, String title){
 		_title = title;
@@ -169,7 +172,7 @@ public class Section extends TextElement {
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
 	public Section removeSection(int index) throws TextElementNotFoundException {
-		
+
 		try{
 			Section section = _subSections.remove(index);
 			_document.removeFromIndex(section);
@@ -209,7 +212,7 @@ public class Section extends TextElement {
 	 * @throws IndexOutOfBoundsException - if the index is out of range.
 	 */
 	public Paragraph removeParagraph(int index) throws TextElementNotFoundException {
-		
+
 		try{
 			Paragraph paragraph = _paragraphs.remove(index);
 			_document.removeFromIndex(paragraph);
@@ -245,5 +248,14 @@ public class Section extends TextElement {
 	public List<Paragraph> getParagraphs() {
 
 		return _paragraphs;
+	}
+	/**
+	 * The Section Element accept method - implementation
+	 *
+	 * @param Visitor v
+	 */
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }
