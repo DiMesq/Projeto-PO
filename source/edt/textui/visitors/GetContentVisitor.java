@@ -26,30 +26,44 @@ public class GetContentVisitor implements Visitor {
 	/**
 	 * The Visitor's visit method implementation for Section Element.
 	 *
-	 * @param Section s - the element to visit
-	 * @Override
+	 * @param sec the element to visit
 	 */
-	public void visit(Section s) {
+	@Override
+	public void visit(Section sec) {
 
 		Display display = new Display();
 
-		display.add(getSections(s, false))
+		display.add(getSections(sec, false))
 			   .display();
 	}
 
 	/**
 	 * The Visitor's visit method implementation for Document Element.
 	 *
-	 * @param Section s - the element to visit
-	 * @Override
+	 * @param doc the element to visit
 	 */
-	public void visit(Document d) {
+	@Override
+	public void visit(Document doc) {
 
 		Display display = new Display();
 
-		display.add(getSections(d, true))
+		display.add(getSections(doc, true))
 				 .display();
 	}
+
+	/**
+	 * The Visitor's visit method implementation for Paragraph Element.
+	 *
+	 * @param  par the element to visit
+	 */
+	@Override
+	public void visit(Paragraph par) {
+
+		Display display = new Display();
+
+		display.addNewLine(par.getContent());
+	}
+
 
 	/**
      * Returns all of the content of a Section
