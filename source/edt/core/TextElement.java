@@ -1,5 +1,7 @@
 package edt.core;
 
+import edt.core.visitor.*;
+
 /**
  * This abstract class implements a TextElement.
  * <p>A TextElement has an id and some content that can be represented as Strings
@@ -9,7 +11,7 @@ package edt.core;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public abstract class TextElement implements java.io.Serializable {
+public abstract class TextElement implements java.io.Serializable, Element {
 
 	/**
 	 * The key of the TextElement

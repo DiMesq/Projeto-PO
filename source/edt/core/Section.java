@@ -3,7 +3,7 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
-import edt.core.visitor.*;
+import edt.core.visitor.Visitor;
 
 import edt.core.exception.TextElementNotFoundException;
 import edt.core.exception.ErrorCode;
@@ -18,7 +18,7 @@ import edt.core.exception.ErrorCode;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class Section extends TextElement implements Element {
+public class Section extends TextElement{
 
 	/**
 	 * The title of the Section
@@ -249,13 +249,12 @@ public class Section extends TextElement implements Element {
 
 		return _paragraphs;
 	}
-
 	/**
 	 * The Section Element accept method - implementation
 	 *
 	 * @param Visitor v
-	 * @Override
 	 */
+	@Override
 	public void accept(Visitor v) {
 		v.visit(this);
 	}

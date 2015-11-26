@@ -1,5 +1,8 @@
 package edt.core;
 
+import edt.core.exception.*;
+import edt.core.visitor.Visitor;
+
 import java.util.TreeSet;
 import java.util.Set;
 import java.util.Map;
@@ -11,7 +14,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import edt.core.exception.*;
 
 /**
  * This abstract class implements a Document.
@@ -193,6 +195,16 @@ public class Document extends Section{
 	 */
 	public String getFileName(){
 		return _filename;
+	}
+
+	/**
+	 * The Section Element accept method - implementation
+	 *
+	 * @param Visitor v
+	 */
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 
 }
