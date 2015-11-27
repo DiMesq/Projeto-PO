@@ -6,11 +6,8 @@ import edt.core.Paragraph;
 import edt.core.Section;
 import edt.core.Document;
 
-import edt.textui.section.Message;
-
 import pt.utl.ist.po.ui.Display;
 
-import java.util.List;
 
 /**
  * GetContentVisitor implements the Visitor interface.
@@ -33,7 +30,7 @@ public class GetContentVisitor implements Visitor {
 
 		Display display = new Display();
 
-		display.add(getSections(sec, false))
+		display.add(Utils.getSections(sec, true, false))
 			   .display();
 	}
 
@@ -46,8 +43,7 @@ public class GetContentVisitor implements Visitor {
 	public void visit(Document doc) {
 
 		Display display = new Display();
-
-		display.add(getSections(doc, true))
+		display.add(Utils.getSections(doc))
 				 .display();
 	}
 
@@ -63,33 +59,4 @@ public class GetContentVisitor implements Visitor {
 
 		display.addNewLine(par.getContent()).display();
 	}
-
-
-	/**
-     * Returns all of the content of a Section
-     *
-     * @param section the section to get all content from
-     * @param isDocument the mode of this method
-     * @return String all of the content from every subsection of the current one
-     */
-    private String getSections(Section section, boolean isDocument){
-
-			String content;
-
-			if(isDocument)
-				content = "{" + section.getTitle() + "}\n";
-			else
-        content = Message.sectionIndexEntry(section.getKey(),
-                                                   section.getTitle()) +
-                                                   "\n";
-
-        List<Paragraph> paragraphs = section.getParagraphs();
-        List<Section> subSections = section.getSubsections();
-
-        for (Paragraph p: paragraphs) content += p.getContent() + "\n";
-
-        for (Section s: subSections) content += this.getSections(s, false);
-
-        return content;
-    }
 }
