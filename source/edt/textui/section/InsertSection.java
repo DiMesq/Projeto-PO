@@ -14,7 +14,7 @@ public class InsertSection extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public InsertSection(Section ent) {
@@ -29,14 +29,14 @@ public class InsertSection extends Command<Section> {
     public final void execute() {
         // ask for the index and the title
         Form form = new Form();
-        InputInteger index_in = new InputInteger(form, Message.requestSectionId());
-        InputString title_in = new InputString(form, Message.requestSectionTitle());
+        InputInteger indexIn = new InputInteger(form, Message.requestSectionId());
+        InputString titleIn = new InputString(form, Message.requestSectionTitle());
         form.parse();
 
         //add the section
         entity().addSection(
-            index_in.value(), 
-            new Section(entity().getDocument(), title_in.value())
+            indexIn.value(),
+            new Section(entity().getDocument(), titleIn.value())
         );
     }
 }
