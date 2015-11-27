@@ -61,7 +61,7 @@ public class GetContentVisitor implements Visitor {
 
 		Display display = new Display();
 
-		display.addNewLine(par.getContent());
+		display.addNewLine(par.getContent()).display();
 	}
 
 
