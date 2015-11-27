@@ -29,7 +29,6 @@ public abstract class TextElement implements java.io.Serializable, Element {
 	 * Returns the key of this TextElement
 	 *
 	 * @return string the key of this TextElement ("" if it is not indexed)
-	 * TODO: review this method
 	 */
 	public String getKey() {
 		return isIndexed() ? _key : "";
