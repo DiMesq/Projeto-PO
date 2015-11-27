@@ -16,7 +16,7 @@ public class InsertParagraph extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public InsertParagraph(Section ent) {
@@ -31,14 +31,14 @@ public class InsertParagraph extends Command<Section> {
     public final void execute() {
         // ask for the index and the title
         Form form = new Form();
-        InputInteger index_in = new InputInteger(form, Message.requestParagraphId());
-        InputString content_in = new InputString(form, Message.requestParagraphContent());
+        InputInteger indexIn = new InputInteger(form, Message.requestParagraphId());
+        InputString contentIn = new InputString(form, Message.requestParagraphContent());
         form.parse();
 
         //add the section
         entity().addParagraph(
-            index_in.value(), 
-            new Paragraph(content_in.value())
+            indexIn.value(),
+            new Paragraph(contentIn.value())
         );
     }
 }
