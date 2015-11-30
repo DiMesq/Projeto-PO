@@ -174,15 +174,29 @@ public class Section extends TextElement{
 	 * @return The Subsection at the specified position.
 	 */
 	public Section removeSection(int index) throws TextElementNotFoundException {
-
 		try{
 			Section section = _subSections.remove(index);
-			_document.removeFromIndex(section);
+			section.removeContentIndex();
 			return section;
 
 		} catch (IndexOutOfBoundsException e){
 			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
 		}
+
+	}
+
+/**
+ * Helper method that removes all associations that this Section and its content
+ * had with their Document
+ */
+	private void removeContentIndex(){
+		if(this.isIndexed()) _document.removeFromIndex(this);
+
+		for (Section s : this.getSubsections())
+			 s.removeContentIndex();
+
+		for (Paragraph p : this.getParagraphs())
+			if(p.isIndexed()) _document.removeFromIndex(p);
 	}
 
 	/**
