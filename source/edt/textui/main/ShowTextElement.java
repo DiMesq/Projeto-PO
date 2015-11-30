@@ -16,14 +16,13 @@ public class ShowTextElement extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ShowTextElement(DocManager ent) {
         super(MenuEntry.SHOW_TEXT_ELEMENT, ent);
     }
 
-    //TODO: mudar isto tudo - arranjar solucao melhor que as excecoes!!!
     /**
      * Execute the command.
      */
@@ -38,23 +37,12 @@ public class ShowTextElement extends Command<DocManager> {
         InputString in = new InputString(form, Message.requestElementId());
         form.parse();
 
-        try{    
-            Section section = (Section) entity().getDocument().getTextElement(in.value());
+        TextElement elem = entity().getDocument().getTextElement(in.value());
 
-            // There is no TextElement with such key
-            if (section == null) display.addNewLine(Message.noSuchTextElement(in.value()))
-                                        .display();
-
-            //The TextElement retrieved is a Section
-            else section.accept( new GetContentVisitor());  
-
-        } catch (ClassCastException c){   // The TextElement retrieved is a Paragraph
-            Paragraph paragraph = (Paragraph) entity().getDocument()
-                                                      .getTextElement(in.value());
-
-            display.addNewLine(paragraph.getContent())
-                   .display();
-        }
-        
+        // If there is no TextElement with such key
+        if (elem == null) display.addNewLine(Message.noSuchTextElement(in.value()))
+                                    .display();
+        else
+          elem.accept(new GetContentVisitor());
     }
 }
