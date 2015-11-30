@@ -30,7 +30,7 @@ public class GetContentVisitor implements Visitor {
 
 		Display display = new Display();
 
-		display.add(Utils.getSections(sec, true, false))
+		display.add(Utils.getContent(sec, true, false))
 			   .display();
 	}
 
@@ -43,7 +43,7 @@ public class GetContentVisitor implements Visitor {
 	public void visit(Document doc) {
 
 		Display display = new Display();
-		display.add(Utils.getSections(doc))
+		display.add(Utils.getContent(doc))
 				 .display();
 	}
 

@@ -8,31 +8,31 @@ import edt.textui.section.Message;
 
 import java.util.List;
 
-
-//  TODO review this and rename
 class Utils {
 
   /**
-   * Returns all of the content of a Document
-   * @param  doc [description]
-   * @return     [description]
+   * Auxiliary method that returns the content of a Document formated
+   * @param  doc the Document to get the content from
+   * @return  all of the content from every subsection of the given Document
    */
-  static String getSections(Document doc){
+  static String getContent(Document doc){
     String content = "";
     content = "{" + doc.getTitle() + "}\n";
 
-    content += getSections((Section) doc, false, false);
+    content += getContent((Section) doc, false, false);
 
     return content;
   }
 
 /**
-   * Returns all of the content of a Section
+   * Auxiliary method that returns the content of a Section formated
    *
-   * @param section the section to get all content from
-   * @return String all of the content from every subsection of the current one
+   * @param section the section to get content from
+   * @param currentTitle if the method should return the given section title
+   * @param onlyTitles if the method should return only titles of the subsections
+   * @return all of the content from every subsection of the current one
    */
-  static String getSections(Section section, boolean currentTitle, boolean onlyTitles){
+  static String getContent(Section section, boolean currentTitle, boolean onlyTitles){
 
     String content = "";
 
@@ -47,7 +47,7 @@ class Utils {
       if (!onlyTitles)
         for (Paragraph p: paragraphs) content += p.getContent() + "\n";
 
-      for (Section s: subSections) content += getSections(s, true, onlyTitles);
+      for (Section s: subSections) content += getContent(s, true, onlyTitles);
 
       return content;
   }

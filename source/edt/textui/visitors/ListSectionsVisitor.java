@@ -29,7 +29,7 @@ public class ListSectionsVisitor implements Visitor {
 
 		Display display = new Display();
 
-		display.add(Utils.getSections(sec, false, true))
+		display.add(Utils.getContent(sec, false, true))
 			   .display();
 	}
 
