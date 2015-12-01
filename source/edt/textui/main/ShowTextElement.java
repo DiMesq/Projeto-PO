@@ -9,6 +9,7 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 
+
 /**
  * Command for showing the text element with a given identifier of the current document in the editor.
  */
@@ -42,7 +43,10 @@ public class ShowTextElement extends Command<DocManager> {
         // If there is no TextElement with such key
         if (elem == null) display.addNewLine(Message.noSuchTextElement(in.value()))
                                     .display();
-        else
-          elem.accept(new GetContentVisitor());
+        else{
+          GetContentVisitor visitor = new GetContentVisitor();
+          elem.accept(visitor);
+          display.add(visitor.getContent()).display();
+        }
     }
 }

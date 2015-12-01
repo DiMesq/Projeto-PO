@@ -3,6 +3,7 @@ package edt.textui.section;
 import edt.core.Section;
 
 import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.Display;
 
 import edt.textui.visitors.ListSectionsVisitor;
 
@@ -13,7 +14,7 @@ public class ListSections extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ListSections(Section ent) {
@@ -26,8 +27,11 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
+        ListSectionsVisitor visitor = new ListSectionsVisitor();
+        entity().accept(visitor);
 
-        entity().accept( new ListSectionsVisitor());
+        Display display = new Display();
+        display.add(visitor.getContent()).display();
 
     }
 }

@@ -6,6 +6,8 @@ import edt.core.Section;
 import edt.core.Paragraph;
 import edt.core.Document;
 
+import edt.textui.section.Message;
+
 import pt.utl.ist.po.ui.Display;
 
 /**
@@ -20,17 +22,38 @@ import pt.utl.ist.po.ui.Display;
 public class ListSectionsVisitor implements Visitor {
 
 	/**
+	 * The content stored in the visitor
+	 */
+	private String _content;
+
+	/**
+	 * Constructor
+ 	*/
+	public ListSectionsVisitor(){
+		_content = "";
+	}
+
+	/**
+	 * Returns the stored content in this visitor
+	 * @return the stored content in this visitor
+	 */
+	public String getContent(){
+		return _content;
+	}
+
+	/**
 	 * The Visitor's visit method implementation for Section Element.
 	 *
 	 * @param sec the element to visit
 	 */
 	@Override
 	public void visit(Section sec) {
-
-		Display display = new Display();
-
-		display.add(Utils.getContent(sec, false, true))
-			   .display();
+		for (Section s : sec.getSubsections()){
+			_content += Message.sectionIndexEntry(s.getKey(),
+																							s.getTitle()) +
+																							"\n";
+			s.accept(this);
+		}
 	}
 
 	/**
