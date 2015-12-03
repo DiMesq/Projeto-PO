@@ -47,7 +47,6 @@ public class IndexSection extends Command<Section> {
             if (section.isIndexed()) display.addNewLine(Message.sectionNameChanged());
 
             // set the new key
-            section.setKey(idIn.value());
             entity().getDocument().indexElement(idIn.value(), section);
 
             display.display();
