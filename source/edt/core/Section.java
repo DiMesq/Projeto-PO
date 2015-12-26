@@ -3,6 +3,12 @@ package edt.core;
 import java.util.List;
 import java.util.ArrayList;
 
+import edt.core.visitor.Visitor;
+
+import edt.core.exception.TextElementNotFoundException;
+import edt.core.exception.ErrorCode;
+
+
 /**
  * This class implements a Section of a {@link Document}.
  * <p>A Section has a title represented as a String
@@ -12,7 +18,7 @@ import java.util.ArrayList;
  * @author Sebastião Araújo
  * @version 1.0
 */
-public class Section extends TextElement {
+public class Section extends TextElement{
 
 	/**
 	 * The title of the Section
@@ -37,20 +43,31 @@ public class Section extends TextElement {
 
 	/**
 	 * The default Constructor. Associates document as the Document of the Section
+	 * and sets its title.
 	 *
 	 * @param document The document to which this Section belongs
+	 * @param title the title for the section
 	 */
-	public Section(Document document) {
-		_title = "";
+	public Section(Document document, String title){
+		_title = title;
 		_paragraphs = new ArrayList<Paragraph>();
 		_subSections = new ArrayList<Section>();
 		_document = document;
 	}
 
 	/**
+	 * Constructor. Associates document as the Document of the Section
+	 *
+	 * @param document The document to which this Section belongs
+	 */
+	public Section(Document document){
+		this(document, "");
+	}
+
+	/**
 	 * Constructor (does not associate a Document to the Section)
 	*/
-	protected Section() {
+	protected Section(){
 		this(null);
 	}
 
@@ -58,8 +75,16 @@ public class Section extends TextElement {
 	 * Sets the Document to which this Section belongs
 	 * @param document The Document to which this Sections belongs
 	 */
-	protected void setDocument(Document document) {
+	protected void setDocument(Document document){
 		_document = document;
+	}
+
+	/**
+	 * Gets the Document to which this Section belongs
+	 * @return document The Document to which this Sections belongs
+	 */
+	public Document getDocument(){
+		return _document;
 	}
 
 	/**
@@ -67,7 +92,7 @@ public class Section extends TextElement {
 	 *
 	 * @param title The new title to be set
 	 */
-	public void setTitle(String title) {
+	public void setTitle(String title){
 		_title = title;
 	}
 
@@ -76,10 +101,15 @@ public class Section extends TextElement {
 	 *
 	 * @return string the title of this Section
 	 */
-	public String getTitle() {
+	public String getTitle(){
 		return _title;
 	}
 
+	/**
+	 * Returns the size of this Section
+	 * @return the size of this Section
+	 */
+	@Override
 	public int getSize(){
 		int size = getTitle().length();
 
@@ -98,7 +128,7 @@ public class Section extends TextElement {
 	 *
 	 * @return A List with the sub-Section of this Section
 	 */
-	public List<Section> getSubsections() {
+	public List<Section> getSubsections(){
 		return _subSections;
 	}
 
@@ -107,10 +137,14 @@ public class Section extends TextElement {
 	 *
 	 * @param index Index of the Subsection to return
 	 * @return The Subsection at the specified position in this Section
-	 * @throws IndexOutOfBoundsException - if the index is out of range
 	 */
-	public Section getSection(int index) {
-		return _subSections.get(index);
+	public Section getSection(int index) throws TextElementNotFoundException{
+		try{
+			return _subSections.get(index);
+
+		} catch (IndexOutOfBoundsException e){
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
+		}
 	}
 
 	/**
@@ -122,8 +156,8 @@ public class Section extends TextElement {
 	 * @param index Index at which the specifie SubSection is to be inserted
 	 * @param subsection - The SubSection to be inserted
 	 */
-	public void addSection(int index, Section subsection) {
-		try {
+	public void addSection(int index, Section subsection){
+		try{
 			_subSections.add(index, subsection);
 		}
 		catch (IndexOutOfBoundsException e) {
@@ -138,9 +172,32 @@ public class Section extends TextElement {
 	 *
 	 * @param index - The index of the Subsection to be removed
 	 * @return The Subsection at the specified position.
-	 * NOT IMPLEMENTED
 	 */
-	public Section removeSection(int index){return null;}
+	public Section removeSection(int index) throws TextElementNotFoundException {
+		try{
+			Section section = _subSections.remove(index);
+			section.removeContentIndex();
+			return section;
+
+		} catch (IndexOutOfBoundsException e){
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.SECTION_NOT_FOUND);
+		}
+
+	}
+
+/**
+ * Helper method that removes all associations that this Section and its content
+ * had with their Document
+ */
+	private void removeContentIndex(){
+		if(this.isIndexed()) _document.removeFromIndex(this);
+
+		for (Section s : this.getSubsections())
+			 s.removeContentIndex();
+
+		for (Paragraph p : this.getParagraphs())
+			if(p.isIndexed()) _document.removeFromIndex(p);
+	}
 
 	/**
 	 * Inserts the specified Paragraph at the specified position in this Section.
@@ -152,7 +209,8 @@ public class Section extends TextElement {
 	 * @param paragraph - The Paragraph to be inserted
 	 */
 	 public void addParagraph(int index, Paragraph paragraph){
-		 try {
+
+		 try{
 			 _paragraphs.add(index, paragraph);
 		 }
 		 catch (IndexOutOfBoundsException e) {
@@ -160,26 +218,58 @@ public class Section extends TextElement {
 		 }
 	 }
 
-	 /**
-		* Removes the Paragraph at the specified position in this Section.
-		* Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
-		* Returns the Paragraph that was removed from the Section.
-		*
-		* @param index - The index of the Paragraph to be removed
-		* @return The Paragraph at the specified position.
-		* NOT IMPLEMENTED
-		*/
-	 public Paragraph removeParagraph(int index) {return null;}
+	/**
+	 * Removes the Paragraph at the specified position in this Section.
+	 * Shifts any subsequent Paragraphs to the left (subtracts one from their indices).
+	 * Returns the Paragraph that was removed from the Section.
+	 *
+	 * @param index - The index of the Paragraph to be removed
+	 * @return The Paragraph at the specified position.
+	 */
+	public Paragraph removeParagraph(int index) throws TextElementNotFoundException {
 
-	 /**
-		* Retuns the Paragraph at the specified position in this Section
-		*
-		* @param index Index of the Paragraph to return
-		* @return The Paragraph at the specified position in this Section
-		* @throws IndexOutOfBoundsException - if the index is out of range
-		*/
-	 public Paragraph getParagraph(int index) {
-		 return _paragraphs.get(index);
-	 }
+		try{
+			Paragraph paragraph = _paragraphs.remove(index);
+			_document.removeFromIndex(paragraph);
+			return paragraph;
 
+		} catch (IndexOutOfBoundsException e) {
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.PARAGRAPH_NOT_FOUND);
+		}
+	}
+
+	/**
+	 * Retuns the Paragraph at the specified position in this Section
+	 *
+	 * @param index Index of the Paragraph to return
+	 * @return The Paragraph at the specified position in this Section
+	 */
+	public Paragraph getParagraph(int index) throws TextElementNotFoundException {
+
+		try{
+			return _paragraphs.get(index);
+
+		} catch (IndexOutOfBoundsException e){
+			throw new TextElementNotFoundException(e.getMessage(), ErrorCode.PARAGRAPH_NOT_FOUND);
+		}
+	}
+
+	/**
+	 * Retuns the Paragraph at the specified position in this Section
+	 *
+	 * @return List<Paragraph> this section's paragraphs
+	 */
+	public List<Paragraph> getParagraphs() {
+
+		return _paragraphs;
+	}
+	/**
+	 * The Section Element accept method - implementation
+	 *
+	 * @param v the visitor to accept
+	 */
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

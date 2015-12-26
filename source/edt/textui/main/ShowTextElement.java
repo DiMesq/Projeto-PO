@@ -1,7 +1,8 @@
 package edt.textui.main;
 
-import edt.core.Document;
-import edt.core.DocManager;
+import edt.core.*;
+
+import edt.textui.visitors.GetContentVisitor;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -16,7 +17,7 @@ public class ShowTextElement extends Command<DocManager> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ShowTextElement(DocManager ent) {
@@ -29,6 +30,23 @@ public class ShowTextElement extends Command<DocManager> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+        Display display = new Display();
+
+        //get the key from the user
+        Form form = new Form();
+        InputString in = new InputString(form, Message.requestElementId());
+        form.parse();
+
+        TextElement elem = entity().getDocument().getTextElement(in.value());
+
+        // If there is no TextElement with such key
+        if (elem == null) display.addNewLine(Message.noSuchTextElement(in.value()))
+                                    .display();
+        else{
+          GetContentVisitor visitor = new GetContentVisitor();
+          elem.accept(visitor);
+          display.add(visitor.getContent()).display();
+        }
     }
 }

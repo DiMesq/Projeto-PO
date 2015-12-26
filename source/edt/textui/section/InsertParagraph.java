@@ -1,6 +1,7 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import edt.core.Paragraph;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -15,7 +16,7 @@ public class InsertParagraph extends Command<Section> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public InsertParagraph(Section ent) {
@@ -28,6 +29,16 @@ public class InsertParagraph extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        // ask for the index and the title
+        Form form = new Form();
+        InputInteger indexIn = new InputInteger(form, Message.requestParagraphId());
+        InputString contentIn = new InputString(form, Message.requestParagraphContent());
+        form.parse();
+
+        //add the section
+        entity().addParagraph(
+            indexIn.value(),
+            new Paragraph(contentIn.value())
+        );
     }
 }

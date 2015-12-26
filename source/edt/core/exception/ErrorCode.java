@@ -1,4 +1,4 @@
-package edt.textui.exception;
+package edt.core.exception;
 
 /** Error codes for the exceptions handling */
 public final class ErrorCode {
@@ -14,6 +14,10 @@ public final class ErrorCode {
 
     /** Error closing file. */
     public static final String FILE_CLOSE_ERROR = "FILE_CLOSE_EXCEPTION";
+
+    /** Section not found */
+    public static final String SECTION_NOT_FOUND = "SECTION_NOT_FOUND_EXCEPTION";
+
+    /** Paragraph not found */
+    public static final String PARAGRAPH_NOT_FOUND = "PARAGRAPH_NOT_FOUND_EXCEPTION";    
 }
-
-
