@@ -1,10 +1,14 @@
-Object Oriented Class 2015/2016 Final Project 
+#Object Oriented Class Project 2015/2016
 
-The project consists of a Document app. 
+# About
+This project is a Text Document Application. 
+You are able to insert Sections and Paragraphs of text in your Document.
+In each Section you can also insert more Sections as well as paragraphs.
 
-The main functionality of the app is to create a Document that you can edit by adding sections and paragraphs to it.
-It's possible to save the Document (serialize) and open it at a different time.
+# Installing
+No installing required. Just fork the repo.
 
-
-
-
+# Using
+Just run the following two commands:
+  * `make compile`
+  * `make run` (or `make swing` for a GUI)
