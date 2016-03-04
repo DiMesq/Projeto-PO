@@ -10,5 +10,5 @@ No installing required. Just fork the repo.
 
 # Using
 Just run the following two commands:
-  * `make compile`
+  * `make`
   * `make run` (or `make swing` for a GUI)
