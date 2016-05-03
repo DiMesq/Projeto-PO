@@ -1,14 +1,10 @@
 package edt.textui.visitors;
 
-import edt.core.visitor.Visitor;
-
-import edt.core.Section;
-import edt.core.Paragraph;
 import edt.core.Document;
-
+import edt.core.Paragraph;
+import edt.core.Section;
+import edt.core.visitor.Visitor;
 import edt.textui.section.Message;
-
-import pt.utl.ist.po.ui.Display;
 
 /**
  * ListSectionsVisitor implements the Visitor interface.
