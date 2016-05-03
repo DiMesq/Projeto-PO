@@ -1,14 +1,10 @@
 package edt.textui.visitors;
 
-import edt.core.visitor.Visitor;
-
+import edt.core.Document;
 import edt.core.Paragraph;
 import edt.core.Section;
-import edt.core.Document;
-
+import edt.core.visitor.Visitor;
 import edt.textui.main.Message;
-
-import pt.utl.ist.po.ui.Display;
 
 
 /**

@@ -1,11 +1,8 @@
 package edt.textui.section;
 
 import edt.core.Section;
-
-import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
-
-import edt.textui.section.*;
+import pt.utl.ist.po.ui.Menu;
 
 /**
  * Represents the edit menu of this application. This menu

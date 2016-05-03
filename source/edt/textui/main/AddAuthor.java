@@ -1,12 +1,8 @@
 package edt.textui.main;
 
-import java.util.Arrays;
-
-import edt.core.Document;
-import edt.core.DocManager;
 import edt.core.Author;
-
-import pt.utl.ist.po.ui.Menu;
+import edt.core.DocManager;
+import edt.core.Document;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;

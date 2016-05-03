@@ -1,15 +1,10 @@
 package edt.textui.main;
 
-import java.util.SortedSet;
-
-import edt.core.Section;
-import edt.core.Document;
 import edt.core.DocManager;
-
-import pt.utl.ist.po.ui.Menu;
+import edt.core.Document;
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
-import pt.utl.ist.po.ui.Form;
 
 /**
  * Command for showing the top sections of the current document in the editor.

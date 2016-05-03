@@ -1,12 +1,8 @@
 package edt.textui.main;
 
-import edt.core.Document;
 import edt.core.DocManager;
-
-import pt.utl.ist.po.ui.Menu;
-import pt.utl.ist.po.ui.Command;
-
 import edt.textui.section.EditMenu;
+import pt.utl.ist.po.ui.Command;
 
 /**
  * Command for editing the current document in the editor.
